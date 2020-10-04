@@ -1,20 +1,13 @@
 import java.awt.*;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.*;
+import java.awt.event.*;
+
 
 public class VentanaRegistro extends JFrame {
 
@@ -26,6 +19,9 @@ public class VentanaRegistro extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private ButtonGroup sexo = new ButtonGroup();
+	
+	
 	
 	
 
@@ -131,12 +127,15 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblNewLabel_2_3);
 		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(327, 136, 82, 21);
+		rdbtnMasculino.setBounds(327, 136, 98, 21);
 		contentPane.add(rdbtnMasculino);
 		
 		JRadioButton rdbtnFemenino = new JRadioButton("Femenino");
-		rdbtnFemenino.setBounds(411, 136, 82, 21);
+		rdbtnFemenino.setBounds(427, 136, 82, 21);
 		contentPane.add(rdbtnFemenino);
+		
+		sexo.add(rdbtnFemenino);
+		sexo.add(rdbtnMasculino);
 		
 		
 		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("Direcci\u00F3n de contacto");
@@ -157,12 +156,16 @@ public class VentanaRegistro extends JFrame {
 		lblNewLabel_3.setBounds(270, 29, 161, 13);
 		contentPane.add(lblNewLabel_3);
 		
-		JButton btnNewButton_1 = new JButton("Iniciar Sesion");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
+		btnIniciarSesion.setBounds(441, 27, 117, 17);
+		contentPane.add(btnIniciarSesion);
+		btnIniciarSesion.addActionListener(new ActionListener() {
+
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
+			
 		});
-		btnNewButton_1.setBounds(441, 27, 117, 17);
-		contentPane.add(btnNewButton_1);
 	}
 }
