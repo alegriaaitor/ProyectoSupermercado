@@ -1,14 +1,11 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+
+
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JScrollBar;
+import javax.swing.*;
+
+
 
 public class VentanaCarniceria extends JFrame {
 
