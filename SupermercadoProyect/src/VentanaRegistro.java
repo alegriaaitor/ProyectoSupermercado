@@ -156,7 +156,7 @@ public class VentanaRegistro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int i = JOptionPane.showConfirmDialog(null, "¿Los datos son correctos?, una vez introducidos no podrán ser modificados");
+				int i = JOptionPane.showConfirmDialog(null, "¿Los datos son correctos? Una vez introducidos no podrán ser modificados");
 				
 				if (i == 0) {
 					principal.setVisible(true);
