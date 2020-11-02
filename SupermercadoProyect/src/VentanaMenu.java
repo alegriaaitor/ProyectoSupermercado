@@ -1,9 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
 public class VentanaMenu extends JFrame {
 
@@ -30,11 +33,18 @@ public class VentanaMenu extends JFrame {
 	 */
 	public VentanaMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 495, 359);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(33, 23, 70, 53);
+		ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
+        lblNewLabel.setIcon(img1);
+        contentPane.add(lblNewLabel);
+	
 	}
-
 }
