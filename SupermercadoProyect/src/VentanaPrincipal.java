@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -44,10 +46,6 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("NOMBRE");
-		lblNewLabel.setBounds(41, 24, 68, 13);
-		contentPane.add(lblNewLabel);
-		
 		JButton btnNewButton = new JButton("Iniciar Sesion ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -73,5 +71,13 @@ public class VentanaPrincipal extends JFrame {
 		btnNewButton_2.setForeground(Color.BLUE);
 		btnNewButton_2.setBounds(355, 20, 131, 21);
 		contentPane.add(btnNewButton_2);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 10, 70, 53);
+		ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
+	        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
+	        lblNewLabel.setIcon(img1);
+	    contentPane.add(lblNewLabel);
+		contentPane.add(lblNewLabel);
 	}
 }
