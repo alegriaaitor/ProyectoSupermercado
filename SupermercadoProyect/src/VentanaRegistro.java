@@ -161,7 +161,6 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(btnIniciarSesion);
 		btnIniciarSesion.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 			}
