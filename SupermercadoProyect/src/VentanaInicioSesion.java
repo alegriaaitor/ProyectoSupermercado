@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.UIManager;
-import javax.swing.border.CompoundBorder;
+import javax.swing.border.*;
 
 public class VentanaInicioSesion extends JFrame {
 

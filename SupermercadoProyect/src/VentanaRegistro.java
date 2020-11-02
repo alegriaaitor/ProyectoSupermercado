@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.*;
 import java.awt.event.*;
-
+import javax.swing.JOptionPane;
 
 public class VentanaRegistro extends JFrame {
 
@@ -20,6 +20,7 @@ public class VentanaRegistro extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private ButtonGroup sexo = new ButtonGroup();
+	final VentanaPrincipal principal = new VentanaPrincipal();
 	
 	
 	
@@ -151,6 +152,19 @@ public class VentanaRegistro extends JFrame {
 		JButton btnNewButton = new JButton("Finalizar registro");
 		btnNewButton.setBounds(388, 303, 153, 33);
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int i = JOptionPane.showConfirmDialog(null, "¿Los datos son correctos?, una vez introducidos no podrán ser modificados");
+				
+				if (i == 0) {
+					principal.setVisible(true);
+					dispose();
+				}
+			}
+			
+		});
 		
 		JLabel lblNewLabel_3 = new JLabel("\u00BFYa dispone de una cuenta?");
 		lblNewLabel_3.setBounds(270, 29, 161, 13);
