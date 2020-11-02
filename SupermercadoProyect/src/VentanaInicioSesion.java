@@ -64,7 +64,7 @@ public class VentanaInicioSesion extends JFrame {
 		lblNewLabel_1.setBounds(45, 110, 88, 29);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Contrase\u00F1a");
+		JLabel lblNewLabel_1_1 = new JLabel("Contrasena");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_1.setBounds(45, 205, 88, 29);
 		contentPane.add(lblNewLabel_1_1);
@@ -92,7 +92,7 @@ public class VentanaInicioSesion extends JFrame {
 		txtryaDisponesDe.setBounds(10, 389, 295, 29);
 		contentPane.add(txtryaDisponesDe);
 		
-		JButton btnRegistrarse = new JButton("Reg\u00EDstrate");
+		JButton btnRegistrarse = new JButton("Registrate");
 		btnRegistrarse.setForeground(Color.BLACK);
 		btnRegistrarse.setBackground(UIManager.getColor("Button.background"));
 		btnRegistrarse.setBounds(20, 419, 140, 21);
