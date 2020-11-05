@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.UIManager;
 import javax.swing.border.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaInicioSesion extends JFrame {
 
@@ -80,6 +82,14 @@ public class VentanaInicioSesion extends JFrame {
 		contentPane.add(textField_1);
 		
 		JButton btnNewButton = new JButton("Iniciar Sesion");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaMenu menu = new VentanaMenu();
+				menu.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(118, 319, 133, 35);
 		contentPane.add(btnNewButton);

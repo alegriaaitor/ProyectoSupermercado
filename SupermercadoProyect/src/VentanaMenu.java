@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaMenu extends JFrame {
 
@@ -61,6 +63,14 @@ public class VentanaMenu extends JFrame {
         contentPane.add(btnNewButton);
         
         JButton btnCarniceria = new JButton("");
+        btnCarniceria.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		VentanaCarniceria carniceria = new VentanaCarniceria();
+        		carniceria.setVisible(true);
+        		dispose();
+        	}
+        });
         ImageIcon ico3 = new ImageIcon(getClass().getResource("carniceria.jpg"));
         ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
         btnCarniceria.setBounds(175, 134, 137, 89);

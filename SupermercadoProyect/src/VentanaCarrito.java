@@ -97,6 +97,14 @@ public class VentanaCarrito extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		JButton btnNewButton_1 = new JButton("Continua comprando");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaMenu menu = new VentanaMenu();
+				menu.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(572, 285, 157, 21);
 		contentPane.add(btnNewButton_1);
 		

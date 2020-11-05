@@ -171,14 +171,16 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
+		btnIniciarSesion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaInicioSesion inicio = new VentanaInicioSesion();
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
 		btnIniciarSesion.setBounds(441, 27, 117, 17);
 		contentPane.add(btnIniciarSesion);
-		btnIniciarSesion.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-			
-		});
+		
 	}
 }
