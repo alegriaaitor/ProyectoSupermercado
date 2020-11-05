@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
+import javax.swing.JList;
 
 public class VentanaCarrito extends JFrame {
 
@@ -99,7 +100,9 @@ public class VentanaCarrito extends JFrame {
 		btnNewButton_1.setBounds(572, 285, 157, 21);
 		contentPane.add(btnNewButton_1);
 		
+		JList list = new JList();
+		list.setBounds(59, 73, 415, 317);
+		contentPane.add(list);
+		
 	}
-
-	
 }
