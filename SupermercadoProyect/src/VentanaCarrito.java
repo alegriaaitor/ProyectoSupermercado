@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -6,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.*;
+
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
@@ -14,7 +17,7 @@ import javax.swing.JTree;
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
-
+	final VentanaMenu menu = new VentanaMenu();
 	/**
 	 * Launch the application.
 	 */
@@ -88,12 +91,15 @@ public class VentanaCarrito extends JFrame {
 		separator_1.setBounds(546, 134, 148, 4);
 		contentPane.add(separator_1);
 		
-		JLabel lblNewLabel_5 = new JLabel("\u00BFTe has olvidado de algo?");
+		JLabel lblNewLabel_5 = new JLabel("¿Te has olvidado de algo?");
 		lblNewLabel_5.setBounds(550, 262, 159, 13);
 		contentPane.add(lblNewLabel_5);
 		
 		JButton btnNewButton_1 = new JButton("Continua comprando");
 		btnNewButton_1.setBounds(572, 285, 157, 21);
 		contentPane.add(btnNewButton_1);
+		
 	}
+
+	
 }
