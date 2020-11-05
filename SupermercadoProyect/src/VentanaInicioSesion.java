@@ -98,7 +98,7 @@ public class VentanaInicioSesion extends JFrame {
 		txtryaDisponesDe.setBackground(UIManager.getColor("Button.background"));
 		txtryaDisponesDe.setEditable(false);
 		txtryaDisponesDe.setForeground(Color.BLACK);
-		txtryaDisponesDe.setText("\u00BFTodavia no dispones de una cuenta?");
+		txtryaDisponesDe.setText("\u00BFTodav\u00EDa no dispones de una cuenta?");
 		txtryaDisponesDe.setBounds(10, 389, 295, 29);
 		contentPane.add(txtryaDisponesDe);
 		

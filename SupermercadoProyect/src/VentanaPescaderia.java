@@ -1,4 +1,3 @@
-
 import java.awt.*;
 
 
@@ -9,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 
 
-public class VentanaCarniceria extends JFrame {
+public class VentanaPescaderia extends JFrame {
 
 	private JPanel contentPane;
 
@@ -20,7 +19,7 @@ public class VentanaCarniceria extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaCarniceria frame = new VentanaCarniceria();
+					VentanaPescaderia frame = new VentanaPescaderia();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +31,7 @@ public class VentanaCarniceria extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaCarniceria() {
+	public VentanaPescaderia() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 493);
 		contentPane = new JPanel();
@@ -183,35 +182,35 @@ public class VentanaCarniceria extends JFrame {
 		contentPane.add(lblNewLabel_1_7);
 		
 		JLabel lblNewLabel_2_4 = new JLabel("Precio");
-		lblNewLabel_2_4.setBounds(44, 362, 45, 13);
+		lblNewLabel_2_4.setBounds(44, 354, 45, 13);
 		contentPane.add(lblNewLabel_2_4);
 		
 		JLabel lblNewLabel_2_5 = new JLabel("Precio");
-		lblNewLabel_2_5.setBounds(139, 362, 45, 13);
+		lblNewLabel_2_5.setBounds(139, 354, 45, 13);
 		contentPane.add(lblNewLabel_2_5);
 		
 		JLabel lblNewLabel_2_6 = new JLabel("Precio");
-		lblNewLabel_2_6.setBounds(235, 358, 45, 21);
+		lblNewLabel_2_6.setBounds(235, 354, 45, 13);
 		contentPane.add(lblNewLabel_2_6);
 		
 		JLabel lblNewLabel_2_7 = new JLabel("Precio");
-		lblNewLabel_2_7.setBounds(329, 362, 45, 13);
+		lblNewLabel_2_7.setBounds(329, 354, 45, 13);
 		contentPane.add(lblNewLabel_2_7);
 		
 		JButton btnNewButton_4 = new JButton("A\u00F1adir");
-		btnNewButton_4.setBounds(22, 385, 85, 21);
+		btnNewButton_4.setBounds(22, 377, 85, 21);
 		contentPane.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("A\u00F1adir");
-		btnNewButton_5.setBounds(121, 385, 85, 21);
+		btnNewButton_5.setBounds(121, 377, 85, 21);
 		contentPane.add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("A\u00F1adir");
-		btnNewButton_6.setBounds(216, 389, 85, 21);
+		btnNewButton_6.setBounds(216, 377, 85, 21);
 		contentPane.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("A\u00F1adir");
-		btnNewButton_7.setBounds(329, 385, 85, 21);
+		btnNewButton_7.setBounds(329, 377, 85, 21);
 		contentPane.add(btnNewButton_7);
 		
 		JButton btnNewButton_8 = new JButton("Volver");
@@ -220,9 +219,10 @@ public class VentanaCarniceria extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaMenu menu = new VentanaMenu();
 				menu.setVisible(true);
+				dispose();
 			}
 		});
-		btnNewButton_8.setBounds(111, 435, 85, 21);
+		btnNewButton_8.setBounds(111, 425, 85, 21);
 		contentPane.add(btnNewButton_8);
 		
 		JButton btnNewButton_9 = new JButton("Ver carrito");
@@ -234,7 +234,7 @@ public class VentanaCarniceria extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(246, 435, 85, 21);
+		btnNewButton_9.setBounds(235, 425, 85, 21);
 		contentPane.add(btnNewButton_9);
 	}
 }

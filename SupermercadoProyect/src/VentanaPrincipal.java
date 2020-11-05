@@ -14,6 +14,8 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -47,6 +49,14 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Iniciar Sesion ");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaInicioSesion inicio = new VentanaInicioSesion();
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -56,6 +66,14 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Registrarse");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaRegistro registro = new VentanaRegistro();
+				registro.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(78, 166, 139, 39);
 		contentPane.add(btnNewButton_1);
 		
@@ -68,8 +86,17 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(txtpnIntroduceTusDatos);
 		
 		JButton btnNewButton_2 = new JButton("Ubicacion ");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				VentanaUbicaciones ubicacion = new VentanaUbicaciones();
+				ubicacion.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_2.setForeground(Color.BLUE);
-		btnNewButton_2.setBounds(355, 20, 131, 21);
+		btnNewButton_2.setBounds(381, 20, 131, 43);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel = new JLabel("");

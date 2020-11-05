@@ -62,6 +62,16 @@ public class VentanaMenu extends JFrame {
         btnNewButton.setIcon(img2);
         contentPane.add(btnNewButton);
         
+        JButton btnPescaderia= new JButton("");
+        btnNewButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		VentanaPescaderia pescaderia = new VentanaPescaderia();
+        		pescaderia.setVisible(true);
+        		dispose();
+        	}
+        });
+        
         JButton btnCarniceria = new JButton("");
         btnCarniceria.addMouseListener(new MouseAdapter() {
         	@Override

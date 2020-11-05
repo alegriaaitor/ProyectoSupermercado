@@ -12,6 +12,8 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaUbicaciones extends JFrame {
 
@@ -89,11 +91,21 @@ public class VentanaUbicaciones extends JFrame {
 		contentPane.add(textPane_2);
 		
 		JButton btnNewButton_3 = new JButton("Volver");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPrincipal principal = new VentanaPrincipal();
+				principal.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_3.setBounds(321, 232, 85, 21);
 		contentPane.add(btnNewButton_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(10, 5, 53, 38);
+		
+		
 		contentPane.add(lblNewLabel_2);
 	}
 }
