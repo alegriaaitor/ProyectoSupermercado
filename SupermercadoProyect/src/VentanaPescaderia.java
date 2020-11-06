@@ -234,7 +234,7 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(235, 425, 85, 21);
+		btnNewButton_9.setBounds(235, 425, 94, 21);
 		contentPane.add(btnNewButton_9);
 	}
 }

@@ -234,7 +234,7 @@ public class VentanaCarniceria extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(246, 435, 85, 21);
+		btnNewButton_9.setBounds(246, 435, 94, 21);
 		contentPane.add(btnNewButton_9);
 	}
 }
