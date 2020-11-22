@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -90,8 +91,8 @@ public class VentanaUbicaciones extends JFrame {
 		textPane_2.setBounds(311, 88, 115, 125);
 		contentPane.add(textPane_2);
 		
-		JButton btnNewButton_3 = new JButton("Volver");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
+		JButton BotonVolver = new JButton("Volver");
+		BotonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentanaPrincipal principal = new VentanaPrincipal();
@@ -99,8 +100,8 @@ public class VentanaUbicaciones extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_3.setBounds(321, 232, 85, 21);
-		contentPane.add(btnNewButton_3);
+		BotonVolver.setBounds(321, 232, 85, 21);
+		contentPane.add(BotonVolver);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setBounds(10, 5, 53, 38);
