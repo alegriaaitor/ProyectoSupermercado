@@ -46,6 +46,8 @@ public class VentanaRegistro extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaRegistro() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 582, 398);
 		contentPane = new JPanel();
@@ -149,6 +151,7 @@ public class VentanaRegistro extends JFrame {
 		textField_5.setBounds(161, 304, 169, 19);
 		contentPane.add(textField_5);
 		
+		
 		JButton btnNewButton = new JButton("Finalizar registro");
 		btnNewButton.setBounds(388, 303, 153, 33);
 		contentPane.add(btnNewButton);
@@ -181,6 +184,8 @@ public class VentanaRegistro extends JFrame {
 		});
 		btnIniciarSesion.setBounds(441, 27, 117, 17);
 		contentPane.add(btnIniciarSesion);
+		
+		
 		
 	}
 }

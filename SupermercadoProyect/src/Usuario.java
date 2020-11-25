@@ -1,20 +1,17 @@
 
-public class Usuario {
-	private String nombreUsuario, contraseña, direccion,email; //incluimos el email para utilizar lo explicado en clase de la @
 
-	public Usuario(String nombreUsuario, String contraseña, String direccion, String email) {
-		super();
+public class Usuario {
+	private String nombreUsuario, contrasena, direccion,email; //incluimos el email para utilizar lo explicado en clase de la @
+
+	public Usuario(String nombreUsuario, String contrasena, String direccion, String email) {
+		
 		this.nombreUsuario = nombreUsuario;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.direccion = direccion;
 		this.email = email;
 	}
 	public Usuario() {
-		super();
-		this.nombreUsuario = " ";
-		this.contraseña = " ";
-		this.direccion = " ";
-		this.email = " ";
+		
 	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
@@ -22,11 +19,11 @@ public class Usuario {
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getcontrasena() {
+		return contrasena;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setcontrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -42,7 +39,7 @@ public class Usuario {
 	}
 	
 	/*public String toString() {
-		return "Usuario [nombreUsuario=" + nombreUsuario + ", contraseña=" + contraseña + ", direccion=" + direccion
+		return "Usuario [nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", direccion=" + direccion
 				+ ", email=" + email + "]";
 	}*/
 	

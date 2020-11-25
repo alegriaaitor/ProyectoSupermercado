@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -20,13 +22,14 @@ import javax.swing.UIManager;
 import javax.swing.border.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPasswordField;
 
 public class VentanaInicioSesion extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldUsuario;
 	final VentanaRegistro registro1 = new VentanaRegistro();
+	private JPasswordField passwordFieldContrasena;
 
 	/**
 	 * Launch the application.
@@ -71,28 +74,46 @@ public class VentanaInicioSesion extends JFrame {
 		lblNewLabel_1_1.setBounds(45, 205, 88, 29);
 		contentPane.add(lblNewLabel_1_1);
 		
-		textField = new JTextField();
-		textField.setBounds(45, 149, 281, 29);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		passwordFieldContrasena = new JPasswordField();
+		passwordFieldContrasena.setBounds(45, 244, 281, 29);
+		contentPane.add(passwordFieldContrasena);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(45, 244, 281, 29);
-		contentPane.add(textField_1);
+		textFieldUsuario = new JTextField();
+		textFieldUsuario.setBounds(45, 149, 281, 29);
+		contentPane.add(textFieldUsuario);
+		textFieldUsuario.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Iniciar Sesion");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton botonIniciarSesion = new JButton("Iniciar Sesion");
+		botonIniciarSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VentanaMenu menu = new VentanaMenu();
-				menu.setVisible(true);
-				dispose();
+				String usuario = textFieldUsuario.getText();
+				String contrasena = String.valueOf(passwordFieldContrasena.getPassword());
+				
+				GestionUsuario gestionUsuario = new GestionUsuario();
+				
+				Usuario usuario2 = new Usuario();
+				usuario2.setNombreUsuario(usuario);
+				usuario2.setcontrasena(contrasena);
+				
+				Usuario u = gestionUsuario.obtenerUsuario(usuario2);
+				
+				if(u != null) {
+					JOptionPane.showMessageDialog(contentPane, "Bienvendo a SuperSupermercado!");
+					VentanaMenu menu = new VentanaMenu();
+					menu.setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(contentPane, "El usuario introducido no esta en la base de datos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				
+				
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(118, 319, 133, 35);
-		contentPane.add(btnNewButton);
+		botonIniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		botonIniciarSesion.setBounds(118, 319, 133, 35);
+		contentPane.add(botonIniciarSesion);
 		
 		JTextArea txtryaDisponesDe = new JTextArea();
 		txtryaDisponesDe.setBackground(UIManager.getColor("Button.background"));
@@ -107,6 +128,8 @@ public class VentanaInicioSesion extends JFrame {
 		btnRegistrarse.setBackground(UIManager.getColor("Button.background"));
 		btnRegistrarse.setBounds(20, 419, 140, 21);
 		contentPane.add(btnRegistrarse);
+		
+		
 		
 		btnRegistrarse.addActionListener(new ActionListener() {
 
