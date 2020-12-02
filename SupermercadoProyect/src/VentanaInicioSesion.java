@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import SupermercadoProyecto.ventanasPrincipales.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -90,15 +93,15 @@ public class VentanaInicioSesion extends JFrame {
 				String usuario = textFieldUsuario.getText();
 				String contrasena = String.valueOf(passwordFieldContrasena.getPassword());
 				
-				GestionUsuario gestionUsuario = new GestionUsuario();
+				//GestionUsuario gestionUsuario = new GestionUsuario();
 				
 				Usuario usuario2 = new Usuario();
 				usuario2.setNombreUsuario(usuario);
 				usuario2.setcontrasena(contrasena);
 				
-				Usuario u = gestionUsuario.obtenerUsuario(usuario2);
+			//	Usuario u = gestionUsuario.obtenerUsuario(usuario2);
 				
-				if(u != null) {
+			/*	if(u != null) {
 					JOptionPane.showMessageDialog(contentPane, "Bienvendo a SuperSupermercado!");
 					VentanaMenu menu = new VentanaMenu();
 					menu.setVisible(true);
@@ -106,7 +109,7 @@ public class VentanaInicioSesion extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(contentPane, "El usuario introducido no esta en la base de datos","Error",JOptionPane.ERROR_MESSAGE);
 				}
-				
+			*/	
 				
 				
 			}
