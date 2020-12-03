@@ -1,3 +1,4 @@
+package SupermercadoProyecto.ventanasPrincipales;
 import java.awt.*;
 
 
@@ -5,20 +6,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.security.auth.callback.TextOutputCallback;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JOptionPane;
+import SupermercadoProyecto.ventanasPrincipales.*;
+
+import ConexionBD.*;
 
 public class VentanaRegistro extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
+	private JTextField texto_email;
+	private JPasswordField texto_contrasena;
 	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField texto_usuario;
+	private JTextField texto_direccion;
 	private ButtonGroup sexo = new ButtonGroup();
 	final VentanaPrincipal principal = new VentanaPrincipal();
 	
@@ -90,19 +95,19 @@ public class VentanaRegistro extends JFrame {
 		lblNewLabel_2_1_1.setBounds(31, 181, 112, 17);
 		contentPane.add(lblNewLabel_2_1_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(156, 181, 169, 19);
-		contentPane.add(textField_2);
+		texto_email = new JTextField();
+		texto_email.setColumns(10);
+		texto_email.setBounds(156, 181, 169, 19);
+		contentPane.add(texto_email);
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("Contrase\u00F1a");
 		lblNewLabel_2_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_2_1_1_1.setBounds(31, 223, 82, 17);
 		contentPane.add(lblNewLabel_2_1_1_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(123, 223, 144, 19);
-		contentPane.add(passwordField);
+		texto_contrasena = new JPasswordField();
+		texto_contrasena.setBounds(123, 223, 144, 19);
+		contentPane.add(texto_contrasena);
 		
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("Numero de contacto");
 		lblNewLabel_2_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -119,10 +124,10 @@ public class VentanaRegistro extends JFrame {
 		lblNewLabel_2_2.setBounds(260, 97, 70, 17);
 		contentPane.add(lblNewLabel_2_2);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(334, 97, 118, 19);
-		contentPane.add(textField_4);
+		texto_usuario = new JTextField();
+		texto_usuario.setColumns(10);
+		texto_usuario.setBounds(334, 97, 118, 19);
+		contentPane.add(texto_usuario);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("Sexo");
 		lblNewLabel_2_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -146,24 +151,59 @@ public class VentanaRegistro extends JFrame {
 		lblNewLabel_2_1_1_1_1_1.setBounds(31, 304, 136, 17);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(161, 304, 169, 19);
-		contentPane.add(textField_5);
+		texto_direccion = new JTextField();
+		texto_direccion.setColumns(10);
+		texto_direccion.setBounds(161, 304, 169, 19);
+		contentPane.add(texto_direccion);
 		
 		
-		JButton btnNewButton = new JButton("Finalizar registro");
-		btnNewButton.setBounds(388, 303, 153, 33);
-		contentPane.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnRegistrar = new JButton("Finalizar registro");
+		btnRegistrar.setBounds(388, 303, 153, 33);
+		contentPane.add(btnRegistrar);
+		btnRegistrar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int i = JOptionPane.showConfirmDialog(null, "¿Los datos son correctos? Una vez introducidos no podrán ser modificados");
+				String nombreUsuario;
+				String contrasena;
+				String email;
+				String direccion;
 				
-				if (i == 0) {
-					principal.setVisible(true);
-					dispose();
+				nombreUsuario = texto_usuario.getText();
+				contrasena = texto_contrasena.getText();
+				email = texto_email.getText();
+				direccion = texto_direccion.getText();
+				
+				if (nombreUsuario.equals("") || contrasena.equals("") || email.equals("") || direccion.equals("")) {
+					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
+					
+				}else {
+					
+					if (email.contains("@") && email.contains(".")) {
+				
+						Usuario usuario = new Usuario();
+						usuario.setNombreUsuario(nombreUsuario);
+						usuario.setcontrasena(contrasena);
+						usuario.setEmail(email);
+						usuario.setDireccion(direccion);
+						
+						DBManager conexion = new DBManager();
+						
+						try {
+							conexion.connect();
+							
+								conexion.registrarUsuario(usuario);
+								
+								JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1);					
+							
+							conexion.disconnect();
+							principal.setVisible(true);
+							dispose();
+						} catch (DBException e1) {
+							e1.printStackTrace();
+						}
+				
+					}
 				}
 			}
 			
@@ -174,6 +214,8 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
+		
+		
 		btnIniciarSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -1,3 +1,4 @@
+package SupermercadoProyecto.ventanasPrincipales;
 import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
@@ -5,8 +6,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import SupermercadoProyecto.ventanasPrincipales.Usuario;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -137,7 +136,7 @@ public class VentanaInicioSesion extends JFrame {
 		contentPane.add(btnRegistrarse);
 		
 		//BOTON INICIAR SESION
-				botonIniciarSesion.addActionListener(new ActionListener() {
+		/*		botonIniciarSesion.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 
@@ -223,7 +222,7 @@ public class VentanaInicioSesion extends JFrame {
 
 			}
 
-		
+		*/
 		btnRegistrarse.addActionListener(new ActionListener() {
 
 			@Override
