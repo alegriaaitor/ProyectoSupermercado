@@ -7,16 +7,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import SupermercadoProyecto.ventanasPrincipales.Usuario;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,9 @@ import javax.swing.UIManager;
 import javax.swing.border.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.FileWriter;
+import ConexionBD.*;
 import javax.swing.JPasswordField;
 
 public class VentanaInicioSesion extends JFrame {
@@ -67,15 +71,15 @@ public class VentanaInicioSesion extends JFrame {
 		lblNewLabel.setBounds(45, 38, 133, 40);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Usuario");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(45, 110, 88, 29);
-		contentPane.add(lblNewLabel_1);
+		JLabel Texto_usuario = new JLabel("Usuario");
+		Texto_usuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		Texto_usuario.setBounds(45, 110, 88, 29);
+		contentPane.add(Texto_usuario);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Contrasena");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1_1.setBounds(45, 205, 88, 29);
-		contentPane.add(lblNewLabel_1_1);
+		JLabel texto_contrasena = new JLabel("Contrasena");
+		texto_contrasena.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		texto_contrasena.setBounds(45, 205, 88, 29);
+		contentPane.add(texto_contrasena);
 		
 		passwordFieldContrasena = new JPasswordField();
 		passwordFieldContrasena.setBounds(45, 244, 281, 29);
@@ -132,7 +136,93 @@ public class VentanaInicioSesion extends JFrame {
 		btnRegistrarse.setBounds(20, 419, 140, 21);
 		contentPane.add(btnRegistrarse);
 		
-		
+		//BOTON INICIAR SESION
+				botonIniciarSesion.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						String nombreUsuario = Texto_usuario.getText();
+						String contrasena = texto_contrasena.getText();
+
+						DBManager conexion = new DBManager();
+
+						try {
+							conexion.connect();
+
+							if (conexion.loginUsuario(nombreUsuario, contrasena) == true) {
+								id_usuario = conexion.obtenerId(nombreUsuario);
+								VentanaMenu vm = new VentanaMenu();
+								setVisible(false);
+								vm.setVisible(true);
+
+							} else {
+								JOptionPane.showMessageDialog(null, "No se ha podido iniciar sesion", "Error", 0);
+								Texto_usuario.setText("");
+								texto_contrasena.setText("");
+							}
+
+							conexion.disconnect();
+
+						} catch (DBException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+						if (checkGuardarDatos.isSelected()) {
+							try {
+								if (!archivo.exists()) {
+									archivo.createNewFile();
+									FileWriter escribir = new FileWriter(archivo);
+									escribir.write(nombreUsuario + "," + contrasena);
+									escribir.close();
+								}
+
+							}catch (Exception e1) {
+
+							}
+						}else {
+							try {
+								if (archivo.exists()) {
+									archivo.delete();
+								}
+							}catch (Exception e2) {
+								
+							}
+						}
+					}
+				});
+				
+				
+				JLabel label = new JLabel("");
+				label.setIcon(new ImageIcon("multimedia/Logo.png"));
+				label.setBounds(249,16, 154, 155);
+				contentPane.add(label);
+						
+				boton.setCursor(new Cursor(HAND_CURSOR));
+
+				botonRegistro.addMouseListener(new MouseListener() {
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+					@Override
+					public void mouseExited(MouseEvent e) {
+					}
+					@Override
+					public void mouseEntered(MouseEvent e) {
+					}
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						VentanaRegistro vr = new VentanaRegistro();
+						setVisible(false);
+						vr.setVisible(true);
+					}
+				});
+
+			}
+
 		
 		btnRegistrarse.addActionListener(new ActionListener() {
 

@@ -41,7 +41,7 @@ public class DBManager {
 		
 		
 		try (Statement stmt= conect.createStatement()) {
-			stmt.executeUpdate("INSERT INTO usuario (nomUsuario, contrasenya, correo, direccionIP) VALUES ('" + nombreUsuario + "', '"+ contrasena + "', '" + email + "', '" + direccion + "')");
+			stmt.executeUpdate("INSERT INTO usuario (nombreUsuario, contrasena, email, direccion) VALUES ('" + nombreUsuario + "', '"+ contrasena + "', '" + email + "', '" + direccion + "')");
 		} catch (SQLException e) {
 			throw new DBException("No ha sido posible ejecutar la query");
 		}
