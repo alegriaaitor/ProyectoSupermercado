@@ -6,13 +6,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 
 public class VentanaCarniceria extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -60,9 +61,9 @@ public class VentanaCarniceria extends JFrame {
 		txtrFoto_2.setBounds(329, 10, 57, 57);
 		contentPane.add(txtrFoto_2);
 		
-		JLabel lblNewLabel = new JLabel("Producto 1");
-		lblNewLabel.setBounds(44, 77, 57, 13);
-		contentPane.add(lblNewLabel);
+		JLabel nombreProducto1 = new JLabel("Producto 1");
+		nombreProducto1.setBounds(44, 77, 57, 13);
+		contentPane.add(nombreProducto1);
 		
 		JLabel lblProducto = new JLabel("Producto 2");
 		lblProducto.setBounds(139, 77, 57, 13);
@@ -76,9 +77,9 @@ public class VentanaCarniceria extends JFrame {
 		lblProducto_2.setBounds(329, 77, 57, 13);
 		contentPane.add(lblProducto_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Descripcion");
-		lblNewLabel_1.setBounds(44, 100, 45, 13);
-		contentPane.add(lblNewLabel_1);
+		JLabel descripProducto1 = new JLabel("Descripcion");
+		descripProducto1.setBounds(44, 100, 45, 13);
+		contentPane.add(descripProducto1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Descripcion");
 		lblNewLabel_1_1.setBounds(139, 100, 45, 13);
@@ -92,9 +93,9 @@ public class VentanaCarniceria extends JFrame {
 		lblNewLabel_1_3.setBounds(329, 100, 45, 13);
 		contentPane.add(lblNewLabel_1_3);
 		
-		JLabel lblNewLabel_2 = new JLabel("Precio");
-		lblNewLabel_2.setBounds(44, 177, 45, 13);
-		contentPane.add(lblNewLabel_2);
+		JLabel precioProducto1 = new JLabel("Precio");
+		precioProducto1.setBounds(44, 177, 45, 13);
+		contentPane.add(precioProducto1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Precio");
 		lblNewLabel_2_1.setBounds(139, 177, 45, 13);
@@ -108,9 +109,9 @@ public class VentanaCarniceria extends JFrame {
 		lblNewLabel_2_3.setBounds(329, 177, 45, 13);
 		contentPane.add(lblNewLabel_2_3);
 		
-		JButton btnNewButton = new JButton("A\u00F1adir");
-		btnNewButton.setBounds(22, 200, 85, 21);
-		contentPane.add(btnNewButton);
+		JButton botonAnadir1 = new JButton("A\u00F1adir");
+		botonAnadir1.setBounds(22, 200, 85, 21);
+		contentPane.add(botonAnadir1);
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
 		btnNewButton_1.setBounds(121, 200, 85, 21);

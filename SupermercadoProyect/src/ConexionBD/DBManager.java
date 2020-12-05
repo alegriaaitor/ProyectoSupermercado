@@ -53,26 +53,8 @@ public class DBManager {
 	public boolean loginUsuario (String nombreUsuario, String contrasena) throws DBException{
 		
 		boolean acceso = false;
-		
-		if (nombreUsuario.contains("@")) {
-			try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE email = ? AND contrasena = ?")) {
-				stmt.setString(1, nombreUsuario);
-				stmt.setString(2, contrasena);
-				
-				ResultSet rs = stmt.executeQuery();
-				
-				if (rs.next()) {
-					acceso = true;
-				}else {
-					acceso = false;
-				}
-				
-			} catch (SQLException e) {
-				throw new DBException("Error obteniendo datos de la query", e);
-			}
 			
-		}else {
-			try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ? AND contrasena = ?")) {
+		try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ? AND contrasena = ?")) {
 				stmt.setString(1, nombreUsuario);
 				stmt.setString(2, contrasena);
 				
@@ -87,7 +69,7 @@ public class DBManager {
 			} catch (SQLException e) {
 				throw new DBException("Error obteniendo datos de la query", e);
 			}
-		}
+		
 		
 		return acceso;
 	}
@@ -118,5 +100,20 @@ public class DBManager {
 		
 			
 		return idUsuario;
+	}
+	
+	public void obtenerProducto(String nombreProducto, double precio) throws DBException{
+
+		try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio FROM producto WHERE nombre = ? AND precio = ?")) {
+			stmt.setString(1, nombreProducto);
+			stmt.setDouble(2, precio);
+			
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			
+			
+		} catch (SQLException e) {
+			throw new DBException("Error obteniendo todos los usuarios'", e);
+		}	
 	}
 }
