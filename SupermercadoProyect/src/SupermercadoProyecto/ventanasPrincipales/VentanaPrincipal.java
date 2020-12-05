@@ -102,10 +102,10 @@ public class VentanaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(10, 10, 70, 53);
-		ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
-	    ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
-	    lblNewLabel.setIcon(img1);
+		//ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
+	    //ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
+	    //lblNewLabel.setIcon(img1);
 	    contentPane.add(lblNewLabel);
-		contentPane.add(lblNewLabel);
+		
 	}
 }

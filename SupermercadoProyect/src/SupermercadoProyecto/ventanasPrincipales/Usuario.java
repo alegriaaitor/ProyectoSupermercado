@@ -1,8 +1,8 @@
 package SupermercadoProyecto.ventanasPrincipales;
 public class Usuario {
-	private String id_usuario,nombreUsuario, contrasena, direccion,email; //incluimos el email para utilizar lo explicado en clase de la @
-
-	public Usuario(String id_usuario, String nombreUsuario, String contrasena, String direccion, String email) {
+	private String nombreUsuario, contrasena, direccion,email; //incluimos el email para utilizar lo explicado en clase de la @
+	private int id_usuario;
+	public Usuario(int id_usuario, String nombreUsuario, String contrasena, String direccion, String email) {
 		this.id_usuario = id_usuario;
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -12,10 +12,10 @@ public class Usuario {
 	public Usuario() {
 		
 	}
-	public String getId_usuario(String id_usuario) {
+	public int getId_usuario() {
 		return id_usuario;
 	}
-	public void setId_usuario(String Id_usuario) {
+	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
 	}
 	public String getNombreUsuario() {

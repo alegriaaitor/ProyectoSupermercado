@@ -36,6 +36,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JTextField textFieldUsuario;
 	final VentanaRegistro registro1 = new VentanaRegistro();
 	private JPasswordField passwordFieldContrasena;
+	public static int idUsuario;
 
 	/**
 	 * Launch the application.
@@ -93,26 +94,32 @@ public class VentanaInicioSesion extends JFrame {
 		botonIniciarSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String usuario = textFieldUsuario.getText();
-				String contrasena = String.valueOf(passwordFieldContrasena.getPassword());
-				
-				//GestionUsuario gestionUsuario = new GestionUsuario();
-				
-				Usuario usuario2 = new Usuario();
-				usuario2.setNombreUsuario(usuario);
-				usuario2.setcontrasena(contrasena);
-				
-			//	Usuario u = gestionUsuario.obtenerUsuario(usuario2);
-				
-			/*	if(u != null) {
-					JOptionPane.showMessageDialog(contentPane, "Bienvendo a SuperSupermercado!");
-					VentanaMenu menu = new VentanaMenu();
-					menu.setVisible(true);
-					dispose();
-				}else {
-					JOptionPane.showMessageDialog(contentPane, "El usuario introducido no esta en la base de datos","Error",JOptionPane.ERROR_MESSAGE);
+				String nombreUsuario = textFieldUsuario.getText();
+				String contrasena = passwordFieldContrasena.getText();
+
+				DBManager conexion = new DBManager();
+
+				try {
+					conexion.connect();
+
+					if (conexion.loginUsuario(nombreUsuario, contrasena) == true) {
+						idUsuario = conexion.obtenerId(nombreUsuario);
+						VentanaPrincipal vi = new VentanaPrincipal();
+						setVisible(false);
+						vi.setVisible(true);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "No se ha podido iniciar sesion", "Error", 0);
+						textFieldUsuario.setText("");
+						passwordFieldContrasena.setText("");
+					}
+
+					conexion.disconnect();
+
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-			*/	
 				
 				
 			}

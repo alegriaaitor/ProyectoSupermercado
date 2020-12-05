@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.security.auth.callback.TextOutputCallback;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JOptionPane;
@@ -163,14 +162,14 @@ public class VentanaRegistro extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				String nombreUsuario;
 				String contrasena;
 				String email;
 				String direccion;
 				
 				nombreUsuario = texto_usuario.getText();
-				contrasena = texto_contrasena.getText();
+				contrasena = String.valueOf(texto_contrasena.getPassword());
 				email = texto_email.getText();
 				direccion = texto_direccion.getText();
 				
@@ -196,13 +195,19 @@ public class VentanaRegistro extends JFrame {
 								
 								JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1);					
 							
+								
+								VentanaInicioSesion ini = new VentanaInicioSesion(); 
+								setVisible(false);
+								ini.setVisible(true);
 							conexion.disconnect();
-							principal.setVisible(true);
-							dispose();
+							
 						} catch (DBException e1) {
 							e1.printStackTrace();
 						}
 				
+					}else {
+						JOptionPane.showMessageDialog(null, "Direccion de correo no validaa", "Error", 0);
+						
 					}
 				}
 			}
@@ -216,12 +221,12 @@ public class VentanaRegistro extends JFrame {
 		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
 		
 		
-		btnIniciarSesion.addMouseListener(new MouseAdapter() {
+		btnIniciarSesion.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				VentanaInicioSesion inicio = new VentanaInicioSesion();
 				inicio.setVisible(true);
-				dispose();
+				setVisible(false);
 			}
 		});
 		btnIniciarSesion.setBounds(441, 27, 117, 17);
