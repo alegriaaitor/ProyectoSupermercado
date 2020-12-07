@@ -56,15 +56,14 @@ public class VentanaMenu extends JFrame {
         lblNewLabel_1.setBounds(20, 86, 331, 27);
         contentPane.add(lblNewLabel_1);
         
-        JButton btnNewButton = new JButton("");
-       // ImageIcon ico2 = new ImageIcon(getClass().getResource("pescaderia.jpeg"));
-       // ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
-        btnNewButton.setBounds(20, 134, 137, 89);
-       // btnNewButton.setIcon(img2);
-        contentPane.add(btnNewButton);
+        JButton botonPescaderia= new JButton("");
+        botonPescaderia.setBounds(20, 134, 137, 89);
+        contentPane.add(botonPescaderia);
+        //ImageIcon ico2 = new ImageIcon(getClass().getResource("imagenes/pescaderia.jpeg"));
+        //ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
         
-        JButton btnPescaderia= new JButton("");
-        btnNewButton.addMouseListener(new MouseAdapter() {
+        //botonPescaderia.setIcon(img2);
+        botonPescaderia.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		VentanaPescaderia pescaderia = new VentanaPescaderia();
@@ -73,8 +72,8 @@ public class VentanaMenu extends JFrame {
         	}
         });
         
-        JButton btnCarniceria = new JButton("");
-        btnCarniceria.addMouseListener(new MouseAdapter() {
+        JButton botonCarniceria = new JButton("");
+        botonCarniceria.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		VentanaCarniceria carniceria = new VentanaCarniceria();
@@ -84,13 +83,13 @@ public class VentanaMenu extends JFrame {
         });
        // ImageIcon ico3 = new ImageIcon(getClass().getResource("carniceria.jpg"));
        // ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
-        btnCarniceria.setBounds(175, 134, 137, 89);
+        botonCarniceria.setBounds(175, 134, 137, 89);
        //btnCarniceria.setIcon(img3);
-        contentPane.add(btnCarniceria);
+        contentPane.add(botonCarniceria);
         
-        JButton btnNewButton_2 = new JButton("Pescaderia");
-        btnNewButton_2.setBounds(20, 245, 137, 89);
-        contentPane.add(btnNewButton_2);
+        JButton botonFruteria = new JButton("Pescaderia");
+        botonFruteria.setBounds(20, 245, 137, 89);
+        contentPane.add(botonFruteria);
         
         JButton btnNewButton_3 = new JButton("Pescaderia");
         btnNewButton_3.setBounds(175, 245, 137, 89);
