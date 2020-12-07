@@ -102,18 +102,18 @@ public class DBManager {
 		return idUsuario;
 	}
 	
-	public void obtenerProducto(String nombreProducto, double precio) throws DBException{
-
-		try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio FROM producto WHERE nombre = ? AND precio = ?")) {
+	public double obtenerPrecioProducto(String nombreProducto) throws DBException{
+		double precio = 0;
+		try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio FROM producto WHERE nombre = ? ")) {
 			stmt.setString(1, nombreProducto);
-			stmt.setDouble(2, precio);
-			
 			ResultSet rs = stmt.executeQuery();
 			rs.next();
+			precio = rs.getInt("precio");
 			
 			
 		} catch (SQLException e) {
 			throw new DBException("Error obteniendo todos los usuarios'", e);
 		}	
+		return precio;
 	}
 }

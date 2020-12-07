@@ -4,6 +4,10 @@ import java.awt.*;
 
 
 import javax.swing.border.EmptyBorder;
+
+import ConexionBD.DBException;
+import ConexionBD.DBManager;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -60,9 +64,19 @@ public class VentanaCarniceria extends JFrame {
 		lblProducto_2.setBounds(111, 329, 244, 13);
 		contentPane.add(lblProducto_2);
 		
-		JLabel precioProducto1 = new JLabel("Precio");
-		precioProducto1.setBounds(111, 79, 45, 13);
-		contentPane.add(precioProducto1);
+		DBManager con = new DBManager();
+		JLabel labelPrecioChuleton;
+		try {
+			con.connect();
+			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
+			labelPrecioChuleton.setBounds(111, 79, 149, 13);
+			contentPane.add(labelPrecioChuleton);
+			con.disconnect();
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Precio");
 		lblNewLabel_2_1.setBounds(111, 178, 45, 13);
@@ -77,7 +91,7 @@ public class VentanaCarniceria extends JFrame {
 		contentPane.add(lblNewLabel_2_3);
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
-		botonAnadir1.setBounds(237, 75, 85, 21);
+		botonAnadir1.setBounds(270, 75, 85, 21);
 		contentPane.add(botonAnadir1);
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
