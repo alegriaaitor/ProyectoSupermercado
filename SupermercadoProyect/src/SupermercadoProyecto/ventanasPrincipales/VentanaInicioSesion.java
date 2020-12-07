@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -26,12 +29,23 @@ import javax.swing.border.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import ConexionBD.*;
 import javax.swing.JPasswordField;
 
 public class VentanaInicioSesion extends JFrame {
-
+	private static Scanner sc;
+	private static int intentos;
+	private static String usuario, contrasena;
 	private JPanel contentPane;
 	private JTextField textFieldUsuario;
 	final VentanaRegistro registro1 = new VentanaRegistro();
@@ -94,31 +108,55 @@ public class VentanaInicioSesion extends JFrame {
 		botonIniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nombreUsuario = textFieldUsuario.getText();
-				String contrasena= String.valueOf(passwordFieldContrasena.getPassword());
-
-				DBManager conexion = new DBManager();
-
+				FileReader fr = null;
+			try {
+			
+				int nlineas = 0;
+				int i = 0;
+				String[] usuarios = null;
+				String linea;
+				sc = new Scanner(new File("usuarios.txt"));
+				File f = new File("usuarios.txt");
+				fr = new FileReader(f);
+				BufferedReader br = new BufferedReader(fr);
+				
 				try {
-					conexion.connect();
-
-					if (conexion.loginUsuario(nombreUsuario, contrasena) == true) {
-						VentanaPrincipal vi = new VentanaPrincipal();
-						setVisible(false);
-						vi.setVisible(true);
-
-					} else {
-						JOptionPane.showMessageDialog(null, "No se ha podido iniciar sesion", "Error", 0);
-						textFieldUsuario.setText("");
-						passwordFieldContrasena.setText("");
+					while((linea = br.readLine()) != null) {
+						nlineas++;
 					}
-
-					conexion.disconnect();
-
-				} catch (DBException e1) {
+				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				usuarios = new String[nlineas];
+				
+				while(sc.hasNextLine()) {
+					usuarios[i++] = sc.nextLine();
+				}
+				
+				intentos++;
+				
+				usuario = textFieldUsuario.getText();
+				contrasena = passwordFieldContrasena.getText();
+				
+				Seguridad s = new Seguridad();
+				if(s.validarUsuario(usuarios, usuario, contrasena, intentos) == true) {
+					VentanaMenu menu = new VentanaMenu();
+					menu.setVisible(true);
+					dispose();
+				}
+				
+				
+			}catch(FileNotFoundException ex) {
+				Logger.getLogger(VentanaInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+			} finally {
+				try {
+					fr.close();
+				}catch(IOException ex1) {
+					Logger.getLogger(VentanaInicioSesion.class.getName()).log(Level.SEVERE, null, ex1);
+				}
+			}
 				
 				
 			}

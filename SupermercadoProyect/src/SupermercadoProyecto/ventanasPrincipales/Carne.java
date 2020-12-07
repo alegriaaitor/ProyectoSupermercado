@@ -1,5 +1,4 @@
-
-
+package SupermercadoProyecto.ventanasPrincipales;
 public class Carne extends Producto {
 
 		private String tipo;

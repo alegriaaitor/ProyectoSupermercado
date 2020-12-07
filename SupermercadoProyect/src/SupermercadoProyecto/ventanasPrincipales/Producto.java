@@ -1,3 +1,4 @@
+package SupermercadoProyecto.ventanasPrincipales;
 
 public class Producto {
 		
@@ -28,10 +29,7 @@ public class Producto {
 		this.precio = precio;
 	}
 	
-	/*public String toString() {
-		return "Producto [nombre=" + nombre + ", precio=" + precio + "]";
-	}*/
-
+	
 	
 	
 	

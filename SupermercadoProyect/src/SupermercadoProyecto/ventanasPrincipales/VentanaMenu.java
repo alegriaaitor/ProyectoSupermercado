@@ -1,3 +1,4 @@
+package SupermercadoProyecto.ventanasPrincipales;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -45,9 +46,9 @@ public class VentanaMenu extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(20, 10, 50, 40);
-		ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
-        lblNewLabel.setIcon(img1);
+		//ImageIcon ico1 = new ImageIcon(getClass().getResource("superman.jpg"));
+       // ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
+        //lblNewLabel.setIcon(img1);
         contentPane.add(lblNewLabel);
         
         JLabel lblNewLabel_1 = new JLabel("Selecciona la seccion a la que quieres acceder");
@@ -56,10 +57,10 @@ public class VentanaMenu extends JFrame {
         contentPane.add(lblNewLabel_1);
         
         JButton btnNewButton = new JButton("");
-        ImageIcon ico2 = new ImageIcon(getClass().getResource("pescaderia.jpeg"));
-        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
+       // ImageIcon ico2 = new ImageIcon(getClass().getResource("pescaderia.jpeg"));
+       // ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
         btnNewButton.setBounds(20, 134, 137, 89);
-        btnNewButton.setIcon(img2);
+       // btnNewButton.setIcon(img2);
         contentPane.add(btnNewButton);
         
         JButton btnPescaderia= new JButton("");
@@ -81,10 +82,10 @@ public class VentanaMenu extends JFrame {
         		dispose();
         	}
         });
-        ImageIcon ico3 = new ImageIcon(getClass().getResource("carniceria.jpg"));
-        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
+       // ImageIcon ico3 = new ImageIcon(getClass().getResource("carniceria.jpg"));
+       // ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(137, 89, Image.SCALE_SMOOTH));
         btnCarniceria.setBounds(175, 134, 137, 89);
-        btnCarniceria.setIcon(img3);
+       //btnCarniceria.setIcon(img3);
         contentPane.add(btnCarniceria);
         
         JButton btnNewButton_2 = new JButton("Pescaderia");
