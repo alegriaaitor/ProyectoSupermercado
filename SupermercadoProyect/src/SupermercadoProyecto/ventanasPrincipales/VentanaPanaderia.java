@@ -1,23 +1,24 @@
 package SupermercadoProyecto.ventanasPrincipales;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import ConexionBD.DBException;
 import ConexionBD.DBManager;
 
-import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-
-
-public class VentanaCarniceria extends JFrame {
+public class VentanaPanaderia extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -28,7 +29,7 @@ public class VentanaCarniceria extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaCarniceria frame = new VentanaCarniceria();
+					VentanaPanaderia frame = new VentanaPanaderia();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,7 @@ public class VentanaCarniceria extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaCarniceria() {
+	public VentanaPanaderia() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 493);
 		contentPane = new JPanel();

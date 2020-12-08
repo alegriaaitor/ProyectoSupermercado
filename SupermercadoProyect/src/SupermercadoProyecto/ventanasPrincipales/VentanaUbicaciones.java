@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -48,13 +48,14 @@ public class VentanaUbicaciones extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
+		JLabel lblNewLabel = new JLabel("Foto");
 		lblNewLabel.setBounds(10, 69, 291, 194);
 	
-		ImageIcon ico1 = new ImageIcon(getClass().getResource("euskadi-mapa.png"));
+		ImageIcon ico1 = new ImageIcon("imagenes/euskadi-mapa.png");
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
         lblNewLabel.setIcon(img1);
 		contentPane.add(lblNewLabel);
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("Inf\u00F3rmate sobre donde se situan nuestros supermercados");
 		lblNewLabel_1.setBounds(152, 10, 274, 28);

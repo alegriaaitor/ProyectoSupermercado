@@ -3,7 +3,14 @@ import java.awt.*;
 
 
 import javax.swing.border.EmptyBorder;
+
+import ConexionBD.DBException;
+import ConexionBD.DBManager;
+
 import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -12,7 +19,7 @@ import java.awt.event.MouseEvent;
 public class VentanaPescaderia extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -40,179 +47,68 @@ public class VentanaPescaderia extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txtrFoto = new JTextArea();
-		txtrFoto.setText("FOTO 1");
-		txtrFoto.setBounds(44, 10, 57, 57);
-		contentPane.add(txtrFoto);
+		JLabel nombreProducto1 = new JLabel("Merluza (500g)");
+		nombreProducto1.setBounds(150, 87, 244, 13);
+		contentPane.add(nombreProducto1);
 		
-		JTextArea txtrFoto_4 = new JTextArea();
-		txtrFoto_4.setText("FOTO 2");
-		txtrFoto_4.setBounds(139, 10, 57, 57);
-		contentPane.add(txtrFoto_4);
 		
-		JTextArea txtrFoto_1 = new JTextArea();
-		txtrFoto_1.setText("FOTO 3");
-		txtrFoto_1.setBounds(235, 10, 57, 57);
-		contentPane.add(txtrFoto_1);
-		
-		JTextArea txtrFoto_2 = new JTextArea();
-		txtrFoto_2.setText("FOTO 4");
-		txtrFoto_2.setBounds(329, 10, 57, 57);
-		contentPane.add(txtrFoto_2);
-		
-		JLabel lblNewLabel = new JLabel("Producto 1");
-		lblNewLabel.setBounds(44, 77, 57, 13);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblProducto = new JLabel("Producto 2");
-		lblProducto.setBounds(139, 77, 57, 13);
+		JLabel lblProducto = new JLabel("Sardina de altamar (250g)");
+		lblProducto.setBounds(150, 151, 244, 13);
 		contentPane.add(lblProducto);
 		
-		JLabel lblProducto_1 = new JLabel("Producto 3");
-		lblProducto_1.setBounds(235, 77, 57, 13);
+		JLabel lblProducto_1 = new JLabel("Salmonete (300g)");
+		lblProducto_1.setBounds(150, 238, 244, 13);
 		contentPane.add(lblProducto_1);
 		
-		JLabel lblProducto_2 = new JLabel("Producto 4");
-		lblProducto_2.setBounds(329, 77, 57, 13);
+		JLabel lblProducto_2 = new JLabel("Lenguado (250g)");
+		lblProducto_2.setBounds(150, 315, 244, 13);
 		contentPane.add(lblProducto_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Descripcion");
-		lblNewLabel_1.setBounds(44, 100, 45, 13);
-		contentPane.add(lblNewLabel_1);
+		DBManager con = new DBManager();
+		JLabel labelPrecioChuleton;
+		try {
+			con.connect();
+			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
+			labelPrecioChuleton.setBounds(150, 110, 149, 13);
+			contentPane.add(labelPrecioChuleton);
+			con.disconnect();
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Descripcion");
-		lblNewLabel_1_1.setBounds(139, 100, 45, 13);
-		contentPane.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("Descripcion");
-		lblNewLabel_1_2.setBounds(235, 100, 45, 13);
-		contentPane.add(lblNewLabel_1_2);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("Descripcion");
-		lblNewLabel_1_3.setBounds(329, 100, 45, 13);
-		contentPane.add(lblNewLabel_1_3);
-		
-		JLabel lblNewLabel_2 = new JLabel("Precio");
-		lblNewLabel_2.setBounds(44, 177, 45, 13);
-		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Precio");
-		lblNewLabel_2_1.setBounds(139, 177, 45, 13);
+		lblNewLabel_2_1.setBounds(160, 174, 45, 13);
 		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Precio");
-		lblNewLabel_2_2.setBounds(235, 177, 45, 13);
+		lblNewLabel_2_2.setBounds(160, 261, 45, 13);
 		contentPane.add(lblNewLabel_2_2);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("Precio");
-		lblNewLabel_2_3.setBounds(329, 177, 45, 13);
+		lblNewLabel_2_3.setBounds(160, 347, 45, 13);
 		contentPane.add(lblNewLabel_2_3);
 		
-		JButton btnNewButton = new JButton("A\u00F1adir");
-		btnNewButton.setBounds(22, 200, 85, 21);
-		contentPane.add(btnNewButton);
+		JButton botonAnadir1 = new JButton("A\u00F1adir");
+		botonAnadir1.setBounds(309, 106, 85, 21);
+		contentPane.add(botonAnadir1);
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(121, 200, 85, 21);
+		btnNewButton_1.setBounds(309, 367, 85, 21);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("A\u00F1adir");
-		btnNewButton_2.setBounds(216, 200, 85, 21);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_2.setBounds(309, 174, 85, 21);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(324, 200, 85, 21);
+		btnNewButton_3.setBounds(309, 269, 85, 21);
 		contentPane.add(btnNewButton_3);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setMinimum(10);
-		scrollBar.setMaximum(419);
-		scrollBar.setBounds(419, 10, 17, 423);
-		contentPane.add(scrollBar);
-		
-		JTextArea txtrFoto_5 = new JTextArea();
-		txtrFoto_5.setText("FOTO 5");
-		txtrFoto_5.setBounds(44, 233, 57, 48);
-		contentPane.add(txtrFoto_5);
-		
-		JTextArea txtrFoto_3_1 = new JTextArea();
-		txtrFoto_3_1.setText("FOTO 6");
-		txtrFoto_3_1.setBounds(139, 233, 57, 48);
-		contentPane.add(txtrFoto_3_1);
-		
-		JTextArea txtrFoto_3_2 = new JTextArea();
-		txtrFoto_3_2.setText("FOTO 7");
-		txtrFoto_3_2.setBounds(235, 233, 57, 48);
-		contentPane.add(txtrFoto_3_2);
-		
-		JTextArea txtrFoto_3_3 = new JTextArea();
-		txtrFoto_3_3.setText("FOTO 8");
-		txtrFoto_3_3.setBounds(329, 233, 57, 48);
-		contentPane.add(txtrFoto_3_3);
-		
-		JLabel lblProducto_3 = new JLabel("Producto 5");
-		lblProducto_3.setBounds(44, 291, 57, 13);
-		contentPane.add(lblProducto_3);
-		
-		JLabel lblProducto_4 = new JLabel("Producto 6");
-		lblProducto_4.setBounds(139, 291, 57, 13);
-		contentPane.add(lblProducto_4);
-		
-		JLabel lblProducto_5 = new JLabel("Producto 7");
-		lblProducto_5.setBounds(235, 291, 57, 13);
-		contentPane.add(lblProducto_5);
-		
-		JLabel lblProducto_6 = new JLabel("Producto 8");
-		lblProducto_6.setBounds(329, 291, 57, 13);
-		contentPane.add(lblProducto_6);
-		
-		JLabel lblNewLabel_1_4 = new JLabel("Descripcion");
-		lblNewLabel_1_4.setBounds(44, 314, 45, 13);
-		contentPane.add(lblNewLabel_1_4);
-		
-		JLabel lblNewLabel_1_5 = new JLabel("Descripcion");
-		lblNewLabel_1_5.setBounds(139, 314, 45, 13);
-		contentPane.add(lblNewLabel_1_5);
-		
-		JLabel lblNewLabel_1_6 = new JLabel("Descripcion");
-		lblNewLabel_1_6.setBounds(235, 314, 45, 13);
-		contentPane.add(lblNewLabel_1_6);
-		
-		JLabel lblNewLabel_1_7 = new JLabel("Descripcion");
-		lblNewLabel_1_7.setBounds(329, 314, 45, 13);
-		contentPane.add(lblNewLabel_1_7);
-		
-		JLabel lblNewLabel_2_4 = new JLabel("Precio");
-		lblNewLabel_2_4.setBounds(44, 354, 45, 13);
-		contentPane.add(lblNewLabel_2_4);
-		
-		JLabel lblNewLabel_2_5 = new JLabel("Precio");
-		lblNewLabel_2_5.setBounds(139, 354, 45, 13);
-		contentPane.add(lblNewLabel_2_5);
-		
-		JLabel lblNewLabel_2_6 = new JLabel("Precio");
-		lblNewLabel_2_6.setBounds(235, 354, 45, 13);
-		contentPane.add(lblNewLabel_2_6);
-		
-		JLabel lblNewLabel_2_7 = new JLabel("Precio");
-		lblNewLabel_2_7.setBounds(329, 354, 45, 13);
-		contentPane.add(lblNewLabel_2_7);
-		
-		JButton btnNewButton_4 = new JButton("A\u00F1adir");
-		btnNewButton_4.setBounds(22, 377, 85, 21);
-		contentPane.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("A\u00F1adir");
-		btnNewButton_5.setBounds(121, 377, 85, 21);
-		contentPane.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("A\u00F1adir");
-		btnNewButton_6.setBounds(216, 377, 85, 21);
-		contentPane.add(btnNewButton_6);
-		
-		JButton btnNewButton_7 = new JButton("A\u00F1adir");
-		btnNewButton_7.setBounds(329, 377, 85, 21);
-		contentPane.add(btnNewButton_7);
 		
 		JButton btnNewButton_8 = new JButton("Volver");
 		btnNewButton_8.addMouseListener(new MouseAdapter() {
@@ -227,6 +123,10 @@ public class VentanaPescaderia extends JFrame {
 		contentPane.add(btnNewButton_8);
 		
 		JButton btnNewButton_9 = new JButton("Ver carrito");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -235,7 +135,39 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(235, 425, 94, 21);
+		btnNewButton_9.setBounds(237, 425, 94, 21);
 		contentPane.add(btnNewButton_9);
+		
+		JLabel labelSardina = new JLabel("Foto");
+		labelSardina.setBounds(10, 160, 111, 48);
+		contentPane.add(labelSardina);
+		ImageIcon ico4 = new ImageIcon("imagenes/sardina.png");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelSardina.getWidth(), labelSardina.getHeight(), Image.SCALE_SMOOTH));
+        labelSardina.setIcon(img4);
+		contentPane.add(labelSardina);
+		
+		JLabel labelSalmonete = new JLabel("Foto");
+		labelSalmonete.setBounds(10, 238, 111, 48);
+		contentPane.add(labelSalmonete);
+		ImageIcon ico3 = new ImageIcon("imagenes/salmonete.png");
+        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelSalmonete.getWidth(), labelSalmonete.getHeight(), Image.SCALE_SMOOTH));
+        labelSalmonete.setIcon(img3);
+		contentPane.add(labelSalmonete);
+		
+		JLabel labelLenguado = new JLabel("Foto");
+		labelLenguado.setBounds(10, 329, 111, 48);
+		contentPane.add(labelLenguado);
+		ImageIcon ico2 = new ImageIcon("imagenes/lenguado.png");
+        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelLenguado.getWidth(), labelLenguado.getHeight(), Image.SCALE_SMOOTH));
+        labelLenguado.setIcon(img2);
+		contentPane.add(labelLenguado);
+		
+		JLabel labelMerluza = new JLabel("Foto");
+		labelMerluza.setBounds(10, 75, 111, 48);
+		contentPane.add(labelMerluza);
+		ImageIcon ico1 = new ImageIcon("imagenes/merluza.png");
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelMerluza.getWidth(), labelMerluza.getHeight(), Image.SCALE_SMOOTH));
+        labelMerluza.setIcon(img1);
+		contentPane.add(labelMerluza);
 	}
 }
