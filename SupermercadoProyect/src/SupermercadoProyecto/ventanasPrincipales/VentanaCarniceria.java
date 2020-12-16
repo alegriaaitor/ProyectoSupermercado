@@ -109,9 +109,28 @@ public class VentanaCarniceria extends JFrame {
 		}
 		
 		
-		JButton botonAnadir1 = new JButton("A\u00F1adir");
-		botonAnadir1.setBounds(270, 75, 85, 21);
-		contentPane.add(botonAnadir1);
+		JButton botonAnadirChuleton = new JButton("A\u00F1adir");
+		botonAnadirChuleton.setBounds(270, 75, 85, 21);
+		contentPane.add(botonAnadirChuleton);
+		botonAnadirChuleton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+				Carrito carrito = new Carrito();
+				con.connect();
+				Producto carne1 = new Producto();
+				carne1.setNombre("Chuleton de vaca");
+				carne1.setPrecio(con.obtenerPrecioProducto("Chuleton de vaca"));
+				carrito.aniadirArticuloAlCarrito(carne1);
+				con.disconnect();
+				}catch(DBException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
 		btnNewButton_1.setBounds(270, 367, 85, 21);

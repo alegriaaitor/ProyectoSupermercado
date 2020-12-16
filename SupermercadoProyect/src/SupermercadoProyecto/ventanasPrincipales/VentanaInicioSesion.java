@@ -186,7 +186,6 @@ public class VentanaInicioSesion extends JFrame {
 				registro1.setVisible(true);
 				dispose();
 				
-				
 			}
 			
 		});
