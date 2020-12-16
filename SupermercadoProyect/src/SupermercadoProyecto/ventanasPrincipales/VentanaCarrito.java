@@ -15,6 +15,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.JList;
+import javax.swing.JProgressBar;
 
 public class VentanaCarrito extends JFrame {
 
@@ -61,9 +62,9 @@ public class VentanaCarrito extends JFrame {
 		lblNewLabel_2.setBounds(550, 148, 86, 13);
 		contentPane.add(lblNewLabel_2);
 		
-		JButton btnNewButton = new JButton("Pasar por caja");
-		btnNewButton.setBounds(560, 175, 122, 32);
-		contentPane.add(btnNewButton);
+		JButton botonPasaPorCaja = new JButton("Pasar por caja");
+		botonPasaPorCaja.setBounds(560, 175, 122, 32);
+		contentPane.add(botonPasaPorCaja);
 		
 		JLabel lblNewLabel_3 = new JLabel("0,00");
 		lblNewLabel_3.setBounds(664, 148, 45, 13);
@@ -109,9 +110,61 @@ public class VentanaCarrito extends JFrame {
 		btnNewButton_1.setBounds(572, 285, 157, 21);
 		contentPane.add(btnNewButton_1);
 		
+		
 		JList list = new JList();
 		list.setBounds(59, 73, 415, 317);
 		contentPane.add(list);
+		
+		JLabel labelProcesandoCompra = new JLabel("Procesando Compra...");
+		labelProcesandoCompra.setVisible(false);
+		labelProcesandoCompra.setBounds(509, 332, 193, 32);
+		contentPane.add(labelProcesandoCompra);
+		
+		
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setVisible(false);
+		progressBar.setBounds(563, 376, 146, 26);
+		contentPane.add(progressBar);
+		
+		
+		botonPasaPorCaja.addActionListener(new ActionListener() {
+					
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+					Thread hilo = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						labelProcesandoCompra.setVisible(true);
+						progressBar.setVisible(true);
+						
+						for (int i = 0; i <= 100 ; i++) {
+							progressBar.setValue(i);
+							try {
+								Thread.sleep(50);
+								
+							}catch(InterruptedException e1) {
+								e1.printStackTrace();
+							}
+						}
+						
+						
+						
+						labelProcesandoCompra.setVisible(false);
+						progressBar.setVisible(false);
+								
+								
+						
+					}
+				});
+					hilo.start();
+				
+			}
+		});
+		
 		
 	}
 }
