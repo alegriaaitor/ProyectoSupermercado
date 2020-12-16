@@ -25,5 +25,8 @@ public class Carrito {
 	public void aniadirProductoAlCarrito(Producto p) {
 		productos.add(p);
 	}
+	public void copiarArrayList(ArrayList<Producto>p) {
+		this.productos = p;
+	}
 	
 }

@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.*;
+import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
@@ -20,6 +22,7 @@ import javax.swing.JProgressBar;
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
+	private ArrayList <Producto> p;
 	final VentanaMenu menu = new VentanaMenu();
 	/**
 	 * Launch the application.
@@ -110,10 +113,18 @@ public class VentanaCarrito extends JFrame {
 		btnNewButton_1.setBounds(572, 285, 157, 21);
 		contentPane.add(btnNewButton_1);
 		
-		
+		p = new ArrayList<>();
+		DefaultListModel lista = new DefaultListModel();
 		JList list = new JList();
 		list.setBounds(59, 73, 415, 317);
 		contentPane.add(list);
+		Carrito carrito = new Carrito();
+		carrito.copiarArrayList(p);
+		for (int i = 0; i < p.size(); i++) {
+			lista.addElement(p);
+		}
+		
+		
 		
 		JLabel labelProcesandoCompra = new JLabel("Procesando Compra...");
 		labelProcesandoCompra.setVisible(false);
