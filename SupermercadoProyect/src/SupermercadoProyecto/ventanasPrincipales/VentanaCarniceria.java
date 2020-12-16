@@ -62,7 +62,7 @@ public class VentanaCarniceria extends JFrame {
 		contentPane.add(lblProducto_1);
 		
 		JLabel lblProducto_2 = new JLabel("Chorizo criollo (250g)");
-		lblProducto_2.setBounds(111, 329, 244, 13);
+		lblProducto_2.setBounds(111, 329, 236, 13);
 		contentPane.add(lblProducto_2);
 		
 		DBManager con = new DBManager();
