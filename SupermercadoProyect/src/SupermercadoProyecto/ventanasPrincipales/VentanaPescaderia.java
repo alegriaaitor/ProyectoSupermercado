@@ -79,9 +79,10 @@ public class VentanaPescaderia extends JFrame {
 		
 		try {			
 			con.connect();
-			JLabel labelPrecioSardina = new JLabel("Precio" + con.obtenerPrecioProducto("Sardina"));
-			labelPrecioSardina.setBounds(160, 174, 45, 13);
+			JLabel labelPrecioSardina = new JLabel("Precio: " + con.obtenerPrecioProducto("Sardina"));
+			labelPrecioSardina.setBounds(150, 178, 138, 13);
 			contentPane.add(labelPrecioSardina);
+			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -89,9 +90,10 @@ public class VentanaPescaderia extends JFrame {
 		
 		try {			
 			con.connect();
-			JLabel labelPrecioSalmonete = new JLabel("Precio" + con.obtenerPrecioProducto("Salmonete"));
-			labelPrecioSalmonete.setBounds(160, 261, 45, 13);
+			JLabel labelPrecioSalmonete = new JLabel("Precio: " + con.obtenerPrecioProducto("Salmonete"));
+			labelPrecioSalmonete.setBounds(150, 256, 125, 13);
 			contentPane.add(labelPrecioSalmonete);
+			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -99,9 +101,10 @@ public class VentanaPescaderia extends JFrame {
 			
 		try {			
 			con.connect();
-			JLabel labelPrecioLenguado = new JLabel("Precio" + con.obtenerPrecioProducto("Lenguado"));
-			labelPrecioLenguado.setBounds(160, 347, 45, 13);
+			JLabel labelPrecioLenguado = new JLabel("Precio: " + con.obtenerPrecioProducto("Lenguado"));
+			labelPrecioLenguado.setBounds(150, 347, 125, 13);
 			contentPane.add(labelPrecioLenguado);
+			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
