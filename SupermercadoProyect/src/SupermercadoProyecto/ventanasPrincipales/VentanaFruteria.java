@@ -197,6 +197,11 @@ public class VentanaFruteria extends JFrame {
         labelMelon.setIcon(img2);
 		contentPane.add(labelMelon);
 		
+		JLabel lblNewLabel = new JLabel("FRUTERIA");
+		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+		lblNewLabel.setBounds(152, 10, 120, 38);
+		contentPane.add(lblNewLabel);
+		
 		
 	}
 }
