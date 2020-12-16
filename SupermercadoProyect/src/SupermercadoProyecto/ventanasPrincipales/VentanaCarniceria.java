@@ -81,7 +81,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioSolomillo = new JLabel("Precio: " + con.obtenerPrecioProducto("Solomillo de ternera"));
-			labelPrecioSolomillo.setBounds(111, 178, 45, 13);
+			labelPrecioSolomillo.setBounds(111, 178, 149, 13);
 			contentPane.add(labelPrecioSolomillo);
 			con.disconnect();
 		}catch(DBException e2) {
@@ -91,7 +91,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();	
 			JLabel labelPrecioEntrecot = new JLabel("Precio: " + con.obtenerPrecioProducto("Entrecot de ternera"));
-			labelPrecioEntrecot.setBounds(111, 273, 45, 13);
+			labelPrecioEntrecot.setBounds(111, 273, 149, 13);
 			contentPane.add(labelPrecioEntrecot);
 			con.disconnect();
 		}catch(DBException e2) {
@@ -101,7 +101,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioCriollo = new JLabel("Precio: " + con.obtenerPrecioProducto("Chorizo criollo"));
-			labelPrecioCriollo.setBounds(111, 371, 45, 13);
+			labelPrecioCriollo.setBounds(111, 371, 149, 13);
 			contentPane.add(labelPrecioCriollo);
 			con.disconnect();
 		}catch(DBException e3) {
@@ -114,7 +114,7 @@ public class VentanaCarniceria extends JFrame {
 		contentPane.add(botonAnadir1);
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(237, 367, 85, 21);
+		btnNewButton_1.setBounds(270, 367, 85, 21);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("A\u00F1adir");
@@ -122,11 +122,11 @@ public class VentanaCarniceria extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(237, 174, 85, 21);
+		btnNewButton_2.setBounds(270, 174, 85, 21);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(237, 269, 85, 21);
+		btnNewButton_3.setBounds(270, 269, 85, 21);
 		contentPane.add(btnNewButton_3);
 		
 		JButton btnNewButton_8 = new JButton("Volver");
