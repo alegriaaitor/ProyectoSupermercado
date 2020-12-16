@@ -41,7 +41,7 @@ public class DBManager {
 		
 		
 		try (Statement s= conexion.createStatement()) {
-			
+			//Añadimos en la base de datos los campos de infomacion introducidos en la ventana(recibido como objeto de la clase usuario)
 			s.executeUpdate("INSERT INTO usuario (nombreUsuario, contrasena, email, direccion) VALUES (' " + nombreUsuario + " ', ' "+ contrasena + " ', ' " + email + " ', ' " + direccion + " ')");
 		} catch (SQLException e) {
 			throw new DBException("No ha sido posible ejecutar la query");

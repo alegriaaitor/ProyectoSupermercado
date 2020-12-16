@@ -198,7 +198,7 @@ public class VentanaRegistro extends JFrame {
 						e2.printStackTrace();
 					}
 				}else {
-					try {
+					try { //Metemos en el fichero de texto el nombre de usuario y contraseña para posteriormente poder acceder mediante inicio sesion
 						escribir = new FileWriter(archivo,true);
 						linea = new PrintWriter(escribir);
 						

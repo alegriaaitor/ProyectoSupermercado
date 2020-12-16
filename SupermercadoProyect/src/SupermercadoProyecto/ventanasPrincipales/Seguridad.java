@@ -22,7 +22,7 @@ public class Seguridad {
 			respuesta = "Usuario o contraseña invalidas, van " + intentos + " intentos" ;
 			JOptionPane.showMessageDialog(null, respuesta,"Inicio de Sesion", JOptionPane.ERROR_MESSAGE);
 		}
-		if(intentos>2) {
+		if(intentos>2) { //Comprobamos el numero de intentos, si es mayor a dos el sistema se cierra
 			JOptionPane.showMessageDialog(null, "3 intentos fallidos, el sistema se cerrara","Inicio de Sesion", JOptionPane.INFORMATION_MESSAGE);
 			System.exit(0);
 		}

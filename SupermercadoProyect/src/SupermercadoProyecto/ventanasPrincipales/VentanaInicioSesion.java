@@ -121,7 +121,7 @@ public class VentanaInicioSesion extends JFrame {
 				BufferedReader br = new BufferedReader(fr);
 				
 				try {
-					while((linea = br.readLine()) != null) { 
+					while((linea = br.readLine()) != null) { //Comprobamos que las lineas no están vacias
 						nlineas++;
 					}
 				} catch (IOException e1) {
@@ -129,10 +129,10 @@ public class VentanaInicioSesion extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				usuarios = new String[nlineas];
+				usuarios = new String[nlineas]; //Metemos en el array la linea en la que está el readline
 				
 				while(sc.hasNextLine()) {
-					usuarios[i++] = sc.nextLine();
+					usuarios[i++] = sc.nextLine(); 
 				}
 				
 				intentos++;
