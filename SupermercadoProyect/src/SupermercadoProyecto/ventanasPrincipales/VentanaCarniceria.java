@@ -87,9 +87,9 @@ public class VentanaCarniceria extends JFrame {
 		labelPrecioEntrecot.setBounds(111, 273, 45, 13);
 		contentPane.add(labelPrecioEntrecot);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("Precio");
-		lblNewLabel_2_3.setBounds(111, 371, 45, 13);
-		contentPane.add(lblNewLabel_2_3);
+		JLabel labelPrecioCriollo = new JLabel("Precio");
+		labelPrecioCriollo.setBounds(111, 371, 45, 13);
+		contentPane.add(labelPrecioCriollo);
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
 		botonAnadir1.setBounds(270, 75, 85, 21);
