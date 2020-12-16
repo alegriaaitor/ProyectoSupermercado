@@ -121,7 +121,7 @@ public class VentanaInicioSesion extends JFrame {
 				BufferedReader br = new BufferedReader(fr);
 				
 				try {
-					while((linea = br.readLine()) != null) {
+					while((linea = br.readLine()) != null) { 
 						nlineas++;
 					}
 				} catch (IOException e1) {

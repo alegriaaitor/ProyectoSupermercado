@@ -10,7 +10,7 @@ public class Seguridad {
 		boolean encontrado= false;
 		
 		for(int i = 0;i< usuarios.length;i++) {
-			if(usuarios[i].equalsIgnoreCase(usuario) && usuarios[i+1].equals(contrasena)){
+			if(usuarios[i].equalsIgnoreCase(usuario) && usuarios[i+1].equals(contrasena)){//Cogemos el nombre de usuario y la siguiente linea, para la contraseña
 				respuesta = "Bienvenido " + usuario;
 				encontrado = true;
 				JOptionPane.showMessageDialog(null, respuesta,"Inicio de Sesion", JOptionPane.INFORMATION_MESSAGE);

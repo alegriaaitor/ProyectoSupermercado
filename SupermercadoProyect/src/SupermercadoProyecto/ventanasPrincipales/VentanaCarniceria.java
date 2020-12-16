@@ -69,8 +69,8 @@ public class VentanaCarniceria extends JFrame {
 		JLabel labelPrecioChuleton;
 		try {
 			con.connect();
-			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
-			labelPrecioChuleton.setBounds(111, 79, 149, 13);
+			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca")); //Pasamos por parametro "Chuleton de vaca 
+			labelPrecioChuleton.setBounds(111, 79, 149, 13);    										  //y nos devuelve el precio del poducto pasado
 			contentPane.add(labelPrecioChuleton);
 			con.disconnect();
 		} catch (DBException e1) {

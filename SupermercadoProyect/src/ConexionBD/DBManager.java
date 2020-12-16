@@ -74,34 +74,7 @@ public class DBManager {
 		return acceso;
 	}
 	
-	public int obtenerId (String nombreUsuario) throws DBException{
-		int idUsuario = 0;
-		if (!nombreUsuario.contains("@")) {
-			try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ?")) {
-				stmt.setString(1, nombreUsuario);
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				idUsuario = rs.getInt("id");
-				
-			} catch (SQLException e) {
-				throw new DBException("Error obteniendo todos los usuarios'", e);
-			}	
-		}else {
-			try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE email = ?")) {
-				stmt.setString(1, nombreUsuario);
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				idUsuario = rs.getInt("id");
-				
-			} catch (SQLException e) {
-				throw new DBException("Error obteniendo todos los usuarios'", e);
-			}	
-		}
-		
-			
-		return idUsuario;
-	}
-	
+	//OBTENER EL PRECIO DE UN PRODUCTO CONCRETO
 	public double obtenerPrecioProducto(String nombreProducto) throws DBException{
 		double precio = 0;
 		try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio FROM producto WHERE nombre = ? ")) {
