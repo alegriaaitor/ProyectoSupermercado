@@ -100,7 +100,7 @@ public class VentanaCarniceria extends JFrame {
 		
 		try {
 			con.connect();
-			JLabel labelPrecioCriollo = new JLabel("Precio");
+			JLabel labelPrecioCriollo = new JLabel("Precio: " + con.obtenerPrecioProducto("Chorizo criollo"));
 			labelPrecioCriollo.setBounds(111, 371, 45, 13);
 			contentPane.add(labelPrecioCriollo);
 			con.disconnect();
