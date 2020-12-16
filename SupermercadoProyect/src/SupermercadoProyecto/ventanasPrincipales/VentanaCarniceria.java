@@ -78,18 +78,36 @@ public class VentanaCarniceria extends JFrame {
 			e1.printStackTrace();
 		}
 		
+		try {
+			con.connect();
+			JLabel labelPrecioSolomillo = new JLabel("Precio: " + con.obtenerPrecioProducto("Solomillo de ternera"));
+			labelPrecioSolomillo.setBounds(111, 178, 45, 13);
+			contentPane.add(labelPrecioSolomillo);
+			con.disconnect();
+		}catch(DBException e2) {
+			e2.printStackTrace();
+		}
 		
-		JLabel labelPrecioSolomillo = new JLabel("Precio");
-		labelPrecioSolomillo.setBounds(111, 178, 45, 13);
-		contentPane.add(labelPrecioSolomillo);
+		try {
+			con.connect();	
+			JLabel labelPrecioEntrecot = new JLabel("Precio: " + con.obtenerPrecioProducto("Entrecot de ternera"));
+			labelPrecioEntrecot.setBounds(111, 273, 45, 13);
+			contentPane.add(labelPrecioEntrecot);
+			con.disconnect();
+		}catch(DBException e2) {
+			e2.printStackTrace();
+		}
 		
-		JLabel labelPrecioEntrecot = new JLabel("Precio");
-		labelPrecioEntrecot.setBounds(111, 273, 45, 13);
-		contentPane.add(labelPrecioEntrecot);
+		try {
+			con.connect();
+			JLabel labelPrecioCriollo = new JLabel("Precio");
+			labelPrecioCriollo.setBounds(111, 371, 45, 13);
+			contentPane.add(labelPrecioCriollo);
+			con.disconnect();
+		}catch(DBException e3) {
+			e3.printStackTrace();
+		}
 		
-		JLabel labelPrecioCriollo = new JLabel("Precio");
-		labelPrecioCriollo.setBounds(111, 371, 45, 13);
-		contentPane.add(labelPrecioCriollo);
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
 		botonAnadir1.setBounds(270, 75, 85, 21);
