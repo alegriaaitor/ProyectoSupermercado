@@ -242,6 +242,7 @@ public class VentanaRegistro extends JFrame {
 								setVisible(false);
 								ini.setVisible(true);
 								conexion.disconnect();
+								
 							
 						} catch (DBException e1) {
 							e1.printStackTrace();
