@@ -48,30 +48,30 @@ public class VentanaFruteria extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel nombreProducto1 = new JLabel("Chuleton de vaca (500g)");
+		JLabel nombreProducto1 = new JLabel("Manzana (1kg)");
 		nombreProducto1.setBounds(111, 44, 244, 13);
 		contentPane.add(nombreProducto1);
 		
 		
-		JLabel lblProducto = new JLabel("Solomillo de ternera (250g)");
-		lblProducto.setBounds(111, 139, 244, 13);
-		contentPane.add(lblProducto);
+		JLabel nombreProducto2 = new JLabel("Platano (1kg)");
+		nombreProducto2.setBounds(111, 139, 244, 13);
+		contentPane.add(nombreProducto2);
 		
-		JLabel lblProducto_1 = new JLabel("Entrecot de ternera (300g)");
-		lblProducto_1.setBounds(111, 237, 244, 13);
-		contentPane.add(lblProducto_1);
+		JLabel nombreProducto3 = new JLabel("Pera (1kg)");
+		nombreProducto3.setBounds(111, 237, 244, 13);
+		contentPane.add(nombreProducto3);
 		
-		JLabel lblProducto_2 = new JLabel("Chorizo criollo (250g)");
-		lblProducto_2.setBounds(111, 329, 244, 13);
-		contentPane.add(lblProducto_2);
+		JLabel nombreProducto4 = new JLabel("Melón (1kg)");
+		nombreProducto4.setBounds(111, 329, 244, 13);
+		contentPane.add(nombreProducto4);
 		
 		DBManager con = new DBManager();
-		JLabel labelPrecioChuleton;
+		JLabel labelPrecioManzana;
 		try {
 			con.connect();
-			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
-			labelPrecioChuleton.setBounds(111, 79, 149, 13);
-			contentPane.add(labelPrecioChuleton);
+			labelPrecioManzana = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
+			labelPrecioManzana.setBounds(111, 79, 149, 13);
+			contentPane.add(labelPrecioManzana);
 			con.disconnect();
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
@@ -79,40 +79,40 @@ public class VentanaFruteria extends JFrame {
 		}
 		
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Precio");
-		lblNewLabel_2_1.setBounds(111, 178, 45, 13);
-		contentPane.add(lblNewLabel_2_1);
+		JLabel labelPrecioPlatano = new JLabel("Precio");
+		labelPrecioPlatano.setBounds(111, 178, 45, 13);
+		contentPane.add(labelPrecioPlatano);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("Precio");
-		lblNewLabel_2_2.setBounds(111, 273, 45, 13);
-		contentPane.add(lblNewLabel_2_2);
+		JLabel labelPrecioPera = new JLabel("Precio");
+		labelPrecioPera.setBounds(111, 273, 45, 13);
+		contentPane.add(labelPrecioPera);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("Precio");
-		lblNewLabel_2_3.setBounds(111, 371, 45, 13);
-		contentPane.add(lblNewLabel_2_3);
+		JLabel labelPrecioMelon = new JLabel("Precio");
+		labelPrecioMelon.setBounds(111, 371, 45, 13);
+		contentPane.add(labelPrecioMelon);
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
-		botonAnadir1.setBounds(270, 75, 85, 21);
+		botonAnadir1.setBounds(294, 75, 85, 21);
 		contentPane.add(botonAnadir1);
 		
-		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(237, 367, 85, 21);
-		contentPane.add(btnNewButton_1);
+		JButton botonAnadir4 = new JButton("A\u00F1adir");
+		botonAnadir4.setBounds(294, 352, 85, 21);
+		contentPane.add(botonAnadir4);
 		
-		JButton btnNewButton_2 = new JButton("A\u00F1adir");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton botonAnadir2 = new JButton("A\u00F1adir");
+		botonAnadir2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(237, 174, 85, 21);
-		contentPane.add(btnNewButton_2);
+		botonAnadir2.setBounds(294, 174, 85, 21);
+		contentPane.add(botonAnadir2);
 		
-		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(237, 269, 85, 21);
-		contentPane.add(btnNewButton_3);
+		JButton botonAnadir3 = new JButton("A\u00F1adir");
+		botonAnadir3.setBounds(294, 269, 85, 21);
+		contentPane.add(botonAnadir3);
 		
-		JButton btnNewButton_8 = new JButton("Volver");
-		btnNewButton_8.addMouseListener(new MouseAdapter() {
+		JButton botonVolver = new JButton("Volver");
+		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentanaMenu menu = new VentanaMenu();
@@ -120,15 +120,15 @@ public class VentanaFruteria extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_8.setBounds(111, 425, 85, 21);
-		contentPane.add(btnNewButton_8);
+		botonVolver.setBounds(111, 425, 85, 21);
+		contentPane.add(botonVolver);
 		
-		JButton btnNewButton_9 = new JButton("Ver carrito");
-		btnNewButton_9.addActionListener(new ActionListener() {
+		JButton botonVerCarrito = new JButton("Ver carrito");
+		botonVerCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_9.addMouseListener(new MouseAdapter() {
+		botonVerCarrito.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentanaCarrito carrito = new VentanaCarrito();
@@ -136,39 +136,39 @@ public class VentanaFruteria extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(237, 425, 94, 21);
-		contentPane.add(btnNewButton_9);
+		botonVerCarrito.setBounds(237, 425, 94, 21);
+		contentPane.add(botonVerCarrito);
 		
-		JLabel labelSolomillo = new JLabel("Foto");
-		labelSolomillo.setBounds(26, 139, 75, 75);
-		contentPane.add(labelSolomillo);
+		JLabel labelPlatano = new JLabel("Foto");
+		labelPlatano.setBounds(26, 139, 75, 75);
+		contentPane.add(labelPlatano);
 		ImageIcon ico4 = new ImageIcon("imagenes/solomillo.png");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelSolomillo.getWidth(), labelSolomillo.getHeight(), Image.SCALE_SMOOTH));
-        labelSolomillo.setIcon(img4);
-		contentPane.add(labelSolomillo);
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelPlatano.getWidth(), labelPlatano.getHeight(), Image.SCALE_SMOOTH));
+        labelPlatano.setIcon(img4);
+		contentPane.add(labelPlatano);
 		
-		JLabel labelEntrecot = new JLabel("Foto");
-		labelEntrecot.setBounds(26, 237, 75, 75);
-		contentPane.add(labelEntrecot);
+		JLabel labelPera = new JLabel("Foto");
+		labelPera.setBounds(26, 237, 75, 75);
+		contentPane.add(labelPera);
 		ImageIcon ico3 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelEntrecot.getWidth(), labelEntrecot.getHeight(), Image.SCALE_SMOOTH));
-        labelEntrecot.setIcon(img3);
-		contentPane.add(labelEntrecot);
+        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelPera.getWidth(), labelPera.getHeight(), Image.SCALE_SMOOTH));
+        labelPera.setIcon(img3);
+		contentPane.add(labelPera);
 		
-		JLabel labelChorizo = new JLabel("Foto");
-		labelChorizo.setBounds(26, 329, 75, 75);
-		contentPane.add(labelChorizo);
+		JLabel labelMelon = new JLabel("Foto");
+		labelMelon.setBounds(26, 329, 75, 75);
+		contentPane.add(labelMelon);
 		ImageIcon ico2 = new ImageIcon("imagenes/criollo.png");
-        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelChorizo.getWidth(), labelChorizo.getHeight(), Image.SCALE_SMOOTH));
-        labelChorizo.setIcon(img2);
-		contentPane.add(labelChorizo);
+        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelMelon.getWidth(), labelMelon.getHeight(), Image.SCALE_SMOOTH));
+        labelMelon.setIcon(img2);
+		contentPane.add(labelMelon);
 		
-		JLabel labelChuleton_1 = new JLabel("Foto");
-		labelChuleton_1.setBounds(26, 48, 75, 75);
-		contentPane.add(labelChuleton_1);
+		JLabel labelManzana = new JLabel("Foto");
+		labelManzana.setBounds(26, 48, 75, 75);
+		contentPane.add(labelManzana);
 		ImageIcon ico1 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelChuleton_1.getWidth(), labelChuleton_1.getHeight(), Image.SCALE_SMOOTH));
-        labelChuleton_1.setIcon(img1);
-		contentPane.add(labelChuleton_1);
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelManzana.getWidth(), labelManzana.getHeight(), Image.SCALE_SMOOTH));
+        labelManzana.setIcon(img1);
+		contentPane.add(labelManzana);
 	}
 }

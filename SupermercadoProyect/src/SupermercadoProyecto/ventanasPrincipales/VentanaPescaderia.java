@@ -65,12 +65,12 @@ public class VentanaPescaderia extends JFrame {
 		contentPane.add(lblProducto_2);
 		
 		DBManager con = new DBManager();
-		JLabel labelPrecioChuleton;
+		JLabel labelPrecioMerluza;
 		try {
 			con.connect();
-			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Merluza"));
-			labelPrecioChuleton.setBounds(150, 110, 149, 13);
-			contentPane.add(labelPrecioChuleton);
+			labelPrecioMerluza = new JLabel("Precio: " + con.obtenerPrecioProducto("Merluza"));
+			labelPrecioMerluza.setBounds(150, 110, 149, 13);
+			contentPane.add(labelPrecioMerluza);
 			con.disconnect();
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
@@ -79,9 +79,9 @@ public class VentanaPescaderia extends JFrame {
 		
 		try {			
 			con.connect();
-			JLabel lblNewLabel_2_1 = new JLabel("Precio" + con.obtenerPrecioProducto("Sardina"));
-			lblNewLabel_2_1.setBounds(160, 174, 45, 13);
-			contentPane.add(lblNewLabel_2_1);
+			JLabel labelPrecioSardina = new JLabel("Precio" + con.obtenerPrecioProducto("Sardina"));
+			labelPrecioSardina.setBounds(160, 174, 45, 13);
+			contentPane.add(labelPrecioSardina);
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -89,9 +89,9 @@ public class VentanaPescaderia extends JFrame {
 		
 		try {			
 			con.connect();
-			JLabel lblNewLabel_2_2 = new JLabel("Precio" + con.obtenerPrecioProducto("Salmonete"));
-			lblNewLabel_2_2.setBounds(160, 261, 45, 13);
-			contentPane.add(lblNewLabel_2_2);
+			JLabel labelPrecioSalmonete = new JLabel("Precio" + con.obtenerPrecioProducto("Salmonete"));
+			labelPrecioSalmonete.setBounds(160, 261, 45, 13);
+			contentPane.add(labelPrecioSalmonete);
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -99,9 +99,9 @@ public class VentanaPescaderia extends JFrame {
 			
 		try {			
 			con.connect();
-			JLabel lblNewLabel_2_3 = new JLabel("Precio" + con.obtenerPrecioProducto("Lenguado"));
-			lblNewLabel_2_3.setBounds(160, 347, 45, 13);
-			contentPane.add(lblNewLabel_2_3);
+			JLabel labelPrecioLenguado = new JLabel("Precio" + con.obtenerPrecioProducto("Lenguado"));
+			labelPrecioLenguado.setBounds(160, 347, 45, 13);
+			contentPane.add(labelPrecioLenguado);
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -111,24 +111,24 @@ public class VentanaPescaderia extends JFrame {
 		botonAnadir1.setBounds(309, 106, 85, 21);
 		contentPane.add(botonAnadir1);
 		
-		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(309, 367, 85, 21);
-		contentPane.add(btnNewButton_1);
+		JButton botonAnadir4 = new JButton("A\u00F1adir");
+		botonAnadir4.setBounds(309, 367, 85, 21);
+		contentPane.add(botonAnadir4);
 		
-		JButton btnNewButton_2 = new JButton("A\u00F1adir");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton botonAnadir2 = new JButton("A\u00F1adir");
+		botonAnadir2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(309, 174, 85, 21);
-		contentPane.add(btnNewButton_2);
+		botonAnadir2.setBounds(309, 174, 85, 21);
+		contentPane.add(botonAnadir2);
 		
-		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(309, 269, 85, 21);
-		contentPane.add(btnNewButton_3);
+		JButton botonAnadir3 = new JButton("A\u00F1adir");
+		botonAnadir3.setBounds(309, 269, 85, 21);
+		contentPane.add(botonAnadir3);
 		
-		JButton btnNewButton_8 = new JButton("Volver");
-		btnNewButton_8.addMouseListener(new MouseAdapter() {
+		JButton botonVolver = new JButton("Volver");
+		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentanaMenu menu = new VentanaMenu();
@@ -136,15 +136,15 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_8.setBounds(111, 425, 85, 21);
-		contentPane.add(btnNewButton_8);
+		botonVolver.setBounds(111, 425, 85, 21);
+		contentPane.add(botonVolver);
 		
-		JButton btnNewButton_9 = new JButton("Ver carrito");
-		btnNewButton_9.addActionListener(new ActionListener() {
+		JButton botonVerCarrito = new JButton("Ver carrito");
+		botonVerCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_9.addMouseListener(new MouseAdapter() {
+		botonVerCarrito.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentanaCarrito carrito = new VentanaCarrito();
@@ -152,8 +152,8 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_9.setBounds(237, 425, 94, 21);
-		contentPane.add(btnNewButton_9);
+		botonVerCarrito.setBounds(237, 425, 94, 21);
+		contentPane.add(botonVerCarrito);
 		
 		JLabel labelSardina = new JLabel("Foto");
 		labelSardina.setBounds(10, 160, 111, 48);
