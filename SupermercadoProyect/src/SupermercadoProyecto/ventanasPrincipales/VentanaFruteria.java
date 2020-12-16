@@ -165,10 +165,18 @@ public class VentanaFruteria extends JFrame {
 		botonVerCarrito.setBounds(237, 425, 94, 21);
 		contentPane.add(botonVerCarrito);
 		
+		JLabel labelManzana = new JLabel("Foto");
+		labelManzana.setBounds(26, 48, 75, 75);
+		contentPane.add(labelManzana);
+		ImageIcon ico1 = new ImageIcon("imagenes/manzana.jpg");
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelManzana.getWidth(), labelManzana.getHeight(), Image.SCALE_SMOOTH));
+        labelManzana.setIcon(img1);
+		contentPane.add(labelManzana);
+		
 		JLabel labelPlatano = new JLabel("Foto");
 		labelPlatano.setBounds(26, 139, 75, 75);
 		contentPane.add(labelPlatano);
-		ImageIcon ico4 = new ImageIcon("imagenes/solomillo.png");
+		ImageIcon ico4 = new ImageIcon("imagenes/platano.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelPlatano.getWidth(), labelPlatano.getHeight(), Image.SCALE_SMOOTH));
         labelPlatano.setIcon(img4);
 		contentPane.add(labelPlatano);
@@ -176,7 +184,7 @@ public class VentanaFruteria extends JFrame {
 		JLabel labelPera = new JLabel("Foto");
 		labelPera.setBounds(26, 237, 75, 75);
 		contentPane.add(labelPera);
-		ImageIcon ico3 = new ImageIcon("imagenes/chuleton.png");
+		ImageIcon ico3 = new ImageIcon("imagenes/pera.jpg");
         ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelPera.getWidth(), labelPera.getHeight(), Image.SCALE_SMOOTH));
         labelPera.setIcon(img3);
 		contentPane.add(labelPera);
@@ -184,17 +192,11 @@ public class VentanaFruteria extends JFrame {
 		JLabel labelMelon = new JLabel("Foto");
 		labelMelon.setBounds(26, 329, 75, 75);
 		contentPane.add(labelMelon);
-		ImageIcon ico2 = new ImageIcon("imagenes/criollo.png");
+		ImageIcon ico2 = new ImageIcon("imagenes/melon.jpg");
         ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelMelon.getWidth(), labelMelon.getHeight(), Image.SCALE_SMOOTH));
         labelMelon.setIcon(img2);
 		contentPane.add(labelMelon);
 		
-		JLabel labelManzana = new JLabel("Foto");
-		labelManzana.setBounds(26, 48, 75, 75);
-		contentPane.add(labelManzana);
-		ImageIcon ico1 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelManzana.getWidth(), labelManzana.getHeight(), Image.SCALE_SMOOTH));
-        labelManzana.setIcon(img1);
-		contentPane.add(labelManzana);
+		
 	}
 }
