@@ -22,7 +22,7 @@ public class Carrito {
 			productos.remove(i);
 	}
 	//METODO QUE AÑADE UN PRODUCTO AL CARRITO
-	public void aniadirArticuloAlCarrito(Producto p) {
+	public void aniadirProductoAlCarrito(Producto p) {
 		productos.add(p);
 	}
 	

@@ -123,7 +123,7 @@ public class VentanaCarniceria extends JFrame {
 				Producto carne1 = new Producto();
 				carne1.setNombre("Chuleton de vaca");
 				carne1.setPrecio(con.obtenerPrecioProducto("Chuleton de vaca"));
-				carrito.aniadirArticuloAlCarrito(carne1);
+				carrito.aniadirProductoAlCarrito(carne1);
 				con.disconnect();
 				}catch(DBException e) {
 					e.printStackTrace();
