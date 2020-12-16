@@ -115,6 +115,7 @@ public class VentanaCarrito extends JFrame {
 		list.setBounds(59, 73, 415, 317);
 		contentPane.add(list);
 		
+		
 		JLabel labelProcesandoCompra = new JLabel("Procesando Compra...");
 		labelProcesandoCompra.setVisible(false);
 		labelProcesandoCompra.setBounds(509, 332, 193, 32);
