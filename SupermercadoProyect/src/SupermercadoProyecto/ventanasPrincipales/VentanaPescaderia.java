@@ -52,7 +52,7 @@ public class VentanaPescaderia extends JFrame {
 		contentPane.add(nombreProducto1);
 		
 		
-		JLabel lblProducto = new JLabel("Sardina de altamar (250g)");
+		JLabel lblProducto = new JLabel("Sardina (250g)");
 		lblProducto.setBounds(150, 151, 244, 13);
 		contentPane.add(lblProducto);
 		
@@ -68,7 +68,7 @@ public class VentanaPescaderia extends JFrame {
 		JLabel labelPrecioChuleton;
 		try {
 			con.connect();
-			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
+			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Merluza"));
 			labelPrecioChuleton.setBounds(150, 110, 149, 13);
 			contentPane.add(labelPrecioChuleton);
 			con.disconnect();
@@ -77,18 +77,35 @@ public class VentanaPescaderia extends JFrame {
 			e1.printStackTrace();
 		}
 		
+		try {			
+			con.connect();
+			JLabel lblNewLabel_2_1 = new JLabel("Precio" + con.obtenerPrecioProducto("Sardina"));
+			lblNewLabel_2_1.setBounds(160, 174, 45, 13);
+			contentPane.add(lblNewLabel_2_1);
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+						e2.printStackTrace();
+		}
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Precio");
-		lblNewLabel_2_1.setBounds(160, 174, 45, 13);
-		contentPane.add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_2_2 = new JLabel("Precio");
-		lblNewLabel_2_2.setBounds(160, 261, 45, 13);
-		contentPane.add(lblNewLabel_2_2);
-		
-		JLabel lblNewLabel_2_3 = new JLabel("Precio");
-		lblNewLabel_2_3.setBounds(160, 347, 45, 13);
-		contentPane.add(lblNewLabel_2_3);
+		try {			
+			con.connect();
+			JLabel lblNewLabel_2_2 = new JLabel("Precio" + con.obtenerPrecioProducto("Salmonete"));
+			lblNewLabel_2_2.setBounds(160, 261, 45, 13);
+			contentPane.add(lblNewLabel_2_2);
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+						e2.printStackTrace();
+		}
+			
+		try {			
+			con.connect();
+			JLabel lblNewLabel_2_3 = new JLabel("Precio" + con.obtenerPrecioProducto("Lenguado"));
+			lblNewLabel_2_3.setBounds(160, 347, 45, 13);
+			contentPane.add(lblNewLabel_2_3);
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+						e2.printStackTrace();
+		}
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
 		botonAnadir1.setBounds(309, 106, 85, 21);
