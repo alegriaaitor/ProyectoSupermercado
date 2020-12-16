@@ -69,7 +69,7 @@ public class VentanaFruteria extends JFrame {
 		JLabel labelPrecioManzana;
 		try {
 			con.connect();
-			labelPrecioManzana = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca"));
+			labelPrecioManzana = new JLabel("Precio: " + con.obtenerPrecioProducto("Manzana "));
 			labelPrecioManzana.setBounds(111, 79, 149, 13);
 			contentPane.add(labelPrecioManzana);
 			con.disconnect();
@@ -80,16 +80,42 @@ public class VentanaFruteria extends JFrame {
 		
 		
 		JLabel labelPrecioPlatano = new JLabel("Precio");
-		labelPrecioPlatano.setBounds(111, 178, 45, 13);
-		contentPane.add(labelPrecioPlatano);
+		try {
+			con.connect();
+			labelPrecioPlatano = new JLabel("Precio: " + con.obtenerPrecioProducto("Platano "));
+			labelPrecioPlatano.setBounds(111, 79, 149, 13);
+			contentPane.add(labelPrecioPlatano);
+			con.disconnect();
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		
 		JLabel labelPrecioPera = new JLabel("Precio");
-		labelPrecioPera.setBounds(111, 273, 45, 13);
-		contentPane.add(labelPrecioPera);
+		try {
+			con.connect();
+			labelPrecioPera = new JLabel("Precio: " + con.obtenerPrecioProducto("Pera "));
+			labelPrecioPera.setBounds(111, 79, 149, 13);
+			contentPane.add(labelPrecioPera);
+			con.disconnect();
+		} catch (DBException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		
 		
 		JLabel labelPrecioMelon = new JLabel("Precio");
-		labelPrecioMelon.setBounds(111, 371, 45, 13);
-		contentPane.add(labelPrecioMelon);
+		try {
+			con.connect();
+			labelPrecioMelon = new JLabel("Precio: " + con.obtenerPrecioProducto("Melon "));
+			labelPrecioMelon.setBounds(111, 79, 149, 13);
+			contentPane.add(labelPrecioMelon);
+			con.disconnect();
+		} catch (DBException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		}
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
 		botonAnadir1.setBounds(294, 75, 85, 21);
