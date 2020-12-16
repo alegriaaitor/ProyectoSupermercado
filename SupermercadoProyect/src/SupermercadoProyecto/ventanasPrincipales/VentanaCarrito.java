@@ -39,6 +39,7 @@ public class VentanaCarrito extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
