@@ -20,6 +20,9 @@ import java.awt.event.ActionEvent;
 public class VentanaFruteria extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel labelPrecioPlatano_1;
+	private JLabel labelPrecioPera_1;
+	private JLabel labelPrecioMelon_1;
 	
 	/**
 	 * Launch the application.
@@ -42,26 +45,30 @@ public class VentanaFruteria extends JFrame {
 	 */
 	public VentanaFruteria() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 452, 493);
+		setBounds(100, 100, 490, 495);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel nombreProducto1 = new JLabel("Manzana (1kg)");
+		nombreProducto1.setForeground(Color.WHITE);
 		nombreProducto1.setBounds(131, 64, 141, 13);
 		contentPane.add(nombreProducto1);
 		
 		
 		JLabel nombreProducto2 = new JLabel("Platano (1kg)");
+		nombreProducto2.setForeground(Color.WHITE);
 		nombreProducto2.setBounds(131, 157, 141, 13);
 		contentPane.add(nombreProducto2);
 		
 		JLabel nombreProducto3 = new JLabel("Pera (1kg)");
+		nombreProducto3.setForeground(Color.WHITE);
 		nombreProducto3.setBounds(131, 246, 149, 13);
 		contentPane.add(nombreProducto3);
 		
 		JLabel nombreProducto4 = new JLabel("Melón (1kg)");
+		nombreProducto4.setForeground(Color.WHITE);
 		nombreProducto4.setBounds(131, 352, 149, 13);
 		contentPane.add(nombreProducto4);
 		
@@ -70,6 +77,7 @@ public class VentanaFruteria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioManzana= new JLabel("Precio: " + con.obtenerPrecioProducto("Manzana"));
+			labelPrecioManzana.setForeground(Color.WHITE);
 			labelPrecioManzana.setBounds(131, 97, 149, 13);
 			contentPane.add(labelPrecioManzana);
 			con.disconnect();
@@ -82,9 +90,10 @@ public class VentanaFruteria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioPlatano = new JLabel("Precio");
-			labelPrecioPlatano = new JLabel("Precio: " + con.obtenerPrecioProducto("Platano"));
-			labelPrecioPlatano.setBounds(131, 180, 149, 13);
-			contentPane.add(labelPrecioPlatano);
+			labelPrecioPlatano_1 = new JLabel("Precio: " + con.obtenerPrecioProducto("Platano"));
+			labelPrecioPlatano_1.setForeground(Color.WHITE);
+			labelPrecioPlatano_1.setBounds(131, 180, 149, 13);
+			contentPane.add(labelPrecioPlatano_1);
 			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
@@ -95,9 +104,10 @@ public class VentanaFruteria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioPera = new JLabel("Precio");
-			labelPrecioPera = new JLabel("Precio: " + con.obtenerPrecioProducto("Pera"));
-			labelPrecioPera.setBounds(131, 273, 149, 13);
-			contentPane.add(labelPrecioPera);
+			labelPrecioPera_1 = new JLabel("Precio: " + con.obtenerPrecioProducto("Pera"));
+			labelPrecioPera_1.setForeground(Color.WHITE);
+			labelPrecioPera_1.setBounds(131, 273, 149, 13);
+			contentPane.add(labelPrecioPera_1);
 			con.disconnect();
 		} catch (DBException e3) {
 			// TODO Auto-generated catch block
@@ -108,9 +118,10 @@ public class VentanaFruteria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioMelon = new JLabel("Precio");
-			labelPrecioMelon = new JLabel("Precio: " + con.obtenerPrecioProducto("Melon"));
-			labelPrecioMelon.setBounds(131, 375, 149, 13);
-			contentPane.add(labelPrecioMelon);
+			labelPrecioMelon_1 = new JLabel("Precio: " + con.obtenerPrecioProducto("Melon"));
+			labelPrecioMelon_1.setForeground(Color.WHITE);
+			labelPrecioMelon_1.setBounds(131, 375, 149, 13);
+			contentPane.add(labelPrecioMelon_1);
 			con.disconnect();
 		} catch (DBException e4) {
 			// TODO Auto-generated catch block
@@ -146,7 +157,7 @@ public class VentanaFruteria extends JFrame {
 				dispose();
 			}
 		});
-		botonVolver.setBounds(111, 425, 85, 21);
+		botonVolver.setBounds(45, 425, 85, 21);
 		contentPane.add(botonVolver);
 		
 		JButton botonVerCarrito = new JButton("Ver carrito");
@@ -162,7 +173,7 @@ public class VentanaFruteria extends JFrame {
 				dispose();
 			}
 		});
-		botonVerCarrito.setBounds(237, 425, 94, 21);
+		botonVerCarrito.setBounds(152, 425, 94, 21);
 		contentPane.add(botonVerCarrito);
 		
 		JLabel labelManzana = new JLabel("Foto");
@@ -198,9 +209,31 @@ public class VentanaFruteria extends JFrame {
 		contentPane.add(labelMelon);
 		
 		JLabel lblNewLabel = new JLabel("FRUTERIA");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 16));
 		lblNewLabel.setBounds(152, 10, 120, 38);
 		contentPane.add(lblNewLabel);
+		ImageIcon ico = new ImageIcon("imagenes/fondos.jpg");
+		
+		JButton btnNewButton = new JButton("Cambiar Seccion");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPescaderia pescaderia = new VentanaPescaderia();
+				pescaderia.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(325, 425, 141, 23);
+		contentPane.add(btnNewButton);
+		
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 476, 458);
+		ImageIcon ico7 = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img = new ImageIcon(ico7.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img);
+		contentPane.add(labelFondo);
 		
 		
 	}

@@ -48,19 +48,23 @@ public class VentanaPescaderia extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel nombreProducto1 = new JLabel("Merluza (500g)");
+		nombreProducto1.setForeground(Color.WHITE);
 		nombreProducto1.setBounds(150, 87, 244, 13);
 		contentPane.add(nombreProducto1);
 		
 		
 		JLabel lblProducto = new JLabel("Sardina (250g)");
+		lblProducto.setForeground(Color.WHITE);
 		lblProducto.setBounds(150, 151, 244, 13);
 		contentPane.add(lblProducto);
 		
 		JLabel lblProducto_1 = new JLabel("Salmonete (300g)");
+		lblProducto_1.setForeground(Color.WHITE);
 		lblProducto_1.setBounds(150, 238, 244, 13);
 		contentPane.add(lblProducto_1);
 		
 		JLabel lblProducto_2 = new JLabel("Lenguado (250g)");
+		lblProducto_2.setForeground(Color.WHITE);
 		lblProducto_2.setBounds(150, 315, 244, 13);
 		contentPane.add(lblProducto_2);
 		
@@ -69,6 +73,7 @@ public class VentanaPescaderia extends JFrame {
 		try {
 			con.connect();
 			labelPrecioMerluza = new JLabel("Precio: " + con.obtenerPrecioProducto("Merluza"));
+			labelPrecioMerluza.setForeground(Color.WHITE);
 			labelPrecioMerluza.setBounds(150, 110, 149, 13);
 			contentPane.add(labelPrecioMerluza);
 			con.disconnect();
@@ -80,6 +85,7 @@ public class VentanaPescaderia extends JFrame {
 		try {			
 			con.connect();
 			JLabel labelPrecioSardina = new JLabel("Precio: " + con.obtenerPrecioProducto("Sardina"));
+			labelPrecioSardina.setForeground(Color.WHITE);
 			labelPrecioSardina.setBounds(150, 178, 138, 13);
 			contentPane.add(labelPrecioSardina);
 			con.disconnect();
@@ -91,6 +97,7 @@ public class VentanaPescaderia extends JFrame {
 		try {			
 			con.connect();
 			JLabel labelPrecioSalmonete = new JLabel("Precio: " + con.obtenerPrecioProducto("Salmonete"));
+			labelPrecioSalmonete.setForeground(Color.WHITE);
 			labelPrecioSalmonete.setBounds(150, 256, 125, 13);
 			contentPane.add(labelPrecioSalmonete);
 			con.disconnect();
@@ -102,6 +109,7 @@ public class VentanaPescaderia extends JFrame {
 		try {			
 			con.connect();
 			JLabel labelPrecioLenguado = new JLabel("Precio: " + con.obtenerPrecioProducto("Lenguado"));
+			labelPrecioLenguado.setForeground(Color.WHITE);
 			labelPrecioLenguado.setBounds(150, 347, 125, 13);
 			contentPane.add(labelPrecioLenguado);
 			con.disconnect();
@@ -139,7 +147,7 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		botonVolver.setBounds(111, 425, 85, 21);
+		botonVolver.setBounds(50, 425, 85, 21);
 		contentPane.add(botonVolver);
 		
 		JButton botonVerCarrito = new JButton("Ver carrito");
@@ -155,7 +163,7 @@ public class VentanaPescaderia extends JFrame {
 				dispose();
 			}
 		});
-		botonVerCarrito.setBounds(237, 425, 94, 21);
+		botonVerCarrito.setBounds(164, 425, 94, 21);
 		contentPane.add(botonVerCarrito);
 		
 		JLabel labelSardina = new JLabel("Foto");
@@ -189,5 +197,31 @@ public class VentanaPescaderia extends JFrame {
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelMerluza.getWidth(), labelMerluza.getHeight(), Image.SCALE_SMOOTH));
         labelMerluza.setIcon(img1);
 		contentPane.add(labelMerluza);
+		
+		JButton btnNewButton = new JButton("Cambiar Seccion");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPanaderia panaderia = new VentanaPanaderia();
+				panaderia.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(282, 425, 138, 21);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("PESCADERIA");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel.setBounds(100, 36, 116, 29);
+		contentPane.add(lblNewLabel);
+		
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 438, 456);
+		ImageIcon icon = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img5 = new ImageIcon(icon.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img5);
+		contentPane.add(labelFondo);
 	}
 }

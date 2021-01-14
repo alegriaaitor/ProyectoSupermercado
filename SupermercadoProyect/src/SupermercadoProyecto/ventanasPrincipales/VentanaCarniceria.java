@@ -49,19 +49,23 @@ public class VentanaCarniceria extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel nombreProducto1 = new JLabel("Chuleton de vaca (500g)");
-		nombreProducto1.setBounds(111, 44, 244, 13);
+		nombreProducto1.setForeground(Color.WHITE);
+		nombreProducto1.setBounds(111, 62, 244, 13);
 		contentPane.add(nombreProducto1);
 		
 		
 		JLabel lblProducto = new JLabel("Solomillo de ternera (250g)");
+		lblProducto.setForeground(Color.WHITE);
 		lblProducto.setBounds(111, 139, 244, 13);
 		contentPane.add(lblProducto);
 		
 		JLabel lblProducto_1 = new JLabel("Entrecot de ternera (300g)");
+		lblProducto_1.setForeground(Color.WHITE);
 		lblProducto_1.setBounds(111, 237, 244, 13);
 		contentPane.add(lblProducto_1);
 		
 		JLabel lblProducto_2 = new JLabel("Chorizo criollo (250g)");
+		lblProducto_2.setForeground(Color.WHITE);
 		lblProducto_2.setBounds(111, 329, 236, 13);
 		contentPane.add(lblProducto_2);
 		
@@ -70,7 +74,8 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();
 			labelPrecioChuleton = new JLabel("Precio: " + con.obtenerPrecioProducto("Chuleton de vaca")); //Pasamos por parametro "Chuleton de vaca 
-			labelPrecioChuleton.setBounds(111, 79, 149, 13);    										  //y nos devuelve el precio del poducto pasado
+			labelPrecioChuleton.setForeground(Color.WHITE);
+			labelPrecioChuleton.setBounds(111, 98, 149, 13);    										  //y nos devuelve el precio del poducto pasado
 			contentPane.add(labelPrecioChuleton);
 			con.disconnect();
 		} catch (DBException e1) {
@@ -81,6 +86,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioSolomillo = new JLabel("Precio: " + con.obtenerPrecioProducto("Solomillo de ternera"));
+			labelPrecioSolomillo.setForeground(Color.WHITE);
 			labelPrecioSolomillo.setBounds(111, 178, 149, 13);
 			contentPane.add(labelPrecioSolomillo);
 			con.disconnect();
@@ -91,6 +97,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();	
 			JLabel labelPrecioEntrecot = new JLabel("Precio: " + con.obtenerPrecioProducto("Entrecot de ternera"));
+			labelPrecioEntrecot.setForeground(Color.WHITE);
 			labelPrecioEntrecot.setBounds(111, 273, 149, 13);
 			contentPane.add(labelPrecioEntrecot);
 			con.disconnect();
@@ -101,6 +108,7 @@ public class VentanaCarniceria extends JFrame {
 		try {
 			con.connect();
 			JLabel labelPrecioCriollo = new JLabel("Precio: " + con.obtenerPrecioProducto("Chorizo criollo"));
+			labelPrecioCriollo.setForeground(Color.WHITE);
 			labelPrecioCriollo.setBounds(111, 371, 149, 13);
 			contentPane.add(labelPrecioCriollo);
 			con.disconnect();
@@ -110,7 +118,7 @@ public class VentanaCarniceria extends JFrame {
 		
 		
 		JButton botonAnadirChuleton = new JButton("A\u00F1adir");
-		botonAnadirChuleton.setBounds(270, 75, 85, 21);
+		botonAnadirChuleton.setBounds(373, 75, 85, 21);
 		contentPane.add(botonAnadirChuleton);
 		botonAnadirChuleton.addActionListener(new ActionListener() {
 			
@@ -133,7 +141,7 @@ public class VentanaCarniceria extends JFrame {
 		});
 		
 		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(270, 367, 85, 21);
+		btnNewButton_1.setBounds(373, 356, 85, 21);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("A\u00F1adir");
@@ -141,11 +149,11 @@ public class VentanaCarniceria extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(270, 174, 85, 21);
+		btnNewButton_2.setBounds(373, 174, 85, 21);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(270, 269, 85, 21);
+		btnNewButton_3.setBounds(373, 269, 85, 21);
 		contentPane.add(btnNewButton_3);
 		
 		JButton btnNewButton_8 = new JButton("Volver");
@@ -207,12 +215,32 @@ public class VentanaCarniceria extends JFrame {
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelChuleton_1.getWidth(), labelChuleton_1.getHeight(), Image.SCALE_SMOOTH));
         labelChuleton_1.setIcon(img1);
 		contentPane.add(labelChuleton_1);
+		ImageIcon ico = new ImageIcon("imagenes/fondos.jpg");
 		
-		JLabel labelCarniceria = new JLabel("");
-		labelCarniceria.setBounds(0, 0, 546, 460);
-		ImageIcon ico5 = new ImageIcon("imagenes/carniceria.jpg");
-        ImageIcon img6 = new ImageIcon(ico5.getImage().getScaledInstance(labelCarniceria.getWidth(), labelCarniceria.getHeight(), Image.SCALE_SMOOTH));
-        labelCarniceria.setIcon(img6);
-		contentPane.add(labelCarniceria);
+		JButton btnNewButton = new JButton("Cambiar Seccion");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaFruteria fruteria = new VentanaFruteria();
+				fruteria.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(372, 425, 136, 21);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("CARNICERIA");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel.setBounds(157, 25, 149, 27);
+		contentPane.add(lblNewLabel);
+		
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 540, 458);
+		ImageIcon ico7 = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img = new ImageIcon(ico7.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img);
+		contentPane.add(labelFondo);
 	}
 }

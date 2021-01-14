@@ -22,6 +22,7 @@ import javax.swing.JMenuBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class VentanaMenu extends JFrame {
 
@@ -106,12 +107,29 @@ public class VentanaMenu extends JFrame {
 		menuNombreMenu.add(menuItemPescaderia);
 		
 		JLabel labelFondo = new JLabel("New label");
+		labelFondo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaInicioSesion inicio= new VentanaInicioSesion();
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
 		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
 		labelFondo.setBounds(0, 0, 589, 432);
 		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
         labelFondo.setIcon(img4);
 		contentPane.add(labelFondo);
+		
+		JLabel lblNewLabel = new JLabel("Cambiar de cuenta");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(39, 336, 130, 34);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Iniciar Sesion");
+		btnNewButton.setBounds(49, 380, 120, 32);
+		contentPane.add(btnNewButton);
         
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {

@@ -8,16 +8,19 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.JList;
 import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 
 public class VentanaCarrito extends JFrame {
 
@@ -54,7 +57,7 @@ public class VentanaCarrito extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Carrito");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lblNewLabel.setBounds(37, 24, 111, 32);
+		lblNewLabel.setBounds(188, 26, 111, 32);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Resumen de la compra");
@@ -71,7 +74,7 @@ public class VentanaCarrito extends JFrame {
 		contentPane.add(botonPasaPorCaja);
 		
 		JLabel lblNewLabel_3 = new JLabel("0,00");
-		lblNewLabel_3.setBounds(664, 148, 45, 13);
+		lblNewLabel_3.setBounds(698, 148, 45, 13);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Total carrito");
@@ -83,11 +86,11 @@ public class VentanaCarrito extends JFrame {
 		contentPane.add(separator);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("0,00");
-		lblNewLabel_3_1.setBounds(664, 73, 45, 13);
+		lblNewLabel_3_1.setBounds(698, 73, 45, 13);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("0,00");
-		lblNewLabel_3_2.setBounds(664, 108, 45, 13);
+		lblNewLabel_3_2.setBounds(698, 108, 45, 13);
 		contentPane.add(lblNewLabel_3_2);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Gastos de envio");
@@ -117,7 +120,7 @@ public class VentanaCarrito extends JFrame {
 		p = new ArrayList<>();
 		DefaultListModel lista = new DefaultListModel();
 		JList list = new JList();
-		list.setBounds(59, 73, 415, 317);
+		list.setBounds(58, 72, 415, 317);
 		contentPane.add(list);
 		Carrito carrito = new Carrito();
 		carrito.copiarArrayList(p);
@@ -138,6 +141,14 @@ public class VentanaCarrito extends JFrame {
 		progressBar.setVisible(false);
 		progressBar.setBounds(563, 376, 146, 26);
 		contentPane.add(progressBar);
+		
+		JLabel labelCarritoFondo = new JLabel("");
+		labelCarritoFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelCarritoFondo.setBounds(0, 10, 816, 441);
+		ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelCarritoFondo.getWidth(), labelCarritoFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelCarritoFondo.setIcon(img4);
+		contentPane.add(labelCarritoFondo);
 		
 		
 		botonPasaPorCaja.addActionListener(new ActionListener() {
