@@ -17,6 +17,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
+import javax.swing.JSlider;
+import javax.swing.JMenuBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class VentanaMenu extends JFrame {
 
@@ -43,77 +48,70 @@ public class VentanaMenu extends JFrame {
 	 */
 	public VentanaMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 541, 444);
+		setBounds(100, 100, 603, 459);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-        
-        JLabel lblNewLabel_1 = new JLabel("Selecciona la seccion a la que quieres acceder");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblNewLabel_1.setBounds(20, 86, 331, 27);
-        contentPane.add(lblNewLabel_1);
-        
-        JButton btnPanaderia= new JButton("Panaderia");
-        btnPanaderia.setBounds(375, 117, 137, 89);
-        contentPane.add(btnPanaderia);
-       
-	        btnPanaderia.addMouseListener(new MouseAdapter() {
-	        	@Override
-	        	public void mouseClicked(MouseEvent e) {
-	        		VentanaPanaderia panaderia = new VentanaPanaderia();
-	        		panaderia.setVisible(true);
-	        		dispose();
-	        	}
-	        });
-	        
-        JButton btnCarniceria = new JButton("Carniceria");
-        btnCarniceria.setBounds(375, 209, 137, 89);
-        contentPane.add(btnCarniceria);
-	       
-	        btnCarniceria.addMouseListener(new MouseAdapter() {
-		        	@Override
-		        	public void mouseClicked(MouseEvent e) {
-		        		VentanaCarniceria carniceria = new VentanaCarniceria();
-		        		carniceria.setVisible(true);
-		        		dispose();
-		        	}
-		        });
-       
-        
-        JButton btnFruteria = new JButton("Fruteria");
-        btnFruteria.setBounds(375, 10, 137, 89);
-        contentPane.add(btnFruteria);
-	       
-	        btnFruteria.addMouseListener(new MouseAdapter() {
-	        		public void mouseClicked(MouseEvent e) {
-	        			VentanaFruteria fruteria = new VentanaFruteria();
-	        			fruteria.setVisible(true);
-	        			dispose();
-	        		}
-				});
-        
-   
-        
-        JButton btnPescaderia = new JButton("Pescaderia");
-        btnPescaderia.setBounds(375, 308, 137, 89);
-        contentPane.add(btnPescaderia);
-        
-        JLabel labelFondo = new JLabel("");
-        labelFondo.setBounds(0, 0, 533, 418);
-        ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(10, 0, 101, 22);
+		contentPane.add(menuBar);
+		
+		JMenu menuNombreMenu = new JMenu("Secciones");
+		menuBar.add(menuNombreMenu);
+		
+		JMenuItem menuItemPanaderia = new JMenuItem("Panaderia");
+		menuItemPanaderia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPanaderia panaderia = new VentanaPanaderia();
+        		panaderia.setVisible(true);
+        		dispose();
+			}
+		});
+		menuNombreMenu.add(menuItemPanaderia);
+
+		
+		JMenuItem menuItemCarniceria = new JMenuItem("Carniceria");
+		menuItemCarniceria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				VentanaCarniceria carniceria = new VentanaCarniceria();
+        		carniceria.setVisible(true);
+        		dispose();	
+			}
+		});
+		menuNombreMenu.add(menuItemCarniceria);
+		
+		JMenuItem menuItemFruteria = new JMenuItem("Fruteria");
+		menuItemFruteria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				VentanaFruteria fruteria = new VentanaFruteria();
+    			fruteria.setVisible(true);
+    			dispose();
+			}
+		});
+		menuNombreMenu.add(menuItemFruteria);
+		
+		JMenuItem menuItemPescaderia = new JMenuItem("Pescaderia");
+		menuItemPescaderia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				VentanaPescaderia pescaderia= new VentanaPescaderia();
+				pescaderia.setVisible(true);
+				dispose();
+			}
+		});
+		menuNombreMenu.add(menuItemPescaderia);
+		
+		JLabel labelFondo = new JLabel("New label");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 589, 432);
+		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
         labelFondo.setIcon(img4);
-        contentPane.add(labelFondo);
-        
-	        btnPescaderia.addMouseListener(new MouseAdapter() {
-	        	@Override
-	        	public void mouseClicked(MouseEvent e) {
-	        		VentanaPescaderia pescaderia = new VentanaPescaderia();
-	        		pescaderia.setVisible(true);
-	        		dispose();
-	        	}
-	        });
+		contentPane.add(labelFondo);
         
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
