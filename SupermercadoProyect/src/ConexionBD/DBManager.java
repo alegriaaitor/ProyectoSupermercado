@@ -54,7 +54,7 @@ public class DBManager {
 		
 		boolean acceso = false;
 			
-		try (PreparedStatement stmt = conexion.prepareStatement("SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ? AND contrasena = ?")) {
+		try (PreparedStatement stmt = conexion.prepareStatement("'SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ? AND contrasena = ?;'")) {
 				stmt.setString(1, nombreUsuario);
 				stmt.setString(2, contrasena);
 				
