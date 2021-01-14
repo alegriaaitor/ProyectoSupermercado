@@ -42,7 +42,7 @@ public class VentanaCarniceria extends JFrame {
 	 */
 	public VentanaCarniceria() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 452, 493);
+		setBounds(100, 100, 554, 495);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -207,5 +207,12 @@ public class VentanaCarniceria extends JFrame {
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelChuleton_1.getWidth(), labelChuleton_1.getHeight(), Image.SCALE_SMOOTH));
         labelChuleton_1.setIcon(img1);
 		contentPane.add(labelChuleton_1);
+		
+		JLabel labelCarniceria = new JLabel("");
+		labelCarniceria.setBounds(0, 0, 546, 460);
+		ImageIcon ico5 = new ImageIcon("imagenes/carniceria.jpg");
+        ImageIcon img6 = new ImageIcon(ico5.getImage().getScaledInstance(labelCarniceria.getWidth(), labelCarniceria.getHeight(), Image.SCALE_SMOOTH));
+        labelCarniceria.setIcon(img6);
+		contentPane.add(labelCarniceria);
 	}
 }

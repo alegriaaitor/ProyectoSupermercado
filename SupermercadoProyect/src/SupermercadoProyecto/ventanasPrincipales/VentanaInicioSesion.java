@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,6 +43,7 @@ import java.util.logging.Logger;
 
 import ConexionBD.*;
 import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 
 public class VentanaInicioSesion extends JFrame {
 	private static Scanner sc;
@@ -73,7 +76,7 @@ public class VentanaInicioSesion extends JFrame {
 	 */
 	public VentanaInicioSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 397, 533);
+		setBounds(100, 100, 482, 538);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,16 +84,20 @@ public class VentanaInicioSesion extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Inicio Sesion");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblNewLabel.setBounds(45, 38, 133, 40);
 		contentPane.add(lblNewLabel);
 		
 		JLabel Texto_usuario = new JLabel("Usuario");
+		Texto_usuario.setForeground(Color.WHITE);
 		Texto_usuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		Texto_usuario.setBounds(45, 110, 88, 29);
 		contentPane.add(Texto_usuario);
 		
 		JLabel texto_contrasena = new JLabel("Contrasena");
+		texto_contrasena.setForeground(Color.WHITE);
 		texto_contrasena.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		texto_contrasena.setBounds(45, 205, 88, 29);
 		contentPane.add(texto_contrasena);
@@ -165,19 +172,25 @@ public class VentanaInicioSesion extends JFrame {
 		botonIniciarSesion.setBounds(118, 319, 133, 35);
 		contentPane.add(botonIniciarSesion);
 		
-		JTextArea txtryaDisponesDe = new JTextArea();
-		txtryaDisponesDe.setBackground(UIManager.getColor("Button.background"));
-		txtryaDisponesDe.setEditable(false);
-		txtryaDisponesDe.setForeground(Color.BLACK);
-		txtryaDisponesDe.setText("\u00BFTodav\u00EDa no dispones de una cuenta?");
-		txtryaDisponesDe.setBounds(10, 389, 295, 29);
-		contentPane.add(txtryaDisponesDe);
-		
 		JButton btnRegistrarse = new JButton("Registrate");
 		btnRegistrarse.setForeground(Color.BLACK);
 		btnRegistrarse.setBackground(UIManager.getColor("Button.background"));
 		btnRegistrarse.setBounds(20, 419, 140, 21);
 		contentPane.add(btnRegistrarse);
+		
+		JLabel labelFondo = new JLabel("New label");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 458, 496);
+		ImageIcon ico4 = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img4);
+		contentPane.add(labelFondo);
+		
+		JLabel labelDispone = new JLabel("\u00BFTodavia no dispones de una cuenta?");
+		labelDispone.setBackground(Color.BLACK);
+		labelDispone.setForeground(Color.WHITE);
+		labelDispone.setBounds(20, 380, 231, 29);
+		contentPane.add(labelDispone);
 		
 		btnRegistrarse.addActionListener(new ActionListener() {
 

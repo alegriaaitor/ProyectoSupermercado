@@ -13,6 +13,10 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
 
 public class VentanaMenu extends JFrame {
 
@@ -39,7 +43,7 @@ public class VentanaMenu extends JFrame {
 	 */
 	public VentanaMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 388, 393);
+		setBounds(100, 100, 541, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,7 +55,7 @@ public class VentanaMenu extends JFrame {
         contentPane.add(lblNewLabel_1);
         
         JButton btnPanaderia= new JButton("Panaderia");
-        btnPanaderia.setBounds(20, 134, 137, 89);
+        btnPanaderia.setBounds(375, 117, 137, 89);
         contentPane.add(btnPanaderia);
        
 	        btnPanaderia.addMouseListener(new MouseAdapter() {
@@ -64,7 +68,7 @@ public class VentanaMenu extends JFrame {
 	        });
 	        
         JButton btnCarniceria = new JButton("Carniceria");
-        btnCarniceria.setBounds(175, 134, 137, 89);
+        btnCarniceria.setBounds(375, 209, 137, 89);
         contentPane.add(btnCarniceria);
 	       
 	        btnCarniceria.addMouseListener(new MouseAdapter() {
@@ -78,7 +82,7 @@ public class VentanaMenu extends JFrame {
        
         
         JButton btnFruteria = new JButton("Fruteria");
-        btnFruteria.setBounds(20, 245, 137, 89);
+        btnFruteria.setBounds(375, 10, 137, 89);
         contentPane.add(btnFruteria);
 	       
 	        btnFruteria.addMouseListener(new MouseAdapter() {
@@ -92,8 +96,15 @@ public class VentanaMenu extends JFrame {
    
         
         JButton btnPescaderia = new JButton("Pescaderia");
-        btnPescaderia.setBounds(175, 245, 137, 89);
+        btnPescaderia.setBounds(375, 308, 137, 89);
         contentPane.add(btnPescaderia);
+        
+        JLabel labelFondo = new JLabel("");
+        labelFondo.setBounds(0, 0, 533, 418);
+        ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img4);
+        contentPane.add(labelFondo);
         
 	        btnPescaderia.addMouseListener(new MouseAdapter() {
 	        	@Override
@@ -104,5 +115,22 @@ public class VentanaMenu extends JFrame {
 	        	}
 	        });
         
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }

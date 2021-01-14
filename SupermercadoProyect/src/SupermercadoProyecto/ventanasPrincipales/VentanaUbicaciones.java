@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 
 public class VentanaUbicaciones extends JFrame {
 
@@ -42,7 +43,7 @@ public class VentanaUbicaciones extends JFrame {
 	 */
 	public VentanaUbicaciones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 362);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,11 +67,6 @@ public class VentanaUbicaciones extends JFrame {
 		btnNewButton.setBounds(10, 48, 85, 21);
 		contentPane.add(btnNewButton);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setEnabled(false);
-		textPane.setBounds(311, 88, 115, 131);
-		contentPane.add(textPane);
-		
 		JButton btnNewButton_1 = new JButton("\u00C1lava");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -83,16 +79,6 @@ public class VentanaUbicaciones extends JFrame {
 		btnNewButton_2.setBounds(196, 48, 85, 21);
 		contentPane.add(btnNewButton_2);
 		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setEnabled(false);
-		textPane_1.setBounds(311, 88, 115, 125);
-		contentPane.add(textPane_1);
-		
-		JTextPane textPane_2 = new JTextPane();
-		textPane_2.setEnabled(false);
-		textPane_2.setBounds(311, 88, 115, 125);
-		contentPane.add(textPane_2);
-		
 		JButton BotonVolver = new JButton("Volver");
 		BotonVolver.addMouseListener(new MouseAdapter() {
 			@Override
@@ -102,7 +88,7 @@ public class VentanaUbicaciones extends JFrame {
 				dispose();
 			}
 		});
-		BotonVolver.setBounds(321, 232, 85, 21);
+		BotonVolver.setBounds(196, 252, 85, 21);
 		contentPane.add(BotonVolver);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");

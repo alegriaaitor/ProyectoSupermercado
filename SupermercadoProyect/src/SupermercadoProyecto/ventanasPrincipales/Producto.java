@@ -1,6 +1,6 @@
 package SupermercadoProyecto.ventanasPrincipales;
 
-public class Producto {
+public class Producto implements Comparable<Producto>{
 		
 	private String nombre;
 	private double precio;
@@ -27,6 +27,16 @@ public class Producto {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}	
+	
+	@Override
+	public String toString() {
+		return "Producto [nombre=" + nombre + ", precio=" + precio + "]";
+	}
+	@Override
+	public int compareTo(Producto arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

@@ -1,11 +1,7 @@
 package SupermercadoProyecto.ventanasPrincipales;
 import java.awt.*;
 
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.File;
@@ -16,7 +12,6 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
 import SupermercadoProyecto.ventanasPrincipales.*;
 
 import ConexionBD.*;
@@ -63,23 +58,26 @@ public class VentanaRegistro extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 582, 398);
+		setBounds(100, 100, 588, 401);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel labelIntroducirDatos = new JLabel("Introduzca los siguientes datos:");
+		labelIntroducirDatos.setForeground(Color.WHITE);
 		labelIntroducirDatos.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelIntroducirDatos.setBounds(31, 54, 200, 33);
 		contentPane.add(labelIntroducirDatos);
 		
-		JLabel labelRegistrarNuevoUsuario = new JLabel("Registrar nuevo usuario");
+		JLabel labelRegistrarNuevoUsuario = new JLabel("REGISTRA NUEVO USUARIO");
+		labelRegistrarNuevoUsuario.setForeground(Color.WHITE);
 		labelRegistrarNuevoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelRegistrarNuevoUsuario.setBounds(31, 23, 179, 21);
+		labelRegistrarNuevoUsuario.setBounds(31, 23, 200, 21);
 		contentPane.add(labelRegistrarNuevoUsuario);
 		
 		JLabel labelNombre = new JLabel("Nombre");
+		labelNombre.setForeground(Color.WHITE);
 		labelNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelNombre.setBounds(31, 97, 70, 17);
 		contentPane.add(labelNombre);
@@ -90,6 +88,7 @@ public class VentanaRegistro extends JFrame {
 		textoNombre.setColumns(10);
 		
 		JLabel lableApellido = new JLabel("Apellido");
+		lableApellido.setForeground(Color.WHITE);
 		lableApellido.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lableApellido.setBounds(31, 137, 70, 17);
 		contentPane.add(lableApellido);
@@ -100,6 +99,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(textoApellido);
 		
 		JLabel labelEmail = new JLabel("Correo electr\u00F3nico");
+		labelEmail.setForeground(Color.WHITE);
 		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelEmail.setBounds(31, 181, 112, 17);
 		contentPane.add(labelEmail);
@@ -110,6 +110,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(texto_email);
 		
 		JLabel labelContrasena = new JLabel("Contrase\u00F1a");
+		labelContrasena.setForeground(Color.WHITE);
 		labelContrasena.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelContrasena.setBounds(31, 223, 82, 17);
 		contentPane.add(labelContrasena);
@@ -119,6 +120,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(texto_contrasena);
 		
 		JLabel labelDireccion = new JLabel("Numero de contacto");
+		labelDireccion.setForeground(Color.WHITE);
 		labelDireccion.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelDireccion.setBounds(31, 265, 136, 17);
 		contentPane.add(labelDireccion);
@@ -129,6 +131,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(textNumero);
 		
 		JLabel labelUsuario = new JLabel("Usuario");
+		labelUsuario.setForeground(Color.WHITE);
 		labelUsuario.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelUsuario.setBounds(260, 97, 70, 17);
 		contentPane.add(labelUsuario);
@@ -139,6 +142,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(texto_usuario);
 		
 		JLabel labelSexo = new JLabel("Sexo");
+		labelSexo.setForeground(Color.WHITE);
 		labelSexo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelSexo.setBounds(260, 137, 70, 17);
 		contentPane.add(labelSexo);
@@ -156,6 +160,7 @@ public class VentanaRegistro extends JFrame {
 		
 		
 		JLabel labelD = new JLabel("Direcci\u00F3n de contacto");
+		labelD.setForeground(Color.WHITE);
 		labelD.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelD.setBounds(31, 304, 136, 17);
 		contentPane.add(labelD);
@@ -258,6 +263,7 @@ public class VentanaRegistro extends JFrame {
 		});
 		
 		JLabel labelDisponerDeCuenta = new JLabel("\u00BFYa dispone de una cuenta?");
+		labelDisponerDeCuenta.setForeground(Color.WHITE);
 		labelDisponerDeCuenta.setBounds(270, 29, 161, 13);
 		contentPane.add(labelDisponerDeCuenta);
 		
@@ -274,6 +280,14 @@ public class VentanaRegistro extends JFrame {
 		});
 		btnIniciarSesion.setBounds(441, 27, 117, 17);
 		contentPane.add(btnIniciarSesion);
+		
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 579, 372);
+		ImageIcon ico4 = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img4);
+		contentPane.add(labelFondo);
 		
 		
 		
