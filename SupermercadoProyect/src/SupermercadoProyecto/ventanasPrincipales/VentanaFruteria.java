@@ -128,25 +128,83 @@ public class VentanaFruteria extends JFrame {
 			e4.printStackTrace();
 		}
 		
-		JButton botonAnadir1 = new JButton("A\u00F1adir");
-		botonAnadir1.setBounds(294, 75, 85, 21);
-		contentPane.add(botonAnadir1);
-		
-		JButton botonAnadir4 = new JButton("A\u00F1adir");
-		botonAnadir4.setBounds(294, 367, 85, 21);
-		contentPane.add(botonAnadir4);
-		
-		JButton botonAnadir2 = new JButton("A\u00F1adir");
-		botonAnadir2.addActionListener(new ActionListener() {
+		JButton botonManzana = new JButton("A\u00F1adir");
+		botonManzana.setBounds(294, 75, 85, 21);
+		contentPane.add(botonManzana);
+		botonManzana.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto fruta1 = new Producto();
+					fruta1.setNombre("Manzana");
+					fruta1.setPrecio(con.obtenerPrecioProducto(fruta1.getNombre()));
+					con.anadirProductoACarrito(fruta1);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
 			}
 		});
-		botonAnadir2.setBounds(294, 174, 85, 21);
-		contentPane.add(botonAnadir2);
 		
-		JButton botonAnadir3 = new JButton("A\u00F1adir");
-		botonAnadir3.setBounds(294, 269, 85, 21);
-		contentPane.add(botonAnadir3);
+		JButton botonMelon = new JButton("A\u00F1adir");
+		botonMelon.setBounds(294, 367, 85, 21);
+		contentPane.add(botonMelon);
+		botonMelon.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto fruta2 = new Producto();
+					fruta2.setNombre("Melon");
+					fruta2.setPrecio(con.obtenerPrecioProducto(fruta2.getNombre()));
+					con.anadirProductoACarrito(fruta2);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
+		
+		JButton botonPlatano = new JButton("A\u00F1adir");
+		botonPlatano.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					con.connect();
+					Producto fruta3 = new Producto();
+					fruta3.setNombre("Platano");
+					fruta3.setPrecio(con.obtenerPrecioProducto(fruta3.getNombre()));
+					con.anadirProductoACarrito(fruta3);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
+		botonPlatano.setBounds(294, 174, 85, 21);
+		contentPane.add(botonPlatano);
+		
+		JButton botonPera = new JButton("A\u00F1adir");
+		botonPera.setBounds(294, 269, 85, 21);
+		contentPane.add(botonPera);
+		botonPera.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto fruta4 = new Producto();
+					fruta4.setNombre("Pera");
+					fruta4.setPrecio(con.obtenerPrecioProducto(fruta4.getNombre()));
+					con.anadirProductoACarrito(fruta4);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
 		
 		JButton botonVolver = new JButton("Volver");
 		botonVolver.addMouseListener(new MouseAdapter() {

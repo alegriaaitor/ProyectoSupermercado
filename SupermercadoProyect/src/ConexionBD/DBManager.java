@@ -102,7 +102,13 @@ public class DBManager {
 			throw new DBException("No ha sido posible ejecutar la query");
 		}
 				
-			}
+	}
+	public int obtenerPrecioTotal() throws DBException{
+		
+		
+		return 0;
+		
+	}
 
 
 	public void open() {
