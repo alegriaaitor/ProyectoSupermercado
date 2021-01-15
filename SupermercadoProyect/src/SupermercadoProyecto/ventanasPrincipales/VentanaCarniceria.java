@@ -166,10 +166,42 @@ public class VentanaCarniceria extends JFrame {
 		});
 		botonSolomillo.setBounds(373, 174, 85, 21);
 		contentPane.add(botonSolomillo);
+		botonSolomillo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto carne3 = new Producto();
+					carne3.setNombre("Solomillo de ternera");
+					carne3.setPrecio(con.obtenerPrecioProducto(carne3.getNombre()));
+					con.anadirProductoACarrito(carne3);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
 		
 		JButton botonEntrecot = new JButton("A\u00F1adir");
 		botonEntrecot.setBounds(373, 269, 85, 21);
 		contentPane.add(botonEntrecot);
+		botonEntrecot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto carne4 = new Producto();
+					carne4.setNombre("Entrecot de ternera");
+					carne4.setPrecio(con.obtenerPrecioProducto(carne4.getNombre()));
+					con.anadirProductoACarrito(carne4);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
 		
 		JButton btnNewButton_8 = new JButton("Volver");
 		btnNewButton_8.addMouseListener(new MouseAdapter() {
