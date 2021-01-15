@@ -27,6 +27,7 @@ import java.util.TreeSet;
 
 import javax.swing.JTable;
 import javax.swing.AbstractListModel;
+import SupermercadoProyecto.ventanasPrincipales.Supermercado;
 
 public class VentanaUbicaciones extends JFrame {
 
@@ -236,18 +237,11 @@ public class VentanaUbicaciones extends JFrame {
 		
 		contentPane.add(lblNewLabel_2);
 		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"PRODUCTOSssss"};
-			public int getSize() {
-	
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list.setBounds(345, 302, 136, -238);
-		contentPane.add(list);
+		DefaultListModel<Supermercado> modeloSupermercado = new DefaultListModel<Supermercado>();
+		JList lista = new JList(modeloSupermercado);
+		/*Supermercado = new Supermercado(" ", "", 0, "");
+		lista.setBounds(345, 302, 136, -238);
+		modeloSupermercado.addElement(h););*/
+		contentPane.add(lista);
 	}
 }
