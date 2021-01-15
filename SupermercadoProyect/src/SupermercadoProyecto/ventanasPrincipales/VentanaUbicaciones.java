@@ -77,21 +77,75 @@ public class VentanaUbicaciones extends JFrame {
 		
 		//Añado Productos al TreeSet asociado a cada entrada del HashMap
 		Producto p1 = new Producto(" Filipinos", 2.50);
-		Producto p2 = new Producto(" Filipinos", 2.50);
-		Producto p3 = new Producto(" Filipinos", 2.50);
-		Producto p4 = new Producto(" Filipinos", 2.50);
-		Producto p5 = new Producto(" Filipinos", 2.50);
-		Producto p6 = new Producto(" Filipinos", 2.50);
-		Producto p7 = new Producto(" Filipinos", 2.50);
-		Producto p8 = new Producto(" Filipinos", 2.50);
-		Producto p9 = new Producto(" Filipinos", 2.50);
+		Producto p2 = new Producto(" Papel Higienico dobele rollo", 3.83);
+		Producto p3 = new Producto(" Atun Claro ", 3.90);
+		Producto p4 = new Producto(" Leche Semidesnatada", 1.78);
+		Producto p5 = new Producto(" Fuet Espetec", 2.00);
+		Producto p6 = new Producto(" Tomate Frito", 1.00);
+		Producto p7 = new Producto(" Bacon Taquitos", 1.95);
+		Producto p8 = new Producto(" Pan Molde Tamaño Familiar", 0.95);
+		Producto p9 = new Producto(" Nuez mondada natural", 2.61);
+		Producto p10 = new Producto(" Chips Ahoy", 1.40);
+		Producto p11 = new Producto(" Garbanzo Cocido", 2.50);
+		Producto p12 = new Producto(" Espinacas", 1.30);
+		Producto p13 = new Producto(" Lechuga", 1.00);
+		Producto p14 = new Producto(" Calabacin", 1.50);
+		Producto p15 = new Producto(" Sardinas", 2.59);
+		Producto p16 = new Producto(" Lentejas", 0.50);
+		Producto p17 = new Producto(" Avena", 0.40);
+		Producto p18 = new Producto(" Chamorro", 4.50);
+		Producto p19 = new Producto(" Pechuga de Pollo", 2.50);
+		Producto p20 = new Producto(" Pechuga de Pavo", 1.75);
+		Producto p21 = new Producto(" Salmon", 10.50);
+		Producto p22 = new Producto(" Almendras", 2.50);
+		Producto p23 = new Producto(" Salchichas", 1.50);
+		Producto p24 = new Producto(" Tocino", 6.50);
+		Producto p25 = new Producto(" Chorizo", 2.50);
+		Producto p26 = new Producto(" Mantequilla", 2.50);
+		Producto p27 = new Producto(" Margarina", 2.50);
+		Producto p28 = new Producto(" Cepillo de Dientes", 0.40);
+		Producto p29 = new Producto(" Cleenex", 1.50);
+		Producto p30 = new Producto(" Espuma de afeitar", 2.50);
+
+		hmSupermercados.get(sup1).add(p1);
+		hmSupermercados.get(sup1).add(p2);
+		hmSupermercados.get(sup1).add(p3);
+		hmSupermercados.get(sup1).add(p4);
+		hmSupermercados.get(sup1).add(p5);
+		hmSupermercados.get(sup1).add(p6);
+		hmSupermercados.get(sup1).add(p7);
+		hmSupermercados.get(sup1).add(p8);
+		hmSupermercados.get(sup1).add(p9);
+		
+		hmSupermercados.get(sup2).add(p10);
+		hmSupermercados.get(sup2).add(p11);
+		hmSupermercados.get(sup2).add(p12);
+		hmSupermercados.get(sup2).add(p13);
+		hmSupermercados.get(sup2).add(p14);
+		hmSupermercados.get(sup2).add(p15);
+		hmSupermercados.get(sup2).add(p16);
+		hmSupermercados.get(sup2).add(p17);
+		hmSupermercados.get(sup2).add(p18);
+		hmSupermercados.get(sup2).add(p19);
+		
+		hmSupermercados.get(sup3).add(p20);
+		hmSupermercados.get(sup3).add(p21);
+		hmSupermercados.get(sup3).add(p22);
+		hmSupermercados.get(sup3).add(p23);
+		hmSupermercados.get(sup3).add(p24);
+		hmSupermercados.get(sup3).add(p25);
+		hmSupermercados.get(sup3).add(p26);
+		hmSupermercados.get(sup3).add(p27);
+		hmSupermercados.get(sup3).add(p28);
+		hmSupermercados.get(sup3).add(p29);
+		hmSupermercados.get(sup3).add(p30);
+
+
+
 
 		
-		Producto p10 = new Producto(" Chips Ahoy", 1.40);
-		Producto p20 = new Producto(" Oreo", 2.75);
-		hmSupermercados.get(sup1).add(p1);
-		hmSupermercados.get(sup2).add(p10);
-		hmSupermercados.get(sup3).add(p20);
+		
+		
 		
 		//Recorro todas las entradas al HashMap
 		for (Supermercado sup: hmSupermercados.keySet()) {
