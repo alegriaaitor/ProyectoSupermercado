@@ -32,9 +32,12 @@ import SupermercadoProyecto.ventanasPrincipales.Supermercado;
 public class VentanaUbicaciones extends JFrame {
 
 	private JPanel contentPane;
+	Supermercado supermercado;
 	/**
 	 * Launch the application.
 	 */
+	 public static HashMap<Supermercado, TreeSet<Producto>> hmSupermercados = new HashMap<>();
+
 	public static void main(String[] args) {
 		
 		
@@ -48,7 +51,6 @@ public class VentanaUbicaciones extends JFrame {
 			e.printStackTrace();
 		}
 		//EEDD que permite almacenar un conjunto ordenado de productos por cada Supermercado
-		HashMap<Supermercado, TreeSet<Producto>> hmSupermercados = new HashMap<>();
 		/*Hemos declarado e instanciado un HP cuya clave es la Supermercado y por cada supermercado guarda
 		 *un conjunto(Set) ordenado (Tree) de productos*/
 		
@@ -149,7 +151,7 @@ public class VentanaUbicaciones extends JFrame {
 		
 		
 		//Recorro todas las entradas al HashMap
-		for (Supermercado sup: hmSupermercados.keySet()) {
+	/*	for (Supermercado sup: hmSupermercados.keySet()) {
 			System.out.println(sup);
 			System.out.println("Productos Almacenados: ");
 			for(Producto p: hmSupermercados.get(sup)) {
@@ -158,7 +160,7 @@ public class VentanaUbicaciones extends JFrame {
 			
 		}
 
-
+	 */
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -177,47 +179,66 @@ public class VentanaUbicaciones extends JFrame {
 	 */
 	public VentanaUbicaciones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 362);
+		setBounds(100, 100, 744, 409);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Foto");
-		lblNewLabel.setBounds(10, 69, 291, 194);
+		lblNewLabel.setBounds(0, 99, 291, 194);
 	
 		ImageIcon ico1 = new ImageIcon("imagenes/euskadi-mapa.png");
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
         lblNewLabel.setIcon(img1);
 		contentPane.add(lblNewLabel);
 		
+		JList list = new JList();
+		list.setBounds(311, 99, 394, 194);
+		contentPane.add(list);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inf\u00F3rmate sobre donde se situan nuestros supermercados");
-		lblNewLabel_1.setBounds(152, 10, 274, 28);
+		lblNewLabel_1.setBounds(152, 10, 350, 28);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Vizcaya");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton botonVizcaya = new JButton("Vizcaya");
+
+		botonVizcaya.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				DefaultListModel<Supermercado> modelSupermercado1 = new DefaultListModel<Supermercado>();
+				for(Supermercado sup: hmSupermercados.keySet()) {
+					modelSupermercado1.addElement(sup);
+					list.setModel(modelSupermercado1);
+					
+				}
 				
+				
+
 			}
 		});
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBounds(10, 48, 85, 21);
-		contentPane.add(btnNewButton);
+		botonVizcaya.setForeground(Color.BLACK);
+		botonVizcaya.setBounds(10, 48, 85, 21);
+		contentPane.add(botonVizcaya);
 		
-		JButton btnNewButton_1 = new JButton("\u00C1lava");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton botonAlava = new JButton("\u00C1lava");
+		botonAlava.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			}
+				
+				DefaultListModel<Supermercado> modelSupermercado1 = new DefaultListModel<Supermercado>();
+				for(Supermercado sup: hmSupermercados.keySet()) {
+					modelSupermercado1.addElement(sup);
+					list.setModel(modelSupermercado1);
+				
+				}
+			}	
 		});
-		btnNewButton_1.setBounds(101, 48, 85, 21);
-		contentPane.add(btnNewButton_1);
+		botonAlava.setBounds(101, 48, 85, 21);
+		contentPane.add(botonAlava);
 		
-		JButton btnNewButton_2 = new JButton("Guip\u00FAzcoa");
-		btnNewButton_2.setBounds(196, 48, 85, 21);
-		contentPane.add(btnNewButton_2);
+		JButton botonGuipuzcoa = new JButton("Guip\u00FAzcoa");
+		botonGuipuzcoa.setBounds(196, 48, 85, 21);
+		contentPane.add(botonGuipuzcoa);
 		
 		JButton BotonVolver = new JButton("Volver");
 		BotonVolver.addMouseListener(new MouseAdapter() {
@@ -228,20 +249,10 @@ public class VentanaUbicaciones extends JFrame {
 				dispose();
 			}
 		});
-		BotonVolver.setBounds(196, 252, 85, 21);
+		BotonVolver.setBounds(24, 317, 85, 21);
 		contentPane.add(BotonVolver);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(10, 5, 53, 38);
+	
 		
-		
-		contentPane.add(lblNewLabel_2);
-		
-		DefaultListModel<Supermercado> modeloSupermercado = new DefaultListModel<Supermercado>();
-		JList lista = new JList(modeloSupermercado);
-		/*Supermercado = new Supermercado(" ", "", 0, "");
-		lista.setBounds(345, 302, 136, -238);
-		modeloSupermercado.addElement(h););*/
-		contentPane.add(lista);
 	}
 }

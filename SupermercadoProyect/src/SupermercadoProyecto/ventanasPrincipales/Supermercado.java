@@ -49,7 +49,7 @@ public class Supermercado implements Comparable<Supermercado>{
 
 		@Override
 		public String toString() {
-			return "Supermercado [localidad=" + localidad + ", direccion=" + direccion + ", horario=" + horario + "]";
+			return localidad + ", " + direccion + ", Abrimos de: " + horario ;
 		}
 
 		@Override
