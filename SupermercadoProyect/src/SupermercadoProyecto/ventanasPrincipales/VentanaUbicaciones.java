@@ -208,8 +208,10 @@ public class VentanaUbicaciones extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				DefaultListModel<Supermercado> modelSupermercado1 = new DefaultListModel<Supermercado>();
 				for(Supermercado sup: hmSupermercados.keySet()) {
-					modelSupermercado1.addElement(sup);
-					list.setModel(modelSupermercado1);
+					if(sup.getLocalidad().equals("Vizcaya")) {
+						modelSupermercado1.addElement(sup);
+						list.setModel(modelSupermercado1);
+					}
 					
 				}
 				
@@ -227,9 +229,10 @@ public class VentanaUbicaciones extends JFrame {
 				
 				DefaultListModel<Supermercado> modelSupermercado1 = new DefaultListModel<Supermercado>();
 				for(Supermercado sup: hmSupermercados.keySet()) {
-					modelSupermercado1.addElement(sup);
-					list.setModel(modelSupermercado1);
-				
+					if(sup.getLocalidad().equals("Alava")) {
+						modelSupermercado1.addElement(sup);
+						list.setModel(modelSupermercado1);
+					}
 				}
 			}	
 		});
@@ -239,6 +242,18 @@ public class VentanaUbicaciones extends JFrame {
 		JButton botonGuipuzcoa = new JButton("Guip\u00FAzcoa");
 		botonGuipuzcoa.setBounds(196, 48, 85, 21);
 		contentPane.add(botonGuipuzcoa);
+		botonGuipuzcoa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				DefaultListModel<Supermercado> modelSupermercado1 = new DefaultListModel<Supermercado>();
+				for(Supermercado sup: hmSupermercados.keySet()) {
+					if(sup.getLocalidad().equals("Guipuzcoa")) {
+						modelSupermercado1.addElement(sup);
+						list.setModel(modelSupermercado1);
+					}
+				}
+			}	
+		});
 		
 		JButton BotonVolver = new JButton("Volver");
 		BotonVolver.addMouseListener(new MouseAdapter() {
