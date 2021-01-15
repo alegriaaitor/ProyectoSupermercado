@@ -89,6 +89,20 @@ public class DBManager {
 		}	
 		return precio;
 	}
+	//AÑADIR PRODUCTO A CARRITO
+	public void anadirProductoACarrito(Producto producto) throws DBException{
+				
+		String nombre = producto.getNombre();
+		double precio = producto.getPrecio();
+				
+		try (Statement s= conexion.createStatement()) {
+			//Añadimos en la base de datos los producto que queremos añadir al carrito
+			s.executeUpdate("INSERT INTO carrito (nombre, precio) VALUES (' " + nombre + " ', ' "+ precio + "')");
+		} catch (SQLException e) {
+			throw new DBException("No ha sido posible ejecutar la query");
+		}
+				
+			}
 
 
 	public void open() {
@@ -101,4 +115,6 @@ public class DBManager {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }

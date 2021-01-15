@@ -126,12 +126,11 @@ public class VentanaCarniceria extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-				Carrito carrito = new Carrito();
 				con.connect();
 				Producto carne1 = new Producto();
 				carne1.setNombre("Chuleton de vaca");
 				carne1.setPrecio(con.obtenerPrecioProducto("Chuleton de vaca"));
-				carrito.aniadirProductoAlCarrito(carne1);
+				con.anadirProductoACarrito(carne1);
 				con.disconnect();
 				}catch(DBException e) {
 					e.printStackTrace();
@@ -140,21 +139,37 @@ public class VentanaCarniceria extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton_1 = new JButton("A\u00F1adir");
-		btnNewButton_1.setBounds(373, 356, 85, 21);
-		contentPane.add(btnNewButton_1);
+		JButton botonCriollo = new JButton("A\u00F1adir");
+		botonCriollo.setBounds(373, 356, 85, 21);
+		contentPane.add(botonCriollo);
+		botonCriollo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto carne2 = new Producto();
+					carne2.setNombre("Chorizo criollo");
+					carne2.setPrecio(con.obtenerPrecioProducto(carne2.getNombre()));
+					con.anadirProductoACarrito(carne2);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
 		
-		JButton btnNewButton_2 = new JButton("A\u00F1adir");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton botonSolomillo = new JButton("A\u00F1adir");
+		botonSolomillo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(373, 174, 85, 21);
-		contentPane.add(btnNewButton_2);
+		botonSolomillo.setBounds(373, 174, 85, 21);
+		contentPane.add(botonSolomillo);
 		
-		JButton btnNewButton_3 = new JButton("A\u00F1adir");
-		btnNewButton_3.setBounds(373, 269, 85, 21);
-		contentPane.add(btnNewButton_3);
+		JButton botonEntrecot = new JButton("A\u00F1adir");
+		botonEntrecot.setBounds(373, 269, 85, 21);
+		contentPane.add(botonEntrecot);
 		
 		JButton btnNewButton_8 = new JButton("Volver");
 		btnNewButton_8.addMouseListener(new MouseAdapter() {
