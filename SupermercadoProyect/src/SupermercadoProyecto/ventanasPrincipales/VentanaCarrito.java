@@ -124,6 +124,7 @@ public class VentanaCarrito extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		p = new ArrayList<>();
+		
 		JList list;
 		
 		DefaultListModel<Producto> modelo1= new DefaultListModel<>();
@@ -142,6 +143,7 @@ public class VentanaCarrito extends JFrame {
 		list = new JList<>(modelo1);
 		list.setBounds(58, 72, 415, 317);
 		contentPane.add(list);
+		
 		
 		
 		
@@ -190,7 +192,14 @@ public class VentanaCarrito extends JFrame {
 							}
 						}
 						
-						
+						try {
+							con.connect();
+							con.vaciarCarrito();
+							con.disconnect();
+						} catch (DBException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						
 						labelProcesandoCompra.setVisible(false);
 						progressBar.setVisible(false);

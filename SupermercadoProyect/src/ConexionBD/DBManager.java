@@ -128,6 +128,19 @@ public class DBManager {
 		}
 		return al;
 	}
+	public void vaciarCarrito() {
+        String sentSQL = "DELETE from carrito";
+        try {
+            Statement st = conexion.createStatement();
+            st.executeUpdate(sentSQL);
+            st.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	
 	public int obtenerPrecioTotal() throws DBException{
 		
 		
