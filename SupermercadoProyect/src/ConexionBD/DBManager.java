@@ -158,7 +158,7 @@ public class DBManager {
 		return existe;
 	}
 	
-	public void insertarNuevaProducto(String p) throws DBException {
+	public void insertarNuevoProducto(String p) throws DBException {
 		if(!existeProducto(p)) {
 			String sentSQL = "INSERT INTO producto VALUES('"+ p +"')";
 			try {

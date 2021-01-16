@@ -2,6 +2,8 @@ package SupermercadoProyecto.ventanasPrincipales;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -43,10 +45,13 @@ public class VentanaPropuestas extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPropuestas() {
-		
-		dbManager = new DBManager();
-		dbManager.open();
-		
+		try {
+			dbManager = new DBManager();
+			dbManager.connect();
+		}catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 727, 454);
 		contentPane = new JPanel();
@@ -61,7 +66,7 @@ public class VentanaPropuestas extends JFrame {
 		contentPane.add(listaPropuestas);
 		
 		JLabel lblNewLabel = new JLabel("\u00BFQUE PRODUCTOS TE GUSTARIA VER EN NUESTROS SUPERMERCADOS?");
-		lblNewLabel.setBounds(39, 23, 367, 25);
+		lblNewLabel.setBounds(39, 23, 393, 25);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("D\u00E9janos tus sugerencias aqu\u00ED abajo");
@@ -69,27 +74,44 @@ public class VentanaPropuestas extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton botonVolcar = new JButton("A\u00F1adir al Almacen");
-		botonVolcar.setBounds(442, 349, 85, 21);
+		botonVolcar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					volcarProductosDeFormaRecursiva(modeloLista, 0);
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		botonVolcar.setBounds(442, 349, 166, 21);
 		contentPane.add(botonVolcar);
+		
 		
 		setVisible(true);
 
 		
-		//Añadir fechas insertadas por el usuario
+		//Añadir Productos insertadas por el usuario
 				int resp = JOptionPane.showConfirmDialog(null, "¿Quieres dejar alguna recomendacion?");
 				while(resp == JOptionPane.OK_OPTION) {
 					String f = JOptionPane.showInputDialog("Introduce el nombre del producto");
+					String precio = JOptionPane.showInputDialog("Introduce lo que consideres que deberia valer el producto");
 					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, f))
 						modeloLista.addElement(f);
 					else
-					resp = JOptionPane.showConfirmDialog(null, "¿Quieres insertar otra fecha?");
+						JOptionPane.showMessageDialog(null, "No se pueden insertar productos repetidos");
+						resp = JOptionPane.showConfirmDialog(null, "¿Quieres insertar otro producto?");
+					
 				}
 		}
 	
 		public void volcarProductosDeFormaRecursiva(DefaultListModel<String> modeloLista, int i) throws DBException {
 			if(i<modeloLista.size()) {
 				String p = modeloLista.get(i);
-				dbManager.insertarNuevaProducto(p);
+				dbManager.insertarNuevoProducto(p);
 				volcarProductosDeFormaRecursiva(modeloLista, i+1);
 			}
 		}
