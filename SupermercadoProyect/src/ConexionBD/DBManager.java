@@ -1,10 +1,8 @@
 package ConexionBD;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import java.sql.*;
+import java.util.ArrayList;
+
 import SupermercadoProyecto.ventanasPrincipales.*;
 
 public class DBManager {
@@ -102,6 +100,32 @@ public class DBManager {
 			throw new DBException("No ha sido posible ejecutar la query");
 		}
 				
+	}
+	public ArrayList<Producto> obtenerCarrito(){
+		String sentSQL = "SELECT * FROM carrito";
+		ArrayList<Producto> al = new ArrayList<>();
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(sentSQL);
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				double precio = rs.getDouble("precio");
+				Producto p = new Producto(nombre,precio);
+				al.add(p);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				throw new DBException("No se han obtenido los alumnos", e);
+			} catch (DBException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		return al;
 	}
 	public int obtenerPrecioTotal() throws DBException{
 		

@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ConexionBD.DBException;
+import ConexionBD.DBManager;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
@@ -27,6 +31,7 @@ public class VentanaCarrito extends JFrame {
 	private JPanel contentPane;
 	private ArrayList <Producto> p;
 	final VentanaMenu menu = new VentanaMenu();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -46,6 +51,7 @@ public class VentanaCarrito extends JFrame {
 
 	/**
 	 * Create the frame.
+	 *  
 	 */
 	public VentanaCarrito() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,15 +124,25 @@ public class VentanaCarrito extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		p = new ArrayList<>();
-		DefaultListModel lista = new DefaultListModel();
-		JList list = new JList();
+		JList list;
+		
+		DefaultListModel<Producto> modelo1= new DefaultListModel<>();
+		DBManager con = new DBManager();
+		try {
+			con.connect();
+			ArrayList<Producto> pro = con.obtenerCarrito();
+			con.disconnect();
+			for(Producto p: pro) {
+				modelo1.addElement(p);
+			}
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		list = new JList<>(modelo1);
 		list.setBounds(58, 72, 415, 317);
 		contentPane.add(list);
-		Carrito carrito = new Carrito();
-		carrito.copiarArrayList(p);
-		for (int i = 0; i < p.size(); i++) {
-			lista.addElement(p);
-		}
+		
 		
 		
 		
