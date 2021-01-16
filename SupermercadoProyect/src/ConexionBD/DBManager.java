@@ -140,6 +140,40 @@ public class DBManager {
         }
     }
 	
+	public boolean existeProducto(String p) throws DBException {
+		boolean existe = false;
+		String sentSQL = "SELECT * FROM producto WHERE nombre ='"+ p +"'";
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(sentSQL);
+			if(rs.next()) 
+				existe = true;
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new DBException("No se ha podido buscar el produtco en la tabla Productos");
+		}
+		return existe;
+	}
+	
+	public void insertarNuevaProducto(String p) throws DBException {
+		if(!existeProducto(p)) {
+			String sentSQL = "INSERT INTO producto VALUES('"+ p +"')";
+			try {
+				Statement st = conexion.createStatement();
+				st.executeUpdate(sentSQL);
+				st.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				throw new DBException("No se ha podido insertar el producto en la tabla producto");
+			}
+		}
+	}
+	
+	
 	
 	public int obtenerPrecioTotal() throws DBException{
 		
