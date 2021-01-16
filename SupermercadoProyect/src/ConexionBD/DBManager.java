@@ -101,6 +101,7 @@ public class DBManager {
 		}
 				
 	}
+	//MOSTRAR LOS PRODUCTOS AÑADIDOS AL CARRITO
 	public ArrayList<Producto> obtenerCarrito(){
 		String sentSQL = "SELECT * FROM carrito";
 		ArrayList<Producto> al = new ArrayList<>();
@@ -119,7 +120,7 @@ public class DBManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			try {
-				throw new DBException("No se han obtenido los alumnos", e);
+				throw new DBException("No se han obtenido productos", e);
 			} catch (DBException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
