@@ -107,14 +107,7 @@ public class VentanaMenu extends JFrame {
 		menuNombreMenu.add(menuItemPescaderia);
 		
 		JLabel labelFondo = new JLabel("New label");
-		labelFondo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VentanaInicioSesion inicio= new VentanaInicioSesion();
-				inicio.setVisible(true);
-				dispose();
-			}
-		});
+		
 		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
 		labelFondo.setBounds(0, 0, 589, 432);
 		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
@@ -127,9 +120,31 @@ public class VentanaMenu extends JFrame {
 		lblNewLabel.setBounds(39, 336, 130, 34);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Iniciar Sesion");
-		btnNewButton.setBounds(49, 380, 120, 32);
-		contentPane.add(btnNewButton);
+		JButton btnIniciar = new JButton("Iniciar Sesion");
+		btnIniciar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaInicioSesion vi = new VentanaInicioSesion();
+				vi.setVisible(true);
+				dispose();
+			}
+		});
+		
+        
+		btnIniciar.setBounds(49, 380, 120, 32);
+		contentPane.add(btnIniciar);
+		
+		JButton btnUbicacion = new JButton("botonUbicacion");
+		btnUbicacion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaUbicaciones vu = new VentanaUbicaciones();
+				vu.setVisible(true);
+				dispose();
+			}
+		});
+		btnUbicacion.setBounds(187, 380, 130, 32);
+		contentPane.add(btnUbicacion);
         
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
