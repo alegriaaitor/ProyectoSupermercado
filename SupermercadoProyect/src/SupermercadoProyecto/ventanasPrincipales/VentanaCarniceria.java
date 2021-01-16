@@ -231,37 +231,37 @@ public class VentanaCarniceria extends JFrame {
 		btnNewButton_9.setBounds(237, 425, 94, 21);
 		contentPane.add(btnNewButton_9);
 		
-		JLabel labelSolomillo = new JLabel("Foto");
-		labelSolomillo.setBounds(26, 139, 75, 75);
-		contentPane.add(labelSolomillo);
+		JLabel labelPalmerita = new JLabel("Foto");
+		labelPalmerita.setBounds(26, 139, 75, 75);
+		contentPane.add(labelPalmerita);
 		ImageIcon ico4 = new ImageIcon("imagenes/solomillo.png");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelSolomillo.getWidth(), labelSolomillo.getHeight(), Image.SCALE_SMOOTH));
-        labelSolomillo.setIcon(img4);
-		contentPane.add(labelSolomillo);
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelPalmerita.getWidth(), labelPalmerita.getHeight(), Image.SCALE_SMOOTH));
+        labelPalmerita.setIcon(img4);
+		contentPane.add(labelPalmerita);
 		
-		JLabel labelEntrecot = new JLabel("Foto");
-		labelEntrecot.setBounds(26, 237, 75, 75);
-		contentPane.add(labelEntrecot);
-		ImageIcon ico3 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelEntrecot.getWidth(), labelEntrecot.getHeight(), Image.SCALE_SMOOTH));
-        labelEntrecot.setIcon(img3);
-		contentPane.add(labelEntrecot);
+		JLabel labelBolloMantequilla = new JLabel("Foto");
+		labelBolloMantequilla.setBounds(26, 237, 75, 75);
+		contentPane.add(labelBolloMantequilla);
+		ImageIcon ico3 = new ImageIcon("imagenes/entrecot.png");
+        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelBolloMantequilla.getWidth(), labelBolloMantequilla.getHeight(), Image.SCALE_SMOOTH));
+        labelBolloMantequilla.setIcon(img3);
+		contentPane.add(labelBolloMantequilla);
 		
-		JLabel labelChorizo = new JLabel("Foto");
-		labelChorizo.setBounds(26, 329, 75, 75);
-		contentPane.add(labelChorizo);
+		JLabel labelNapolitana = new JLabel("Foto");
+		labelNapolitana.setBounds(26, 329, 75, 75);
+		contentPane.add(labelNapolitana);
 		ImageIcon ico2 = new ImageIcon("imagenes/criollo.png");
-        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelChorizo.getWidth(), labelChorizo.getHeight(), Image.SCALE_SMOOTH));
-        labelChorizo.setIcon(img2);
-		contentPane.add(labelChorizo);
+        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelNapolitana.getWidth(), labelNapolitana.getHeight(), Image.SCALE_SMOOTH));
+        labelNapolitana.setIcon(img2);
+		contentPane.add(labelNapolitana);
 		
-		JLabel labelChuleton_1 = new JLabel("Foto");
-		labelChuleton_1.setBounds(26, 48, 75, 75);
-		contentPane.add(labelChuleton_1);
+		JLabel labelPan = new JLabel("Foto");
+		labelPan.setBounds(26, 48, 75, 75);
+		contentPane.add(labelPan);
 		ImageIcon ico1 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelChuleton_1.getWidth(), labelChuleton_1.getHeight(), Image.SCALE_SMOOTH));
-        labelChuleton_1.setIcon(img1);
-		contentPane.add(labelChuleton_1);
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelPan.getWidth(), labelPan.getHeight(), Image.SCALE_SMOOTH));
+        labelPan.setIcon(img1);
+		contentPane.add(labelPan);
 		ImageIcon ico = new ImageIcon("imagenes/fondos.jpg");
 		
 		JButton btnNewButton = new JButton("Cambiar Seccion");
@@ -276,7 +276,7 @@ public class VentanaCarniceria extends JFrame {
 		btnNewButton.setBounds(372, 425, 136, 21);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("CARNICERIA");
+		JLabel lblNewLabel = new JLabel("PANADERIA");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblNewLabel.setBounds(157, 25, 149, 27);
@@ -289,5 +289,7 @@ public class VentanaCarniceria extends JFrame {
         ImageIcon img = new ImageIcon(ico7.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
         labelFondo.setIcon(img);
 		contentPane.add(labelFondo);
+		
+		
 	}
 }
