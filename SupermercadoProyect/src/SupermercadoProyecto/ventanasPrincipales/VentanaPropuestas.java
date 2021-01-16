@@ -80,7 +80,7 @@ public class VentanaPropuestas extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				try {
-					volcarProductosDeFormaRecursiva(modeloLista, 0);
+					volcarProductosDeFormaRecursiva(modeloLista, 0, 0);
 				} catch (DBException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -97,31 +97,31 @@ public class VentanaPropuestas extends JFrame {
 		//Añadir Productos insertadas por el usuario
 				int resp = JOptionPane.showConfirmDialog(null, "¿Quieres dejar alguna recomendacion?");
 				while(resp == JOptionPane.OK_OPTION) {
-					String f = JOptionPane.showInputDialog("Introduce el nombre del producto");
+					String p = JOptionPane.showInputDialog("Introduce el nombre del producto");
 					String precio = JOptionPane.showInputDialog("Introduce lo que consideres que deberia valer el producto");
-					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, f))
-						modeloLista.addElement(f);
-					else
+					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, 0, p)) {
+						modeloLista.addElement(p + "," + precio);
+					}else {
 						JOptionPane.showMessageDialog(null, "No se pueden insertar productos repetidos");
 						resp = JOptionPane.showConfirmDialog(null, "¿Quieres insertar otro producto?");
-					
+					}
 				}
 		}
 	
-		public void volcarProductosDeFormaRecursiva(DefaultListModel<String> modeloLista, int i) throws DBException {
+		public void volcarProductosDeFormaRecursiva(DefaultListModel<String> modeloLista, int i, int a) throws DBException {
 			if(i<modeloLista.size()) {
 				String p = modeloLista.get(i);
 				dbManager.insertarNuevoProducto(p);
-				volcarProductosDeFormaRecursiva(modeloLista, i+1);
+				volcarProductosDeFormaRecursiva(modeloLista, i+1, a+1);
 			}
 		}
 	
-		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<String> modeloLista, int i, String p) {
+		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<String> modeloLista, int i,int a, String p) {
 			if(i<modeloLista.size()) {
 				if(modeloLista.get(i).equals(p)) {
 					return true;
 				}else {
-					return buscarProductoDeFormaRecursiva(modeloLista, i+1, p);
+					return buscarProductoDeFormaRecursiva(modeloLista, i+1, a+1, p);
 				}
 			}else {
 				return false;
