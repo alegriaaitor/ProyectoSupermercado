@@ -231,37 +231,37 @@ public class VentanaCarniceria extends JFrame {
 		btnNewButton_9.setBounds(237, 425, 94, 21);
 		contentPane.add(btnNewButton_9);
 		
-		JLabel labelPalmerita = new JLabel("Foto");
-		labelPalmerita.setBounds(26, 139, 75, 75);
-		contentPane.add(labelPalmerita);
+		JLabel labelSolomillo = new JLabel("Foto");
+		labelSolomillo.setBounds(26, 139, 75, 75);
+		contentPane.add(labelSolomillo);
 		ImageIcon ico4 = new ImageIcon("imagenes/solomillo.png");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelPalmerita.getWidth(), labelPalmerita.getHeight(), Image.SCALE_SMOOTH));
-        labelPalmerita.setIcon(img4);
-		contentPane.add(labelPalmerita);
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelSolomillo.getWidth(), labelSolomillo.getHeight(), Image.SCALE_SMOOTH));
+        labelSolomillo.setIcon(img4);
+		contentPane.add(labelSolomillo);
 		
-		JLabel labelBolloMantequilla = new JLabel("Foto");
-		labelBolloMantequilla.setBounds(26, 237, 75, 75);
-		contentPane.add(labelBolloMantequilla);
+		JLabel labelEntrecot = new JLabel("Foto");
+		labelEntrecot.setBounds(26, 237, 75, 75);
+		contentPane.add(labelEntrecot);
 		ImageIcon ico3 = new ImageIcon("imagenes/entrecot.png");
-        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelBolloMantequilla.getWidth(), labelBolloMantequilla.getHeight(), Image.SCALE_SMOOTH));
-        labelBolloMantequilla.setIcon(img3);
-		contentPane.add(labelBolloMantequilla);
+        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelEntrecot.getWidth(), labelEntrecot.getHeight(), Image.SCALE_SMOOTH));
+        labelEntrecot.setIcon(img3);
+		contentPane.add(labelEntrecot);
 		
-		JLabel labelNapolitana = new JLabel("Foto");
-		labelNapolitana.setBounds(26, 329, 75, 75);
-		contentPane.add(labelNapolitana);
+		JLabel labelChorizoCriollo = new JLabel("Foto");
+		labelChorizoCriollo.setBounds(26, 329, 75, 75);
+		contentPane.add(labelChorizoCriollo);
 		ImageIcon ico2 = new ImageIcon("imagenes/criollo.png");
-        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelNapolitana.getWidth(), labelNapolitana.getHeight(), Image.SCALE_SMOOTH));
-        labelNapolitana.setIcon(img2);
-		contentPane.add(labelNapolitana);
+        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelChorizoCriollo.getWidth(), labelChorizoCriollo.getHeight(), Image.SCALE_SMOOTH));
+        labelChorizoCriollo.setIcon(img2);
+		contentPane.add(labelChorizoCriollo);
 		
-		JLabel labelPan = new JLabel("Foto");
-		labelPan.setBounds(26, 48, 75, 75);
-		contentPane.add(labelPan);
+		JLabel labelChuleton = new JLabel("Foto");
+		labelChuleton.setBounds(26, 48, 75, 75);
+		contentPane.add(labelChuleton);
 		ImageIcon ico1 = new ImageIcon("imagenes/chuleton.png");
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelPan.getWidth(), labelPan.getHeight(), Image.SCALE_SMOOTH));
-        labelPan.setIcon(img1);
-		contentPane.add(labelPan);
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelChuleton.getWidth(), labelChuleton.getHeight(), Image.SCALE_SMOOTH));
+        labelChuleton.setIcon(img1);
+		contentPane.add(labelChuleton);
 		ImageIcon ico = new ImageIcon("imagenes/fondos.jpg");
 		
 		JButton btnNewButton = new JButton("Cambiar Seccion");

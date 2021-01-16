@@ -19,7 +19,11 @@ import java.awt.event.MouseEvent;
 public class VentanaPanaderia extends JFrame {
 
 	private JPanel contentPane;
-	
+	private JLabel labelPrecioDonuts;
+	private JLabel labelPrecioNapolitana;
+	private JLabel labelPrecioPalmeritas;
+	private JLabel labelPrecioPan;
+
 	/**
 	 * Launch the application.
 	 */
@@ -47,35 +51,36 @@ public class VentanaPanaderia extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel nombreProducto1 = new JLabel("Merluza (500g)");
+		JLabel nombreProducto1 = new JLabel("Donuts (500g)");
 		nombreProducto1.setForeground(Color.WHITE);
 		nombreProducto1.setBounds(150, 87, 244, 13);
 		contentPane.add(nombreProducto1);
 		
 		
-		JLabel lblProducto = new JLabel("Sardina (250g)");
+		JLabel lblProducto = new JLabel("Palmeritas (250g)");
 		lblProducto.setForeground(Color.WHITE);
 		lblProducto.setBounds(150, 151, 244, 13);
 		contentPane.add(lblProducto);
 		
-		JLabel lblProducto_1 = new JLabel("Salmonete (300g)");
+		JLabel lblProducto_1 = new JLabel("Napolitana (300g)");
 		lblProducto_1.setForeground(Color.WHITE);
 		lblProducto_1.setBounds(150, 238, 244, 13);
 		contentPane.add(lblProducto_1);
 		
-		JLabel lblProducto_2 = new JLabel("Lenguado (250g)");
+		JLabel lblProducto_2 = new JLabel("Pan (250g)");
 		lblProducto_2.setForeground(Color.WHITE);
 		lblProducto_2.setBounds(150, 315, 244, 13);
 		contentPane.add(lblProducto_2);
 		
 		DBManager con = new DBManager();
-		JLabel labelPrecioMerluza;
+		//JLabel labelPrecioDonuts;	
+		
 		try {
 			con.connect();
-			labelPrecioMerluza = new JLabel("Precio: " + con.obtenerPrecioProducto("Merluza"));
-			labelPrecioMerluza.setForeground(Color.WHITE);
-			labelPrecioMerluza.setBounds(150, 110, 149, 13);
-			contentPane.add(labelPrecioMerluza);
+			JLabel labelPrecioDonuts = new JLabel("Precio: " + con.obtenerPrecioProducto("Donuts"));
+			labelPrecioDonuts.setForeground(Color.WHITE);
+			labelPrecioDonuts.setBounds(150, 110, 149, 13);
+			contentPane.add(labelPrecioDonuts);
 			con.disconnect();
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
@@ -84,22 +89,22 @@ public class VentanaPanaderia extends JFrame {
 		
 		try {			
 			con.connect();
-			JLabel labelPrecioSardina = new JLabel("Precio: " + con.obtenerPrecioProducto("Sardina"));
-			labelPrecioSardina.setForeground(Color.WHITE);
-			labelPrecioSardina.setBounds(150, 178, 138, 13);
-			contentPane.add(labelPrecioSardina);
+			JLabel labelPrecioPalmeritas = new JLabel("Precio: " + con.obtenerPrecioProducto("Palmeritas"));
+			labelPrecioPalmeritas.setForeground(Color.WHITE);
+			labelPrecioPalmeritas.setBounds(150, 178, 138, 13);
+			contentPane.add(labelPrecioPalmeritas);
 			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
-		}
+		}	
 		
 		try {			
 			con.connect();
-			JLabel labelPrecioSalmonete = new JLabel("Precio: " + con.obtenerPrecioProducto("Salmonete"));
-			labelPrecioSalmonete.setForeground(Color.WHITE);
-			labelPrecioSalmonete.setBounds(150, 256, 125, 13);
-			contentPane.add(labelPrecioSalmonete);
+			JLabel labelPrecioNapolitana = new JLabel("Precio: " + con.obtenerPrecioProducto("Napolitana"));
+			labelPrecioNapolitana.setForeground(Color.WHITE);
+			labelPrecioNapolitana.setBounds(150, 256, 125, 13);
+			contentPane.add(labelPrecioNapolitana);
 			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
@@ -108,35 +113,87 @@ public class VentanaPanaderia extends JFrame {
 			
 		try {			
 			con.connect();
-			JLabel labelPrecioLenguado = new JLabel("Precio: " + con.obtenerPrecioProducto("Lenguado"));
-			labelPrecioLenguado.setForeground(Color.WHITE);
-			labelPrecioLenguado.setBounds(150, 347, 125, 13);
-			contentPane.add(labelPrecioLenguado);
+			JLabel labelPrecioPan = new JLabel("Precio: " + con.obtenerPrecioProducto("Pan"));
+			labelPrecioPan.setForeground(Color.WHITE);
+			labelPrecioPan.setBounds(150, 347, 125, 13);
+			contentPane.add(labelPrecioPan);
 			con.disconnect();
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 						e2.printStackTrace();
 		}
 		
-		JButton botonAnadir1 = new JButton("A\u00F1adir");
-		botonAnadir1.setBounds(309, 106, 85, 21);
-		contentPane.add(botonAnadir1);
-		
-		JButton botonAnadir4 = new JButton("A\u00F1adir");
-		botonAnadir4.setBounds(309, 367, 85, 21);
-		contentPane.add(botonAnadir4);
-		
-		JButton botonAnadir2 = new JButton("A\u00F1adir");
-		botonAnadir2.addActionListener(new ActionListener() {
+		JButton botonDonuts = new JButton("A\u00F1adir");
+		botonDonuts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					con.connect();
+					Producto bollo4 = new Producto();
+					bollo4.setNombre("Donuts");
+					bollo4.setPrecio(con.obtenerPrecioProducto(bollo4.getNombre()));
+					con.anadirProductoACarrito(bollo4);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
 			}
 		});
-		botonAnadir2.setBounds(309, 174, 85, 21);
-		contentPane.add(botonAnadir2);
+		botonDonuts.setBounds(309, 106, 85, 21);
+		contentPane.add(botonDonuts);
 		
-		JButton botonAnadir3 = new JButton("A\u00F1adir");
-		botonAnadir3.setBounds(309, 269, 85, 21);
-		contentPane.add(botonAnadir3);
+		JButton botonPan = new JButton("A\u00F1adir");
+		botonPan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					con.connect();
+					Producto bollo3 = new Producto();
+					bollo3.setNombre("Pan");
+					bollo3.setPrecio(con.obtenerPrecioProducto(bollo3.getNombre()));
+					con.anadirProductoACarrito(bollo3);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
+		botonPan.setBounds(309, 367, 85, 21);
+		contentPane.add(botonPan);
+		
+		JButton botonPalmeritas = new JButton("A\u00F1adir");
+		botonPalmeritas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					con.connect();
+					Producto bollo1 = new Producto();
+					bollo1.setNombre("Palmeritas");
+					bollo1.setPrecio(con.obtenerPrecioProducto(bollo1.getNombre()));
+					con.anadirProductoACarrito(bollo1);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
+		botonPalmeritas.setBounds(309, 174, 85, 21);
+		contentPane.add(botonPalmeritas);
+		
+		JButton botonNapolitana = new JButton("A\u00F1adir");
+		botonNapolitana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					con.connect();
+					Producto bollo2 = new Producto();
+					bollo2.setNombre("Napolitana");
+					bollo2.setPrecio(con.obtenerPrecioProducto(bollo2.getNombre()));
+					con.anadirProductoACarrito(bollo2);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+			}
+		});
+		botonNapolitana.setBounds(309, 269, 85, 21);
+		contentPane.add(botonNapolitana);
 		
 		JButton botonVolver = new JButton("Volver");
 		botonVolver.addMouseListener(new MouseAdapter() {
@@ -166,37 +223,37 @@ public class VentanaPanaderia extends JFrame {
 		botonVerCarrito.setBounds(164, 425, 94, 21);
 		contentPane.add(botonVerCarrito);
 		
-		JLabel labelSardina = new JLabel("Foto");
-		labelSardina.setBounds(10, 160, 111, 48);
-		contentPane.add(labelSardina);
-		ImageIcon ico4 = new ImageIcon("imagenes/sardina.png");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelSardina.getWidth(), labelSardina.getHeight(), Image.SCALE_SMOOTH));
-        labelSardina.setIcon(img4);
-		contentPane.add(labelSardina);
+		JLabel labelDonuts = new JLabel("Foto");
+		labelDonuts.setBounds(10, 68, 85, 75);
+		contentPane.add(labelDonuts);
+		ImageIcon ico4 = new ImageIcon("imagenes/donuts.JPG");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelDonuts.getWidth(), labelDonuts.getHeight(), Image.SCALE_SMOOTH));
+        labelDonuts.setIcon(img4);
+		contentPane.add(labelDonuts);
 		
-		JLabel labelSalmonete = new JLabel("Foto");
-		labelSalmonete.setBounds(10, 238, 111, 48);
-		contentPane.add(labelSalmonete);
-		ImageIcon ico3 = new ImageIcon("imagenes/salmonete.png");
-        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelSalmonete.getWidth(), labelSalmonete.getHeight(), Image.SCALE_SMOOTH));
-        labelSalmonete.setIcon(img3);
-		contentPane.add(labelSalmonete);
+		JLabel labelPalmeritas = new JLabel("Foto");
+		labelPalmeritas.setBounds(10, 151, 85, 81);
+		contentPane.add(labelPalmeritas);
+		ImageIcon ico3 = new ImageIcon("imagenes/palmeritas.JPG");
+        ImageIcon img3 = new ImageIcon(ico3.getImage().getScaledInstance(labelPalmeritas.getWidth(), labelPalmeritas.getHeight(), Image.SCALE_SMOOTH));
+        labelPalmeritas.setIcon(img3);
+		contentPane.add(labelPalmeritas);
 		
-		JLabel labelLenguado = new JLabel("Foto");
-		labelLenguado.setBounds(10, 329, 111, 48);
-		contentPane.add(labelLenguado);
-		ImageIcon ico2 = new ImageIcon("imagenes/lenguado.png");
-        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelLenguado.getWidth(), labelLenguado.getHeight(), Image.SCALE_SMOOTH));
-        labelLenguado.setIcon(img2);
-		contentPane.add(labelLenguado);
+		JLabel labelPan = new JLabel("Foto");
+		labelPan.setBounds(10, 329, 85, 75);
+		contentPane.add(labelPan);
+		ImageIcon ico2 = new ImageIcon("imagenes/pan.JPG");
+        ImageIcon img2 = new ImageIcon(ico2.getImage().getScaledInstance(labelPan.getWidth(), labelPan.getHeight(), Image.SCALE_SMOOTH));
+        labelPan.setIcon(img2);
+		contentPane.add(labelPan);
 		
-		JLabel labelMerluza = new JLabel("Foto");
-		labelMerluza.setBounds(10, 75, 111, 48);
-		contentPane.add(labelMerluza);
-		ImageIcon ico1 = new ImageIcon("imagenes/merluza.png");
-        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelMerluza.getWidth(), labelMerluza.getHeight(), Image.SCALE_SMOOTH));
-        labelMerluza.setIcon(img1);
-		contentPane.add(labelMerluza);
+		JLabel labelNapolitana = new JLabel("Foto");
+		labelNapolitana.setBounds(10, 238, 85, 75);
+		contentPane.add(labelNapolitana);
+		ImageIcon ico1 = new ImageIcon("imagenes/napolitana.JPG");
+        ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(labelNapolitana.getWidth(), labelNapolitana.getHeight(), Image.SCALE_SMOOTH));
+        labelNapolitana.setIcon(img1);
+		contentPane.add(labelNapolitana);
 		
 		JButton btnNewButton = new JButton("Cambiar Seccion");
 		btnNewButton.addMouseListener(new MouseAdapter() {
