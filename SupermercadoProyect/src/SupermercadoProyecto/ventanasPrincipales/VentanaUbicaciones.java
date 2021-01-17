@@ -41,6 +41,17 @@ public class VentanaUbicaciones extends JFrame {
 
 	public static void main(String[] args) {
 		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaUbicaciones frame = new VentanaUbicaciones();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		
 		DBManager db = null;
 		try {
@@ -56,11 +67,9 @@ public class VentanaUbicaciones extends JFrame {
 		Supermercado sup1 = new Supermercado("Vizcaya", "Calle D.Areilza, Bilbao", 111, "08:00/21:00");
 		Supermercado sup2 = new Supermercado("Vizcaya", "Calle Ercilla, Bilbao", 112, "08:30/22:00");
 		Supermercado sup3 = new Supermercado("Vizcaya", "Calle D.Areilza, Bilbao", 113, "09:00/21:00");
-
 		Supermercado sup4 = new Supermercado("Alava", "Avenida general Alegria, Vitoria", 441, "07:30/20:00");
 		Supermercado sup5 = new Supermercado("Alava", "Calle Rotonda, Vitoria", 442, "08:30/21:00");
 		Supermercado sup6 = new Supermercado("Alava", "Calle La Avanzada, Vitoria", 443, "09:30/22:00");
-
 		Supermercado sup7 = new Supermercado("Guipuzcoa", "Calle de Anoeta, Donosti", 771, "09:00/22:00");
 		Supermercado sup8 = new Supermercado("Guipuzcoa", "Calle Descenso, Donosti", 772, "08:30/20:00");
 		Supermercado sup9 = new Supermercado("Guipuzcoa", "Calle Segunda Division, Donosti", 773, "10:00/22:00");
@@ -161,16 +170,7 @@ public class VentanaUbicaciones extends JFrame {
 
 	 */
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaUbicaciones frame = new VentanaUbicaciones();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		
 	}
 
 	/**
