@@ -140,6 +140,7 @@ public class DBManager {
 		}
 		return al;
 	}
+	//METODO PARA VACIAR EL CARRITO DESPUES DE UNA COMPRA
 	public void vaciarCarrito() {
         String sentSQL = "DELETE from carrito";
         try {
@@ -153,7 +154,7 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-	
+	//COMPROBAR SI EXISTE UN PRODUCTO
 	public boolean existeProducto(String p) throws DBException {
 		boolean existe = false;
 		String sentSQL = "SELECT * FROM producto WHERE nombre ='"+ p +"'";
@@ -171,7 +172,7 @@ public class DBManager {
 		}
 		return existe;
 	}
-	
+	//AÑADIR UN NUEVO PRODUCTO AL SUPERMERCADO
 	public void insertarNuevoProducto(Producto p) throws DBException {
 		if(!existeProducto(p.getNombre())) {
 			String sentSQL = "INSERT INTO producto VALUES('"+ p.getNombre() +"'," +p.getPrecio() +")";
@@ -186,7 +187,7 @@ public class DBManager {
 			}
 		}
 	}
-	
+	//METODO PARA OBTENER EL PRECIO TOTAL DEL CARRITO
 	public double obtenerTotalCarrito() throws DBException {
 		double precioTotal = 0;
 		String sentSQL = "SELECT SUM(precio) FROM carrito";
