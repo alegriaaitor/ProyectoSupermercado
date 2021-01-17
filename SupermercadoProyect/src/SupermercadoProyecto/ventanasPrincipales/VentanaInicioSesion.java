@@ -115,55 +115,32 @@ public class VentanaInicioSesion extends JFrame {
 		botonIniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileReader fr = null;
-			try {
-			
-				int nlineas = 0;
-				int i = 0;
-				String[] usuarios = null;
-				String linea;
-				sc = new Scanner(new File("usuarios.txt"));
-				File f = new File("usuarios.txt");
-				fr = new FileReader(f);
-				BufferedReader br = new BufferedReader(fr);
-				
+				String nomUsuario = textFieldUsuario.getText();
+				String contrasena = passwordFieldContrasena.getText();
+				DBManager conexion = new DBManager();
+
 				try {
-					while((linea = br.readLine()) != null) { //Comprobamos que las lineas no están vacias
-						nlineas++;
+					conexion.connect();
+
+					if (conexion.loginUsuario(nomUsuario,contrasena) == true) {
+						
+						VentanaMenu m = new VentanaMenu();
+						setVisible(false);
+						m.setVisible(true);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "No se ha podido iniciar sesion", "Error", 0);
+						textFieldUsuario.setText("");
+						passwordFieldContrasena.setText("");
 					}
-				} catch (IOException e1) {
+
+					conexion.disconnect();
+
+				} catch (DBException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				usuarios = new String[nlineas]; //Metemos en el array la linea en la que está el readline
-				
-				while(sc.hasNextLine()) {
-					usuarios[i++] = sc.nextLine(); 
-				}
-				
-				intentos++;
-				
-				usuario = textFieldUsuario.getText();
-				contrasena = passwordFieldContrasena.getText();
-				
-				Seguridad s = new Seguridad();
-				if(s.validarUsuario(usuarios, usuario, contrasena, intentos) == true) {
-					VentanaMenu menu = new VentanaMenu();
-					menu.setVisible(true);
-					dispose();
-				}
-				
-				
-			}catch(FileNotFoundException ex) {
-				Logger.getLogger(VentanaInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-			} finally {
-				try {
-					fr.close();
-				}catch(IOException ex1) {
-					Logger.getLogger(VentanaInicioSesion.class.getName()).log(Level.SEVERE, null, ex1);
-				}
-			}
+			
 				
 				
 			}

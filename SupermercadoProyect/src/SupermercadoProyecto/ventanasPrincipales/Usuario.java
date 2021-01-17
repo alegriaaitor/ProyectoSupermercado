@@ -12,6 +12,10 @@ public class Usuario {
 	public Usuario() {
 		
 	}
+	public Usuario(String nombreUsuario,String contrasena) {
+		this.nombreUsuario = nombreUsuario;
+		this.contrasena = contrasena;
+	}
 	public int getId_usuario() {
 		return id_usuario;
 	}

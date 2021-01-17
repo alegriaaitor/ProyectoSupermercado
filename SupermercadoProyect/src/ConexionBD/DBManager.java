@@ -47,7 +47,7 @@ public class DBManager {
 		
 		try (Statement s= conexion.createStatement()) {
 			//Añadimos en la base de datos los campos de infomacion introducidos en la ventana(recibido como objeto de la clase usuario)
-			s.executeUpdate("INSERT INTO usuario (nombreUsuario, contrasena, email, direccion) VALUES (' " + nombreUsuario + " ', ' "+ contrasena + " ', ' " + email + " ', ' " + direccion + " ')");
+			s.executeUpdate("INSERT INTO usuario (nombre, contrasena, email, direccion) VALUES ('" + nombreUsuario + "', '"+ contrasena + "', '" + email + "', '" + direccion + "')");
 			LOG.log(Level.INFO,"Usuario registrado");
 		} catch (SQLException e) {
 			LOG.log(Level.WARNING,e.getMessage());
@@ -57,20 +57,20 @@ public class DBManager {
 	}
 	
 	//LOGIN
-	public boolean loginUsuario (String nombreUsuario, String contrasena) throws DBException{
-		
+	public boolean loginUsuario (String nomUsuario, String contrasena) throws DBException{
 		boolean acceso = false;
-			
-		try (PreparedStatement stmt = conexion.prepareStatement("'SELECT id_usuario, nombreUsuario, contrasena, email, direccion FROM usuario WHERE nombreUsuario = ? AND contrasena = ?;'")) {
-				stmt.setString(1, nombreUsuario);
+		try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre,contrasena,email,direccion FROM usuario WHERE nombre = ?  AND contrasena = ?;")) {
+				stmt.setString(1, nomUsuario);
 				stmt.setString(2, contrasena);
 				
 				ResultSet rs = stmt.executeQuery();
 				
 				if (rs.next()) {
 					acceso = true;
+					LOG.log(Level.INFO,"Login realizado con exito absoluto");
 				}else {
 					acceso = false;
+					LOG.log(Level.WARNING,"Fracaso absoluto");
 				}
 				
 			} catch (SQLException e) {
