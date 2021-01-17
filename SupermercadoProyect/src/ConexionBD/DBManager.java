@@ -1,6 +1,7 @@
 package ConexionBD;
 
 import java.sql.*;
+
 import java.util.ArrayList;
 
 import SupermercadoProyecto.ventanasPrincipales.*;
@@ -79,7 +80,7 @@ public class DBManager {
 			stmt.setString(1, nombreProducto);
 			ResultSet rs = stmt.executeQuery();
 			rs.next();
-			precio = rs.getInt("precio");
+			precio = rs.getDouble("precio");
 			
 			
 		} catch (SQLException e) {
@@ -171,6 +172,25 @@ public class DBManager {
 				throw new DBException("No se ha podido insertar el producto en la tabla producto");
 			}
 		}
+	}
+	
+	public double obtenerTotalCarrito() throws DBException {
+		double precioTotal = 0;
+		String sentSQL = "SELECT SUM(precio) FROM carrito";
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(sentSQL);
+			if(rs.next()) {
+				precioTotal = rs.getDouble(1);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new DBException("No se ha podido ejecutar la query");
+		}
+		return precioTotal;
 	}
 	
 	
