@@ -1,6 +1,7 @@
 package SupermercadoProyecto.ventanasPrincipales;
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -26,10 +29,12 @@ import javax.swing.JList;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
+
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
 	private ArrayList <Producto> p;
+	private DefaultListModel<Producto> modeloLista = new DefaultListModel<>();
 	final VentanaMenu menu = new VentanaMenu();
 	
 	/**
@@ -191,6 +196,23 @@ public class VentanaCarrito extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				double precioTotal = 0;
+				try {
+					PrintWriter pw = new PrintWriter("Recibo.txt");
+					for(int i=0;i<modelo1.size();i++) {
+						Producto p = modelo1.get(i);
+						String texto = String.format("%s   %.2f €", p.getNombre(), p.getPrecio());
+						pw.println(texto);
+						precioTotal += p.getPrecio();
+					}
+					pw.println();
+					pw.println(String.format(" PRECIO TOTAL: %.2f €", precioTotal + 2.50));
+					pw.flush();
+					pw.close();
+				} catch (FileNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 					Thread hilo = new Thread(new Runnable() {
 					
 					@Override
