@@ -106,14 +106,7 @@ public class VentanaMenu extends JFrame {
 		});
 		menuNombreMenu.add(menuItemPescaderia);
 		
-		JLabel labelFondo = new JLabel("New label");
 		
-		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
-		labelFondo.setBounds(0, 0, 589, 432);
-		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
-        labelFondo.setIcon(img4);
-		contentPane.add(labelFondo);
 		
 		JLabel lblNewLabel = new JLabel("Cambiar de cuenta");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -134,19 +127,27 @@ public class VentanaMenu extends JFrame {
 		btnIniciar.setBounds(49, 380, 120, 32);
 		contentPane.add(btnIniciar);
 		
-		JButton btnUbicacion = new JButton("botonUbicacion");
+		JButton btnUbicacion = new JButton("Ubicacion");
 		btnUbicacion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VentanaUbicaciones vu = new VentanaUbicaciones();
-				vu.setVisible(true);
+				VentanaUbicaciones ubicacion = new VentanaUbicaciones();
+				ubicacion.setVisible(true);
 				dispose();
 			}
 		});
 		btnUbicacion.setBounds(187, 380, 130, 32);
 		contentPane.add(btnUbicacion);
-        
+		JLabel labelFondo = new JLabel("");
+		
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 589, 432);
+		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img4);
+		contentPane.add(labelFondo);
 	}
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {

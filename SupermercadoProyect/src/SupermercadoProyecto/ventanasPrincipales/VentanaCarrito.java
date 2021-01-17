@@ -26,7 +26,10 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 
@@ -137,7 +140,8 @@ public class VentanaCarrito extends JFrame {
 			e2.printStackTrace();
 		}
 		list = new JList<>(modelo1);
-		list.setBounds(58, 72, 415, 317);
+		list.setBounds(41, 72, 415, 317);
+		
 		contentPane.add(list);
 		
 		
@@ -185,7 +189,7 @@ public class VentanaCarrito extends JFrame {
 		
 		JLabel labelCarritoFondo = new JLabel("");
 		labelCarritoFondo.setHorizontalAlignment(SwingConstants.TRAILING);
-		labelCarritoFondo.setBounds(0, 0, 816, 441);
+		labelCarritoFondo.setBounds(0, 10, 816, 441);
 		ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelCarritoFondo.getWidth(), labelCarritoFondo.getHeight(), Image.SCALE_SMOOTH));
         labelCarritoFondo.setIcon(img4);
@@ -242,12 +246,16 @@ public class VentanaCarrito extends JFrame {
 						
 						labelProcesandoCompra.setVisible(false);
 						progressBar.setVisible(false);
-								
+						JOptionPane.showMessageDialog(null, "Compra realizada con exito rotundo","Carrito",1);
+						VentanaMenu m = new VentanaMenu();
+						dispose();
+						m.setVisible(true);
 								
 						
 					}
 				});
 					hilo.start();
+					
 				
 			}
 		});

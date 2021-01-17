@@ -155,7 +155,7 @@ public class VentanaInicioSesion extends JFrame {
 		btnRegistrarse.setBounds(20, 419, 140, 21);
 		contentPane.add(btnRegistrarse);
 		
-		JLabel labelFondo = new JLabel("New label");
+		JLabel labelFondo = new JLabel("");
 		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
 		labelFondo.setBounds(0, 0, 458, 496);
 		ImageIcon ico4 = new ImageIcon("imagenes/fondos.jpg");

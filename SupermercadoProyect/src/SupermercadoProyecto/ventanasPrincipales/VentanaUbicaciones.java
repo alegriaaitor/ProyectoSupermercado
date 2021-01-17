@@ -192,7 +192,7 @@ public class VentanaUbicaciones extends JFrame {
         lblNewLabel.setIcon(img1);
 		contentPane.add(lblNewLabel);
 		
-		JList list = new JList();
+		JList<Supermercado> list = new JList();
 		list.setBounds(311, 99, 394, 194);
 		contentPane.add(list);
 		
