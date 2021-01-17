@@ -63,7 +63,7 @@ public class VentanaCarrito extends JFrame {
 	 */
 	public VentanaCarrito() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 488);
+		setBounds(100, 100, 830, 518);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -187,13 +187,33 @@ public class VentanaCarrito extends JFrame {
 		intTotlPagar.setBounds(698, 148, 91, 13);
 		contentPane.add(intTotlPagar);
 		
+		JLabel labelPropuesta = new JLabel("\u00BFEchas en falta alg\u00FAn producto en la tienda? Dejanos tu sugerencia");
+		labelPropuesta.setBounds(41, 418, 356, 13);
+		contentPane.add(labelPropuesta);
+		
+		JButton botonPropuesta = new JButton("Propuestas");
+		botonPropuesta.setBounds(41, 441, 111, 21);
+		contentPane.add(botonPropuesta);
+		botonPropuesta.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				VentanaPropuestas p = new VentanaPropuestas();
+				dispose();
+				p.setVisible(true);
+			}
+		});
+		
+		
+		
 		JLabel labelCarritoFondo = new JLabel("");
 		labelCarritoFondo.setHorizontalAlignment(SwingConstants.TRAILING);
-		labelCarritoFondo.setBounds(0, 10, 816, 441);
+		labelCarritoFondo.setBounds(0, 10, 816, 468);
 		ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelCarritoFondo.getWidth(), labelCarritoFondo.getHeight(), Image.SCALE_SMOOTH));
         labelCarritoFondo.setIcon(img4);
 		contentPane.add(labelCarritoFondo);
+		
 		
 		botonPasaPorCaja.addActionListener(new ActionListener() {
 					
