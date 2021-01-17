@@ -119,22 +119,90 @@ public class VentanaPescaderia extends JFrame {
 		}
 		
 		JButton botonAnadir1 = new JButton("A\u00F1adir");
+		botonAnadir1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try {
+					con.connect();
+					Producto pescado1 = new Producto();
+					pescado1.setNombre("Merluza");
+					pescado1.setPrecio(con.obtenerPrecioProducto("Merluza"));
+					con.anadirProductoACarrito(pescado1);
+					con.disconnect();
+					}catch(DBException e) {
+						e.printStackTrace();
+					}
+					
+			}
+		});
 		botonAnadir1.setBounds(309, 106, 85, 21);
 		contentPane.add(botonAnadir1);
 		
 		JButton botonAnadir4 = new JButton("A\u00F1adir");
+		botonAnadir4.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						try {
+							con.connect();
+							Producto pescado1 = new Producto();
+							pescado1.setNombre("Lenguado");
+							pescado1.setPrecio(con.obtenerPrecioProducto("Lenguado"));
+							con.anadirProductoACarrito(pescado1);
+							con.disconnect();
+							}catch(DBException e) {
+								e.printStackTrace();
+							}
+							
+					}
+				});
 		botonAnadir4.setBounds(309, 367, 85, 21);
 		contentPane.add(botonAnadir4);
 		
 		JButton botonAnadir2 = new JButton("A\u00F1adir");
 		botonAnadir2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						try {
+							con.connect();
+							Producto pescado1 = new Producto();
+							pescado1.setNombre("Sardina");
+							pescado1.setPrecio(con.obtenerPrecioProducto("Sardina"));
+							con.anadirProductoACarrito(pescado1);
+							con.disconnect();
+							}catch(DBException e) {
+								e.printStackTrace();
+							}
+							
+					}
+				});
 		botonAnadir2.setBounds(309, 174, 85, 21);
 		contentPane.add(botonAnadir2);
 		
 		JButton botonAnadir3 = new JButton("A\u00F1adir");
+		botonAnadir3.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						try {
+							con.connect();
+							Producto pescado1 = new Producto();
+							pescado1.setNombre("Salmonete");
+							pescado1.setPrecio(con.obtenerPrecioProducto("Salmonete"));
+							con.anadirProductoACarrito(pescado1);
+							con.disconnect();
+							}catch(DBException e) {
+								e.printStackTrace();
+							}
+							
+					}
+				});
 		botonAnadir3.setBounds(309, 269, 85, 21);
 		contentPane.add(botonAnadir3);
 		

@@ -56,7 +56,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(10, 0, 101, 22);
+		menuBar.setBounds(0, 0, 286, 22);
 		contentPane.add(menuBar);
 		
 		JMenu menuNombreMenu = new JMenu("Secciones");
@@ -106,14 +106,19 @@ public class VentanaMenu extends JFrame {
 		});
 		menuNombreMenu.add(menuItemPescaderia);
 		
-		
-		
-		JLabel lblNewLabel = new JLabel("Cambiar de cuenta");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(39, 336, 130, 34);
-		contentPane.add(lblNewLabel);
-		
 		JButton btnIniciar = new JButton("Iniciar Sesion");
+		menuBar.add(btnIniciar);
+		
+		JButton botonPropuesta = new JButton("Propuestas");
+		menuBar.add(botonPropuesta);
+		botonPropuesta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPropuestas prop = new VentanaPropuestas();
+				prop.setVisible(true);
+				dispose();
+			}
+		});
 		btnIniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -123,29 +128,15 @@ public class VentanaMenu extends JFrame {
 			}
 		});
 		
-        
-		btnIniciar.setBounds(49, 380, 120, 32);
-		contentPane.add(btnIniciar);
-		
-		JButton btnUbicacion = new JButton("Ubicacion");
-		btnUbicacion.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VentanaUbicaciones ubicacion = new VentanaUbicaciones();
-				ubicacion.setVisible(true);
-				dispose();
-			}
-		});
-		btnUbicacion.setBounds(187, 380, 130, 32);
-		contentPane.add(btnUbicacion);
 		JLabel labelFondo = new JLabel("");
-		
 		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
 		labelFondo.setBounds(0, 0, 589, 432);
 		ImageIcon ico4 = new ImageIcon("imagenes/menuFondo.jpg");
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
         labelFondo.setIcon(img4);
 		contentPane.add(labelFondo);
+		
+		
 	}
 	
 	private static void addPopup(Component component, final JPopupMenu popup) {

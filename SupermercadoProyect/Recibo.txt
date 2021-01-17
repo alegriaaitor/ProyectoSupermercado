@@ -1,4 +1,18 @@
+ Merluza    15,00 €
+ Merluza    15,00 €
+ Sardina    8,00 €
+ Sardina    8,00 €
+ Salmonete    14,00 €
+ Salmonete    14,00 €
+ Lenguado    17,00 €
+ Lenguado    17,00 €
  Chuleton de vaca    64,50 €
- Solomillo de ternera    70,00 €
+ Chuleton de vaca    64,50 €
+ Chuleton de vaca    64,50 €
+ Chuleton de vaca    64,50 €
+ Platano    2,50 €
+ Platano    2,50 €
+ Platano    2,50 €
+ Platano    2,50 €
 
- PRECIO TOTAL: 137,00 €
+ PRECIO TOTAL: 378,50 €

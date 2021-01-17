@@ -29,6 +29,7 @@ import java.util.TreeSet;
 import javax.swing.JTable;
 import javax.swing.AbstractListModel;
 import SupermercadoProyecto.ventanasPrincipales.Supermercado;
+import javax.swing.SwingConstants;
 
 public class VentanaUbicaciones extends JFrame {
 
@@ -41,7 +42,7 @@ public class VentanaUbicaciones extends JFrame {
 
 	public static void main(String[] args) {
 		
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() { 
 			public void run() {
 				try {
 					VentanaUbicaciones frame = new VentanaUbicaciones();
@@ -150,12 +151,6 @@ public class VentanaUbicaciones extends JFrame {
 		hmSupermercados.get(sup3).add(p28);
 		hmSupermercados.get(sup3).add(p29);
 		hmSupermercados.get(sup3).add(p30);
-
-
-
-
-		
-		
 		
 		
 		//Recorro todas las entradas al HashMap
@@ -185,7 +180,7 @@ public class VentanaUbicaciones extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Foto");
-		lblNewLabel.setBounds(0, 99, 291, 194);
+		lblNewLabel.setBounds(10, 99, 291, 194);
 	
 		ImageIcon ico1 = new ImageIcon("imagenes/euskadi-mapa.png");
         ImageIcon img1 = new ImageIcon(ico1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
@@ -197,7 +192,8 @@ public class VentanaUbicaciones extends JFrame {
 		contentPane.add(list);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inf\u00F3rmate sobre donde se situan nuestros supermercados");
-		lblNewLabel_1.setBounds(152, 10, 350, 28);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(58, 10, 444, 28);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton botonVizcaya = new JButton("Vizcaya");
@@ -265,6 +261,14 @@ public class VentanaUbicaciones extends JFrame {
 		});
 		BotonVolver.setBounds(24, 317, 85, 21);
 		contentPane.add(BotonVolver);
+		
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		labelFondo.setBounds(0, 0, 730, 372);
+		ImageIcon icono = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img = new ImageIcon(icono.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img);
+		contentPane.add(labelFondo);
 		
 	
 		

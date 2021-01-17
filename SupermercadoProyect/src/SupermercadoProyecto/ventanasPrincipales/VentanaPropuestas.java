@@ -2,6 +2,7 @@ package SupermercadoProyecto.ventanasPrincipales;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +17,12 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaPropuestas extends JFrame {
 
@@ -66,10 +72,12 @@ public class VentanaPropuestas extends JFrame {
 		contentPane.add(listaPropuestas);
 		
 		JLabel lblNewLabel = new JLabel("\u00BFQUE PRODUCTOS TE GUSTARIA VER EN NUESTROS SUPERMERCADOS?");
-		lblNewLabel.setBounds(39, 23, 393, 25);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(39, 23, 457, 25);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("D\u00E9janos tus sugerencias aqu\u00ED abajo");
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBounds(39, 58, 249, 25);
 		contentPane.add(lblNewLabel_1);
 		
@@ -87,14 +95,51 @@ public class VentanaPropuestas extends JFrame {
 				}
 			}
 		});
-		botonVolcar.setBounds(442, 349, 166, 21);
+		botonVolcar.setBounds(442, 349, 148, 21);
 		contentPane.add(botonVolcar);
 		
+		JButton btnNewButton = new JButton("Volver al Carrito");
+        btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaCarrito vc = new VentanaCarrito();
+				vc.setVisible(true);
+				dispose();
+			}
+		});
+        btnNewButton.setBounds(442, 380, 148, 21);
+        contentPane.add(btnNewButton);
+		
+        JButton botonAtras = new JButton("Atras");
+        botonAtras.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		VentanaMenu vm = new VentanaMenu();
+        		vm.setVisible(true);
+        		dispose();
+        	}
+        });
+        botonAtras.setBounds(10, 391, 85, 21);
+        contentPane.add(botonAtras);
+        
+        
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		labelFondo.setBounds(0, 0, 713, 417);
+		contentPane.add(labelFondo);
+		ImageIcon ico4 = new ImageIcon("imagenes/fondos.jpg");
+        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
+        labelFondo.setIcon(img4);
+        
+        
+        
+        
 		
 		setVisible(true);
 
 		
-		//Añadir Productos insertadas por el usuario
+		//Añadir Productos insertados por el usuario
 				int resp = JOptionPane.showConfirmDialog(null, "¿Quieres dejar alguna recomendacion?");
 				while(resp == JOptionPane.OK_OPTION) {
 					String p = JOptionPane.showInputDialog("Introduce el nombre del producto");
