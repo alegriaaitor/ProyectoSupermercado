@@ -45,8 +45,6 @@ public class VentanaUbicaciones extends JFrame {
 		DBManager db = null;
 		try {
 			db = new DBManager();
-			db.open();
-			db.crearTablas();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

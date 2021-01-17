@@ -1,5 +1,4 @@
- Solomillo de ternera    70,00 €
- Entrecot de ternera    85,00 €
  Chorizo criollo    12,58 €
+ Entrecot de ternera    85,00 €
 
- PRECIO TOTAL: 170,08 €
+ PRECIO TOTAL: 100,08 €

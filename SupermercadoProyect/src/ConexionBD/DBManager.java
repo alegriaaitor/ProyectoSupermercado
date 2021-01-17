@@ -3,20 +3,24 @@ package ConexionBD;
 import java.sql.*;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import SupermercadoProyecto.ventanasPrincipales.*;
 
 public class DBManager {
 	private Connection conexion = null;
-
+	private static final Logger LOG = Logger.getLogger(DBManager.class.getName());
 	
 	public void connect() throws DBException { //Sirve para crear la conexión con la bd
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conexion = DriverManager.getConnection("jdbc:sqlite:data/DB");
+			LOG.log(Level.INFO,"Conexion establecida");
 		} catch (ClassNotFoundException e) {
 			throw new DBException("Error cargando el driver de la BD", e);
 		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("Error conectando a la BD", e);
 		}
 	}
@@ -25,7 +29,9 @@ public class DBManager {
 	public void disconnect() throws DBException { //Sirve para cerrar la conexión con la bd
 		try {
 			conexion.close();
+			LOG.log(Level.INFO,"BD desconectada");
 		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("Error cerrando la conexiÃ³n con la BD", e);
 		}
 	}
@@ -42,7 +48,9 @@ public class DBManager {
 		try (Statement s= conexion.createStatement()) {
 			//Añadimos en la base de datos los campos de infomacion introducidos en la ventana(recibido como objeto de la clase usuario)
 			s.executeUpdate("INSERT INTO usuario (nombreUsuario, contrasena, email, direccion) VALUES (' " + nombreUsuario + " ', ' "+ contrasena + " ', ' " + email + " ', ' " + direccion + " ')");
+			LOG.log(Level.INFO,"Usuario registrado");
 		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("No ha sido posible ejecutar la query");
 		}
 		
@@ -82,8 +90,9 @@ public class DBManager {
 			rs.next();
 			precio = rs.getDouble("precio");
 			
-			
+			LOG.log(Level.INFO,"Producto obtenido");
 		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("Error obteniendo todos los usuarios'", e);
 		}	
 		return precio;
@@ -97,7 +106,9 @@ public class DBManager {
 		try (Statement s= conexion.createStatement()) {
 			//Añadimos en la base de datos los producto que queremos añadir al carrito
 			s.executeUpdate("INSERT INTO carrito (nombre, precio) VALUES (' " + nombre + " ', ' "+ precio + "')");
+			LOG.log(Level.INFO,"Producto añadido");
 		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("No ha sido posible ejecutar la query");
 		}
 				
@@ -135,8 +146,10 @@ public class DBManager {
             Statement st = conexion.createStatement();
             st.executeUpdate(sentSQL);
             st.close();
+            LOG.log(Level.INFO,"Carrito vaciado");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
+        	LOG.log(Level.WARNING,e.getMessage());
             e.printStackTrace();
         }
     }
@@ -185,34 +198,14 @@ public class DBManager {
 			}
 			rs.close();
 			st.close();
+			LOG.log(Level.INFO,"Precio total obtenido");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("No se ha podido ejecutar la query");
 		}
 		return precioTotal;
 	}
-	
-	
-	
-	public int obtenerPrecioTotal() throws DBException{
 		
-		
-		return 0;
-		
-	}
-
-
-	public void open() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void crearTablas() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 }
