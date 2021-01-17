@@ -22,8 +22,8 @@ public class VentanaPropuestas extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbManager;
-	private JList<String> listaPropuestas;
-	private DefaultListModel<String> modeloLista;
+	private JList<Producto> listaPropuestas;
+	private DefaultListModel<Producto> modeloLista;
 	
 	/**
 	 * Launch the application.
@@ -59,8 +59,8 @@ public class VentanaPropuestas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		modeloLista = new DefaultListModel<String>();
-		listaPropuestas = new JList<String>(modeloLista);
+		modeloLista = new DefaultListModel<Producto>();
+		listaPropuestas = new JList<Producto>(modeloLista);
 		
 		listaPropuestas.setBounds(39, 118, 393, 263);
 		contentPane.add(listaPropuestas);
@@ -100,25 +100,27 @@ public class VentanaPropuestas extends JFrame {
 					String p = JOptionPane.showInputDialog("Introduce el nombre del producto");
 					String precio = JOptionPane.showInputDialog("Introduce lo que consideres que deberia valer el producto");
 					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, 0, p)) {
-						modeloLista.addElement(p + "," + precio);
+						Producto pr = new Producto(p, Double.parseDouble(precio));
+						modeloLista.addElement(pr);
 					}else {
 						JOptionPane.showMessageDialog(null, "No se pueden insertar productos repetidos");
 						resp = JOptionPane.showConfirmDialog(null, "¿Quieres insertar otro producto?");
 					}
+					resp = JOptionPane.showConfirmDialog(null, "¿Quieres dejar alguna recomendacion?");
 				}
 		}
 	
-		public void volcarProductosDeFormaRecursiva(DefaultListModel<String> modeloLista, int i, int a) throws DBException {
+		public void volcarProductosDeFormaRecursiva(DefaultListModel<Producto> modeloLista, int i, int a) throws DBException {
 			if(i<modeloLista.size()) {
-				String p = modeloLista.get(i);
+				Producto p = modeloLista.get(i);
 				dbManager.insertarNuevoProducto(p);
 				volcarProductosDeFormaRecursiva(modeloLista, i+1, a+1);
 			}
 		}
 	
-		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<String> modeloLista, int i,int a, String p) {
+		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<Producto> modeloLista, int i,int a, String p) {
 			if(i<modeloLista.size()) {
-				if(modeloLista.get(i).equals(p)) {
+				if(modeloLista.get(i).getNombre().equals(p)) {
 					return true;
 				}else {
 					return buscarProductoDeFormaRecursiva(modeloLista, i+1, a+1, p);

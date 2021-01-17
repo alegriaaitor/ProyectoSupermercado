@@ -158,9 +158,9 @@ public class DBManager {
 		return existe;
 	}
 	
-	public void insertarNuevoProducto(String p) throws DBException {
-		if(!existeProducto(p)) {
-			String sentSQL = "INSERT INTO producto VALUES('"+ p +"')";
+	public void insertarNuevoProducto(Producto p) throws DBException {
+		if(!existeProducto(p.getNombre())) {
+			String sentSQL = "INSERT INTO producto VALUES('"+ p.getNombre() +"'," +p.getPrecio() +")";
 			try {
 				Statement st = conexion.createStatement();
 				st.executeUpdate(sentSQL);
