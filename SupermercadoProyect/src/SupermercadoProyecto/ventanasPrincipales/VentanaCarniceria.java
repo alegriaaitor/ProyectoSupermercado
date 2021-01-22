@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class VentanaCarniceria extends JFrame {
 
 	private JPanel contentPane;
-	
+	public static JLabel labelTitulo;
 	/**
 	 * Launch the application.
 	 */
@@ -276,11 +276,11 @@ public class VentanaCarniceria extends JFrame {
 		btnNewButton.setBounds(372, 425, 136, 21);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("PANADERIA");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel.setBounds(157, 25, 149, 27);
-		contentPane.add(lblNewLabel);
+		labelTitulo = new JLabel("CARNICERIA");
+		labelTitulo.setForeground(Color.WHITE);
+		labelTitulo.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		labelTitulo.setBounds(157, 25, 149, 27);
+		contentPane.add(labelTitulo);
 		
 		JLabel labelFondo = new JLabel("");
 		labelFondo.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -289,6 +289,10 @@ public class VentanaCarniceria extends JFrame {
         ImageIcon img = new ImageIcon(ico7.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(), Image.SCALE_SMOOTH));
         labelFondo.setIcon(img);
 		contentPane.add(labelFondo);
+		
+		//THREADS	
+		Hilo h = new Hilo();
+		h.start();
 		
 		
 	}

@@ -12,6 +12,10 @@ public class DBManager {
 	private Connection conexion = null;
 	private static final Logger LOG = Logger.getLogger(DBManager.class.getName());
 	
+	public Connection getConnection() {
+		return conexion;
+	}
+	
 	public void connect() throws DBException { //Sirve para crear la conexión con la bd
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -33,6 +37,14 @@ public class DBManager {
 		} catch (SQLException e) {
 			LOG.log(Level.WARNING,e.getMessage());
 			throw new DBException("Error cerrando la conexiÃ³n con la BD", e);
+		}
+	}
+	
+	public void open() throws DBException  {
+		try {
+			conexion = DriverManager.getConnection("jdbc:sqlite:Ejemplo.db");
+		} catch (SQLException e) {
+			throw new DBException("No se pudo conectar de la base de datos Ejemplo", e);
 		}
 	}
 	
@@ -80,6 +92,30 @@ public class DBManager {
 		
 		return acceso;
 	}
+	
+	public ArrayList<Producto> obtenerProductoPrecio(String precio) throws DBException{
+		ArrayList<Producto> al = new ArrayList<>();
+		String sentSQL = "SELECT * FROM producto WHERE precio='"+precio+"'";
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(sentSQL);
+			while(rs.next()) {
+				String nom = rs.getString("nombre");
+				double pre = rs.getDouble("precio");				
+				Producto p = new Producto(nom, pre);
+				al.add(p);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new DBException("No se ha podido obtener la información de los productos");
+		}
+		return al;
+	}
+	
+	
 	
 	//OBTENER EL PRECIO DE UN PRODUCTO CONCRETO
 	public double obtenerPrecioProducto(String nombreProducto) throws DBException{
