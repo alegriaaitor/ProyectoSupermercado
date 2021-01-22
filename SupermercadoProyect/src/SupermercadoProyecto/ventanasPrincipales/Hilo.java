@@ -4,10 +4,10 @@ public class Hilo extends Thread{
 	
 	public void run() {
 		while (true) {
-			String texto = VentanaCarniceria.labelTitulo.getText();
+			String texto = VentanaCarrito.labelTitulo.getText();
 			char primercaracter = texto.charAt(0);
 			String textoNuevo = texto.substring(1)+String.valueOf(primercaracter);
-			VentanaCarniceria.labelTitulo.setText(textoNuevo);
+			VentanaCarrito.labelTitulo.setText(textoNuevo);
 			try {
 				sleep(400);
 			} catch (InterruptedException e) {

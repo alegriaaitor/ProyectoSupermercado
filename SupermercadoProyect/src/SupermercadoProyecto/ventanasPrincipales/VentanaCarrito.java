@@ -34,7 +34,7 @@ import javax.swing.SwingConstants;
 
 
 public class VentanaCarrito extends JFrame {
-
+	public static JLabel labelTitulo;
 	private JPanel contentPane;
 	private ArrayList <Producto> p;
 	private DefaultListModel<Producto> modeloLista = new DefaultListModel<>();
@@ -71,10 +71,10 @@ public class VentanaCarrito extends JFrame {
 		
 		
 		
-		JLabel lblNewLabel = new JLabel("Carrito");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lblNewLabel.setBounds(188, 26, 111, 32);
-		contentPane.add(lblNewLabel);
+		labelTitulo = new JLabel(" COMPRUEBA LOS PRODUCTOS DE TU CARRITO ");
+		labelTitulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		labelTitulo.setBounds(20, 26, 468, 32);
+		contentPane.add(labelTitulo);
 		
 		JLabel lblNewLabel_1 = new JLabel("Resumen de la compra");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -204,7 +204,9 @@ public class VentanaCarrito extends JFrame {
 			}
 		});
 		
-		
+		//THREADS	
+				Hilo h = new Hilo();
+				h.start();
 		
 		JLabel labelCarritoFondo = new JLabel("");
 		labelCarritoFondo.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -213,6 +215,7 @@ public class VentanaCarrito extends JFrame {
         ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelCarritoFondo.getWidth(), labelCarritoFondo.getHeight(), Image.SCALE_SMOOTH));
         labelCarritoFondo.setIcon(img4);
 		contentPane.add(labelCarritoFondo);
+		
 		
 		
 		botonPasaPorCaja.addActionListener(new ActionListener() {

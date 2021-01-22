@@ -290,9 +290,7 @@ public class VentanaCarniceria extends JFrame {
         labelFondo.setIcon(img);
 		contentPane.add(labelFondo);
 		
-		//THREADS	
-		Hilo h = new Hilo();
-		h.start();
+		
 		
 		
 	}

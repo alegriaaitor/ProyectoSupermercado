@@ -40,14 +40,6 @@ public class DBManager {
 		}
 	}
 	
-	public void open() throws DBException  {
-		try {
-			conexion = DriverManager.getConnection("jdbc:sqlite:Ejemplo.db");
-		} catch (SQLException e) {
-			throw new DBException("No se pudo conectar de la base de datos Ejemplo", e);
-		}
-	}
-	
 	//REGISTRAR NUEVO USUARIO
 	public void registrarUsuario(Usuario usuario) throws DBException{
 		
