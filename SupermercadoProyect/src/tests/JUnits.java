@@ -31,7 +31,7 @@ public class JUnits {
 	void testComprobarObtenerPrecioProductos() {
 		try {
 			DBManager db = new DBManager();
-			db.open();
+			db.connect();
 			ArrayList<Producto> al = db.obtenerProductoPrecio("1.00");
 			//assertTrue(al.size()>=5);
 			assertTrue("No hay productos en la lista", al.size()>=1);

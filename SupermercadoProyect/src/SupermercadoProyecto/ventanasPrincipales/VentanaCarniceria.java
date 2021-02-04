@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import ConexionBD.DBException;
 import ConexionBD.DBManager;
 
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,27 +21,97 @@ import java.awt.event.ActionEvent;
 public class VentanaCarniceria extends JFrame {
 
 	private JPanel contentPane;
+	private DefaultListModel<Producto> modelo;
+	private JPanel pNorte;
+	private JPanel pCentro;
+	private   ArrayList<VentanaPanelProductosCarnicos> alp = new ArrayList();
+	ArrayList<VentanaPanelProductosCarnicos> alpp = new ArrayList<VentanaPanelProductosCarnicos>();
+
 	public static JLabel labelTitulo;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaCarniceria frame = new VentanaCarniceria();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public VentanaCarniceria() {
+		
+		pNorte = new JPanel();
+		pCentro = new JPanel(new GridLayout(3,1));
+		getContentPane().add(pNorte,BorderLayout.NORTH);
+		getContentPane().add(pCentro,BorderLayout.CENTER);
+		
+		setTitle("Ventana Productos Carnicos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		setBounds(300, 200, 900, 900);
+
+		JButton botonSiguienteSeccion = new JButton("Cambiar Seccion");
+		JButton botonIniciarSesion = new JButton("Cambia de cuenta");
+        JButton botonCarrito = new JButton("Ver Carrito");
+		
+        pNorte.add(botonSiguienteSeccion);
+        pNorte.add(botonCarrito);
+        pNorte.add(botonIniciarSesion);
+        
+        JScrollPane scrollbar = new JScrollPane(pCentro);
+        getContentPane().add(scrollbar, BorderLayout.CENTER);
+       // scrollbar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollbar.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+  
+         
+        DBManager dbmanager = new DBManager();
+        try {
+			dbmanager.connect();
+			alpp = dbmanager.eligeProductos();
+			
+			dbmanager.disconnect();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+        
+        for(VentanaPanelProductosCarnicos vpp : alpp) {
+        	pCentro.add(vpp);
+        }
+        
+        botonSiguienteSeccion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				VentanaPescaderia vp = new VentanaPescaderia();
+				vp.setVisible(true);
+				dispose();
+			}
+		});
+        
+        botonIniciarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				VentanaInicioSesion vi = new VentanaInicioSesion();
+				vi.setVisible(true);
+				dispose();
+			}
+		});
+        
+   		botonCarrito.addMouseListener(new MouseAdapter() {
+   			@Override
+   			public void mouseClicked(MouseEvent e) {
+   				
+   				VentanaCarrito carrito = new VentanaCarrito();
+   				carrito.setVisible(true);
+   				dispose();
+   			}
+   		});
+   		
+   		
+
+        
+	/*	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 554, 495);
 		contentPane = new JPanel();
@@ -290,7 +361,7 @@ public class VentanaCarniceria extends JFrame {
         labelFondo.setIcon(img);
 		contentPane.add(labelFondo);
 		
-		
+		*/
 		
 		
 	}

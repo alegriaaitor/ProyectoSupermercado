@@ -141,6 +141,23 @@ public class DBManager {
 		}
 				
 	}
+	
+	public void anadirCarnicoACarrito(Carnico carnico) throws DBException{
+		
+		String nombre = carnico.getNombre();
+		double precio = carnico.getPrecio();
+				
+		try (Statement s= conexion.createStatement()) {
+			//Añadimos en la base de datos los producto que queremos añadir al carrito
+			s.executeUpdate("INSERT INTO carrito (nombre, precio) VALUES (' " + nombre + " ', ' "+ precio + "')");
+			LOG.log(Level.INFO,"Carnico añadido");
+		} catch (SQLException e) {
+			LOG.log(Level.WARNING,e.getMessage());
+			throw new DBException("No ha sido posible ejecutar la query");
+		}
+				
+	}
+	
 	//MOSTRAR LOS PRODUCTOS AÑADIDOS AL CARRITO
 	public ArrayList<Producto> obtenerCarrito(){
 		String sentSQL = "SELECT * FROM carrito";
@@ -215,6 +232,24 @@ public class DBManager {
 			}
 		}
 	}
+	
+	  public ArrayList<VentanaPanelProductosCarnicos> eligeProductos() throws DBException{
+
+          ArrayList<VentanaPanelProductosCarnicos> alpp = new ArrayList<>();
+          try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio, imagen FROM carnicos")) {
+              ResultSet rs = stmt.executeQuery();
+              while(rs.next()) {
+
+                  VentanaPanelProductosCarnicos vpp = new VentanaPanelProductosCarnicos(rs.getString("nombre"), rs.getString("imagen"), rs.getDouble("precio"));
+                  alpp.add(vpp);
+              }
+          } catch (SQLException e) {
+              throw new DBException("Error obteniendo producto ", e);
+          }
+
+          return alpp;
+      }
+	
 	//METODO PARA OBTENER EL PRECIO TOTAL DEL CARRITO
 	public double obtenerTotalCarrito() throws DBException {
 		double precioTotal = 0;
