@@ -24,10 +24,11 @@ public class VentanaPanelProductosCarnicos extends JPanel {
 	 */
 	public VentanaPanelProductosCarnicos(String textoNombre, String foto, double textoPrecio) {
 		
-		setBackground(Color.WHITE);
+		setBackground(Color.BLACK);
 		setLayout(null);
 		
 		JLabel lblFoto = new JLabel(foto);
+		lblFoto.setForeground(Color.WHITE);
 		lblFoto.setBounds(32, 10, 170, 124);
 		add(lblFoto);
 		ImageIcon ico = new ImageIcon(foto);
@@ -35,10 +36,12 @@ public class VentanaPanelProductosCarnicos extends JPanel {
         lblFoto.setIcon(img);
 		
 		JLabel lblCarnico= new JLabel(textoNombre);
+		lblCarnico.setForeground(Color.WHITE);
 		lblCarnico.setBounds(32, 144, 130, 13);
 		add(lblCarnico);
 		
-		JLabel lblPrecio = new JLabel(Double.toString(textoPrecio));
+		JLabel lblPrecio = new JLabel(Double.toString(textoPrecio )+ " €");
+		lblPrecio.setForeground(Color.WHITE);
 		lblPrecio.setBounds(32, 166, 44, 13);
 		add(lblPrecio);
 	

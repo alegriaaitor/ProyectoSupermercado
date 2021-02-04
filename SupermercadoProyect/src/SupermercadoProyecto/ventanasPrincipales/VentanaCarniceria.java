@@ -24,6 +24,7 @@ public class VentanaCarniceria extends JFrame {
 	private DefaultListModel<Producto> modelo;
 	private JPanel pNorte;
 	private JPanel pCentro;
+	private JScrollPane scrollPanel;
 	private   ArrayList<VentanaPanelProductosCarnicos> alp = new ArrayList();
 	ArrayList<VentanaPanelProductosCarnicos> alpp = new ArrayList<VentanaPanelProductosCarnicos>();
 
@@ -38,15 +39,17 @@ public class VentanaCarniceria extends JFrame {
 	public VentanaCarniceria() {
 		
 		pNorte = new JPanel();
-		pCentro = new JPanel(new GridLayout(3,1));
+		pNorte.setBackground(Color.BLACK);
+		pCentro = new JPanel(new GridLayout(0, 3 ));
+		pCentro.setBackground(Color.BLACK);
 		getContentPane().add(pNorte,BorderLayout.NORTH);
-		getContentPane().add(pCentro,BorderLayout.CENTER);
-		
+//		getContentPane().add(pCentro,BorderLayout.CENTER);
+  	    
 		setTitle("Ventana Productos Carnicos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setBounds(300, 200, 900, 900);
-
+		setBounds(200, 150, 600, 600);
+		//setSize(400, 400);
 		JButton botonSiguienteSeccion = new JButton("Cambiar Seccion");
 		JButton botonIniciarSesion = new JButton("Cambia de cuenta");
         JButton botonCarrito = new JButton("Ver Carrito");
@@ -56,11 +59,12 @@ public class VentanaCarniceria extends JFrame {
         pNorte.add(botonIniciarSesion);
         
         JScrollPane scrollbar = new JScrollPane(pCentro);
-        getContentPane().add(scrollbar, BorderLayout.CENTER);
-       // scrollbar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
+        scrollbar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollbar.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
   
-         
+        getContentPane().add(scrollbar, BorderLayout.CENTER);
+        
         DBManager dbmanager = new DBManager();
         try {
 			dbmanager.connect();
