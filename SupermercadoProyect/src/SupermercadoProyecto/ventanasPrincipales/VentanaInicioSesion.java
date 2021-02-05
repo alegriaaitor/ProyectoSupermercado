@@ -8,12 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -25,6 +26,7 @@ import java.awt.Cursor;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.UIManager;
 import javax.swing.border.*;
@@ -112,7 +114,9 @@ public class VentanaInicioSesion extends JFrame {
 		textFieldUsuario.setColumns(10);
 		
 		JButton botonIniciarSesion = new JButton("Iniciar Sesion");
-		botonIniciarSesion.addActionListener(new ActionListener() {
+	/*	botonIniciarSesion.addActionListener(new ActionListener() {
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String nomUsuario = textFieldUsuario.getText();
@@ -145,6 +149,63 @@ public class VentanaInicioSesion extends JFrame {
 				
 			}
 		});
+		
+	*/	
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+		manager.addKeyEventDispatcher(new KeyEventDispatcher() {
+			boolean ctrlPulsado = false;
+			@Override
+			public boolean dispatchKeyEvent(KeyEvent e) {
+					// TODO Auto-generated method stub
+			    if (e.getID() == KeyEvent.KEY_PRESSED) {
+			    	
+			    	 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			    		 String nomUsuario = textFieldUsuario.getText();
+							String contrasena = passwordFieldContrasena.getText();
+							DBManager conexion = new DBManager();
+
+							try {
+								conexion.connect();
+
+								if (conexion.loginUsuario(nomUsuario,contrasena) == true) {
+									
+									VentanaMenu m = new VentanaMenu();
+									setVisible(false);
+									m.setVisible(true);
+
+								} else {
+									JOptionPane.showMessageDialog(null, "No se ha podido iniciar sesion", "Error", 0);
+									textFieldUsuario.setText("");
+									passwordFieldContrasena.setText("");
+								}
+
+								conexion.disconnect();
+
+							} catch (DBException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						
+			    		 ctrlPulsado = true;
+			    		 
+			    		 
+			    		 //VentanaInicioSesion.this.dispose();
+
+					 }
+			    	
+					
+				else if (e.getID() == KeyEvent.KEY_RELEASED) {
+				     
+					 if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+				    	 ctrlPulsado = false;
+				     }
+				}
+		  }
+			    	return false;
+		}
+});
+		
+		
 		botonIniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		botonIniciarSesion.setBounds(118, 319, 133, 35);
 		contentPane.add(botonIniciarSesion);
