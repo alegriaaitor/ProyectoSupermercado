@@ -1,4 +1,7 @@
 package SupermercadoProyecto.ventanasPrincipales;
+
+import java.util.regex.Pattern;
+
 public class Usuario {
 	private String nombreUsuario, contrasena, direccion,email; //incluimos el email para utilizar lo explicado en clase de la @
 	private int id_usuario;
@@ -7,7 +10,14 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
 		this.direccion = direccion;
-		this.email = email;
+		Pattern patron = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		//Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+		if(email != null && patron.matcher(email).matches()){
+			this.email = email;
+		}else {
+			this.email = "INCORRECTO";
+		} 
+		
 	}
 	public Usuario() {
 		
