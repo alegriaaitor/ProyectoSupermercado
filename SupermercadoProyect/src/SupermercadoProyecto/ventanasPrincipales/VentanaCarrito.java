@@ -72,10 +72,7 @@ public class VentanaCarrito extends JFrame {
         h.start();
         modeloTabla = new DefaultTableModel() {
 			public boolean isCellEditable(int row,int column) {
-				if(column==0)
 					return false;
-				else
-					return true;
 			}
 		};
 		tabla = new JTable(modeloTabla);

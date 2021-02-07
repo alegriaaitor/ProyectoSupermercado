@@ -114,7 +114,7 @@ public class VentanaInicioSesion extends JFrame {
 		textFieldUsuario.setColumns(10);
 		
 		JButton botonIniciarSesion = new JButton("Iniciar Sesion");
-	/*	botonIniciarSesion.addActionListener(new ActionListener() {
+		botonIniciarSesion.addActionListener(new ActionListener() {
 			
 			
 			@Override
@@ -150,7 +150,7 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 		
-	*/	
+	
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		manager.addKeyEventDispatcher(new KeyEventDispatcher() {
 			boolean ctrlPulsado = false;
