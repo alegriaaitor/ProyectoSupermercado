@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,7 +45,7 @@ public class VentanaCarrito extends JFrame {
 	private DefaultTreeModel modelo;
 	private DefaultMutableTreeNode abuelo;
 	private JTable tabla;
-	private DefaultTableModel modeloTabla = new DefaultTableModel();
+	private DefaultTableModel modeloTabla;
 	private JPanel pDerecha;
 	private JPanel pSur;
 	public static JLabel labelTitulo;
@@ -69,7 +70,14 @@ public class VentanaCarrito extends JFrame {
 		
 		Hilo h = new Hilo();
         h.start();
-		
+        modeloTabla = new DefaultTableModel() {
+			public boolean isCellEditable(int row,int column) {
+				if(column==0)
+					return false;
+				else
+					return true;
+			}
+		};
 		tabla = new JTable(modeloTabla);
 		String[] ids = {"Nombre", "Cantidad", "Precio"};
 		modeloTabla.setColumnIdentifiers(ids);
@@ -105,15 +113,15 @@ public class VentanaCarrito extends JFrame {
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 					int row, int column) {
 				Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-				int precio = (int) modeloTabla.getValueAt(row, 2);
-				if(precio >= 50)
-					c.setBackground(Color.RED);
-				else if(precio < 50)
-					c.setBackground(Color.GREEN);
+				Font fuente = new Font("Arial", Font.BOLD, 12);
+				if(isSelected)
+					c.setFont(fuente);
 				return c;
 			
 			}
 		});
+		
+		
 		
 		//Añadir elementos a paneles
 		pDerechaCentro.add(totalCarrito);
