@@ -256,7 +256,7 @@ public class DBManager {
 	  public ArrayList<VentanaPanelProductosCarnicos> eligeProductos() throws DBException{
 
           ArrayList<VentanaPanelProductosCarnicos> alpp = new ArrayList<>();
-          try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio, imagen FROM producto where seccion= 'Carniceria'")) {
+          try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio, imagen FROM carnicos")) {
               ResultSet rs = stmt.executeQuery();
               while(rs.next()) {
 
