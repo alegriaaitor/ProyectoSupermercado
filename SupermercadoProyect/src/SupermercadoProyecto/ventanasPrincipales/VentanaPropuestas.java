@@ -28,8 +28,8 @@ public class VentanaPropuestas extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbManager;
-	private JList<Producto> listaPropuestas;
-	private DefaultListModel<Producto> modeloLista;
+	private JList<Carnico> listaPropuestas;
+	private DefaultListModel<Carnico> modeloLista;
 	
 	/**
 	 * Launch the application.
@@ -65,8 +65,8 @@ public class VentanaPropuestas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		modeloLista = new DefaultListModel<Producto>();
-		listaPropuestas = new JList<Producto>(modeloLista);
+		modeloLista = new DefaultListModel<Carnico>();
+		listaPropuestas = new JList<Carnico>(modeloLista);
 		
 		listaPropuestas.setBounds(39, 118, 393, 263);
 		contentPane.add(listaPropuestas);
@@ -142,11 +142,13 @@ public class VentanaPropuestas extends JFrame {
 		//Añadir Productos insertados por el usuario
 				int resp = JOptionPane.showConfirmDialog(null, "¿Quieres dejar alguna recomendacion?");
 				while(resp == JOptionPane.OK_OPTION) {
-					String p = JOptionPane.showInputDialog("Introduce el nombre del producto");
+					String c = JOptionPane.showInputDialog("Introduce el nombre del producto");
 					String precio = JOptionPane.showInputDialog("Introduce lo que consideres que deberia valer el producto");
-					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, 0, p)) {
-						Producto pr = new Producto(p, Double.parseDouble(precio));
-						modeloLista.addElement(pr);
+					String imagen = JOptionPane.showInputDialog("Introduce la ruta del producto carnico con formato : imagenes/nombre.jpg");
+
+					if(!buscarProductoDeFormaRecursiva(modeloLista, 0, 0, c)) {
+						Carnico cr = new Carnico(c, Double.parseDouble(precio), imagen);
+						modeloLista.addElement(cr);
 					}else {
 						JOptionPane.showMessageDialog(null, "No se pueden insertar productos repetidos");
 						resp = JOptionPane.showConfirmDialog(null, "¿Quieres insertar otro producto?");
@@ -155,15 +157,15 @@ public class VentanaPropuestas extends JFrame {
 				}
 		}
 	
-		public void volcarProductosDeFormaRecursiva(DefaultListModel<Producto> modeloLista, int i, int a) throws DBException {
+		public void volcarProductosDeFormaRecursiva(DefaultListModel<Carnico> modeloLista, int i, int a) throws DBException {
 			if(i<modeloLista.size()) {
-				Producto p = modeloLista.get(i);
-				dbManager.insertarNuevoProducto(p);
+				Carnico c = modeloLista.get(i);
+				dbManager.insertarNuevoProducto(c);
 				volcarProductosDeFormaRecursiva(modeloLista, i+1, a+1);
 			}
 		}
 	
-		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<Producto> modeloLista, int i,int a, String p) {
+		public boolean buscarProductoDeFormaRecursiva(DefaultListModel<Carnico> modeloLista, int i,int a, String p) {
 			if(i<modeloLista.size()) {
 				if(modeloLista.get(i).getNombre().equals(p)) {
 					return true;

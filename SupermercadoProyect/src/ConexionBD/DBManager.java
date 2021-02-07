@@ -166,10 +166,10 @@ public class DBManager {
 		
 		String nombre = carnico.getNombre();
 		double precio = carnico.getPrecio();
-				
+		String imagen = carnico.getRuta();		
 		try (Statement s= conexion.createStatement()) {
 			//Añadimos en la base de datos los producto que queremos añadir al carrito
-			s.executeUpdate("INSERT INTO carrito (nombre, precio) VALUES (' " + nombre + " ', ' "+ precio + "')");
+			s.executeUpdate("INSERT INTO carrito (nombre, precio, imagen) VALUES (' " + nombre + " ', "+ precio + ",'"+ imagen + "')");
 			LOG.log(Level.INFO,"Carnico añadido");
 		} catch (SQLException e) {
 			LOG.log(Level.WARNING,e.getMessage());
@@ -238,20 +238,20 @@ public class DBManager {
 		return existe;
 	}
 	//AÑADIR UN NUEVO PRODUCTO AL SUPERMERCADO
-	public void insertarNuevoProducto(Producto p) throws DBException {
-		if(!existeProducto(p.getNombre())) {
-			String sentSQL = "INSERT INTO producto VALUES('"+ p.getNombre() +"'," +p.getPrecio() +")";
-			try {
-				Statement st = conexion.createStatement();
-				st.executeUpdate(sentSQL);
-				st.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new DBException("No se ha podido insertar el producto en la tabla producto");
+		public void insertarNuevoProducto(Carnico c) throws DBException {
+			if(!existeProducto(c.getNombre())) {
+				String sentSQL = "INSERT INTO carnicos VALUES('"+ c.getNombre() +"'," +c.getPrecio() + ",'"+  c.getRuta() + "')";
+				try {
+					Statement st = conexion.createStatement();
+					st.executeUpdate(sentSQL);
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					throw new DBException("No se ha podido insertar el producto en la tabla carnico");
+				}
 			}
 		}
-	}
 	
 	  public ArrayList<VentanaPanelProductosCarnicos> eligeProductos() throws DBException{
 

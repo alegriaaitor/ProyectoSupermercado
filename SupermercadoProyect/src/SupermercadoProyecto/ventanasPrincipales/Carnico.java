@@ -4,17 +4,19 @@ public class Carnico  {
 	
 	private String nombre;
 	private double precio;
+	private String ruta;
 	
-	
-	public Carnico(String nombre, double precio) {
+	public Carnico(String nombre, double precio, String ruta) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
+		this.ruta = ruta;
 	}
 	public Carnico() {
 		super();
 		this.nombre = " ";
 		this.precio = 0.0;
+		this.ruta = " ";
 	}
 	public String getNombre() {
 		return nombre;
@@ -29,6 +31,13 @@ public class Carnico  {
 		this.precio = precio;
 	}	
 	
+	
+	public String getRuta() {
+		return ruta;
+	}
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
 	@Override
 	public String toString() {
 		return nombre + ", " + precio + " €";
