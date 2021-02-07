@@ -85,6 +85,25 @@ public class DBManager {
 		return acceso;
 	}
 	
+	//SUMAR LAS VECES QUE SE HA AÑADIDO UN PRODUCTO AL CARRITO
+	public int cantidadEnCarrito(Producto p) {
+		int cantidad = 0;
+		String nombre = p.getNombre();
+		try {
+			String sentSQL ="SELECT * FROM CARRITO WHERE NOMBRE= '" + nombre + "';";
+			Statement smt = conexion.createStatement();
+			ResultSet rs = smt.executeQuery(sentSQL);
+			while(rs.next()) {
+				cantidad++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cantidad;
+	}
+	
+	
 	public ArrayList<Producto> obtenerProductoPrecio(String precio) throws DBException{
 		ArrayList<Producto> al = new ArrayList<>();
 		String sentSQL = "SELECT * FROM producto WHERE precio='"+precio+"'";
@@ -125,6 +144,7 @@ public class DBManager {
 		}	
 		return precio;
 	}
+	
 	//AÑADIR PRODUCTO A CARRITO
 	public void anadirProductoACarrito(Producto producto) throws DBException{
 				
@@ -236,7 +256,7 @@ public class DBManager {
 	  public ArrayList<VentanaPanelProductosCarnicos> eligeProductos() throws DBException{
 
           ArrayList<VentanaPanelProductosCarnicos> alpp = new ArrayList<>();
-          try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio, imagen FROM carnicos")) {
+          try (PreparedStatement stmt = conexion.prepareStatement("SELECT nombre, precio, imagen FROM producto where seccion= 'Carniceria'")) {
               ResultSet rs = stmt.executeQuery();
               while(rs.next()) {
 

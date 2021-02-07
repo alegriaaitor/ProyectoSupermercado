@@ -1,165 +1,78 @@
 package SupermercadoProyecto.ventanasPrincipales;
+
+
+
 import java.awt.BorderLayout;
-
-
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTree;
+import javax.swing.SwingConstants;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 import ConexionBD.DBException;
 import ConexionBD.DBManager;
 
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JTextArea;
-import javax.swing.JTree;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 
 public class VentanaCarrito extends JFrame {
+	private DefaultTreeModel modelo;
+	private DefaultMutableTreeNode abuelo;
+	private JTable tabla;
+	private DefaultTableModel modeloTabla = new DefaultTableModel();
+	private JPanel pDerecha;
+	private JPanel pSur;
 	public static JLabel labelTitulo;
-	private JPanel contentPane;
-	private ArrayList <Producto> p;
-	private DefaultListModel<Producto> modeloLista = new DefaultListModel<>();
-	final VentanaMenu menu = new VentanaMenu();
+	private JPanel pDerechaCentro, pDerechaSur;
+	private JLabel resumenCompra, totalCarrito, totalCarritoPrecio, gastosEnvio, gastosEnvioPrecio, totalAPagar, totalAPagarPrecio, seguirComprando, procesoCompra, anadirProducto;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaCarrito frame = new VentanaCarrito();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-
-	/**
-	 * Create the frame.
-	 *  
-	 */
 	public VentanaCarrito() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 518);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+		setTitle("Ventana carrito");
+		setSize( 600, 500 );
+		JPanel pCentral = new JPanel();
+		pDerecha = new JPanel(new BorderLayout());
+		pSur = new JPanel(new GridLayout(1,3));
+		pDerechaCentro = new JPanel(new GridLayout(3,2));
+		pDerechaSur = new JPanel(new GridLayout());
+		pCentral.setLayout(new BorderLayout());
+		labelTitulo = new JLabel("COMPRUEBE LOS PRODUCTOS DEL CARRITO ",SwingConstants.CENTER);
+		pCentral.add(labelTitulo, BorderLayout.NORTH);
+		JButton botonAnadir = new JButton("Propuestas");
+		JButton botonCaja = new JButton("Pasar por caja");
+		JButton botonComprar = new JButton("Seguir comprando");
 		
+		Hilo h = new Hilo();
+        h.start();
 		
-		
-		labelTitulo = new JLabel(" COMPRUEBA LOS PRODUCTOS DE TU CARRITO ");
-		labelTitulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		labelTitulo.setBounds(20, 26, 468, 32);
-		contentPane.add(labelTitulo);
-		
-		JLabel lblNewLabel_1 = new JLabel("Resumen de la compra");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(550, 40, 193, 13);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Total a pagar");
-		lblNewLabel_2.setBounds(550, 148, 86, 13);
-		contentPane.add(lblNewLabel_2);
-		
-		JButton botonPasaPorCaja = new JButton("Pasar por caja");
-		botonPasaPorCaja.setBounds(560, 175, 122, 32);
-		contentPane.add(botonPasaPorCaja);
-		
-		JLabel lblNewLabel_4 = new JLabel("Total carrito");
-		lblNewLabel_4.setBounds(550, 73, 86, 13);
-		contentPane.add(lblNewLabel_4);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(509, 50, 0, 157);
-		contentPane.add(separator);
-	
-		
-		JLabel lblNewLabel_4_1 = new JLabel("Gastos de envio");
-		lblNewLabel_4_1.setBounds(550, 108, 104, 13);
-		contentPane.add(lblNewLabel_4_1);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(546, 134, 148, 4);
-		contentPane.add(separator_1);
-		
-		JLabel lblNewLabel_5 = new JLabel("¿Te has olvidado de algo?");
-		lblNewLabel_5.setBounds(550, 262, 159, 13);
-		contentPane.add(lblNewLabel_5);
-		
-		JButton btnNewButton_1 = new JButton("Continua comprando");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VentanaMenu menu = new VentanaMenu();
-				menu.setVisible(true);
-				dispose();
-			}
-		});
-		btnNewButton_1.setBounds(572, 285, 157, 21);
-		contentPane.add(btnNewButton_1);
-		
-		p = new ArrayList<>();
-		
-		JList list;
-		
-		DefaultListModel<Producto> modelo1= new DefaultListModel<>();
-		DBManager con = new DBManager();
-		try {
-			con.connect();
-			ArrayList<Producto> pro = con.obtenerCarrito();
-			con.disconnect();
-			for(Producto p: pro) {
-				modelo1.addElement(p);
-			}
-		} catch (DBException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		list = new JList<>(modelo1);
-		list.setBounds(41, 72, 415, 317);
-		
-		contentPane.add(list);
-		
-		
-		
-		
-		
-		JLabel labelProcesandoCompra = new JLabel("Procesando Compra...");
-		labelProcesandoCompra.setVisible(false);
-		labelProcesandoCompra.setBounds(509, 332, 193, 32);
-		contentPane.add(labelProcesandoCompra);
-		
-		
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setVisible(false);
-		progressBar.setBounds(563, 376, 146, 26);
-		contentPane.add(progressBar);
-		
+		tabla = new JTable(modeloTabla);
+		String[] ids = {"Nombre", "Cantidad", "Precio"};
+		modeloTabla.setColumnIdentifiers(ids);
 		
 		
 		double precioTotal = 0;
@@ -175,26 +88,50 @@ public class VentanaCarrito extends JFrame {
 		String texto = String.format("%.2f ", precioTotal);
 		String texto2 = String.format("%.2f", precioTotal + 2.50);
 		
-		JLabel intGastosEnvio = new JLabel("2.50");
-		intGastosEnvio.setBounds(698, 108, 45, 13);
-		contentPane.add(intGastosEnvio);
+		//Inicializar variables
+		anadirProducto = new JLabel("Añadir/Seguir comprando productos");
+		resumenCompra = new JLabel("Resumen de la compra");
+		totalCarrito = new JLabel("Total carrito: ");
+		totalCarritoPrecio = new JLabel(texto);
+		gastosEnvio = new JLabel("Gastos envio: ");
+		gastosEnvioPrecio = new JLabel("2,50");
+		totalAPagar = new JLabel("Total a pagar: ");
+		totalAPagarPrecio = new JLabel(texto2);
 		
-		JLabel intTotalCarrito = new JLabel(texto);
-		intTotalCarrito.setBounds(698, 73, 45, 13);
-		contentPane.add(intTotalCarrito);
-
-		JLabel intTotlPagar = new JLabel(texto2);
-		intTotlPagar.setBounds(698, 148, 91, 13);
-		contentPane.add(intTotlPagar);
 		
-		JLabel labelPropuesta = new JLabel("\u00BFEchas en falta alg\u00FAn producto en la tienda? Dejanos tu sugerencia");
-		labelPropuesta.setBounds(41, 418, 356, 13);
-		contentPane.add(labelPropuesta);
+		tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+			
+			@Override
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+				int precio = (int) modeloTabla.getValueAt(row, 2);
+				if(precio >= 50)
+					c.setBackground(Color.RED);
+				else if(precio < 50)
+					c.setBackground(Color.GREEN);
+				return c;
+			
+			}
+		});
 		
-		JButton botonPropuesta = new JButton("Propuestas");
-		botonPropuesta.setBounds(41, 441, 111, 21);
-		contentPane.add(botonPropuesta);
-		botonPropuesta.addActionListener(new ActionListener() {
+		//Añadir elementos a paneles
+		pDerechaCentro.add(totalCarrito);
+		pDerechaCentro.add(totalCarritoPrecio);
+		pDerechaCentro.add(gastosEnvio);
+		pDerechaCentro.add(gastosEnvioPrecio);
+		pDerechaCentro.add(totalAPagar);
+		pDerechaCentro.add(totalAPagarPrecio);
+		
+		pDerechaSur.add(botonCaja);
+		
+		pDerecha.add(resumenCompra, BorderLayout.NORTH);
+		pDerecha.add(pDerechaCentro, BorderLayout.CENTER);
+		pDerecha.add(pDerechaSur, BorderLayout.SOUTH);
+		
+		//Action y mouse listeners
+		
+		botonAnadir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -204,61 +141,51 @@ public class VentanaCarrito extends JFrame {
 			}
 		});
 		
-		//THREADS	
-				Hilo h = new Hilo();
-				h.start();
+		botonComprar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaMenu menu = new VentanaMenu();
+				menu.setVisible(true);
+				dispose();
+			}
+		});
 		
-		JLabel labelCarritoFondo = new JLabel("");
-		labelCarritoFondo.setHorizontalAlignment(SwingConstants.TRAILING);
-		labelCarritoFondo.setBounds(0, 10, 816, 468);
-		ImageIcon ico4 = new ImageIcon("imagenes/supermercado.jpg");
-        ImageIcon img4 = new ImageIcon(ico4.getImage().getScaledInstance(labelCarritoFondo.getWidth(), labelCarritoFondo.getHeight(), Image.SCALE_SMOOTH));
-        labelCarritoFondo.setIcon(img4);
-		contentPane.add(labelCarritoFondo);
-		
-		
-		
-		botonPasaPorCaja.addActionListener(new ActionListener() {
-					
+		botonCaja.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				double precioTotal = 0;
 				try {
 					PrintWriter pw = new PrintWriter("Recibo.txt");
-					for(int i=0;i<modelo1.size();i++) {
-						Producto p = modelo1.get(i);
-						String texto = String.format("%s   %.2f €", p.getNombre(), p.getPrecio());
-						pw.println(texto);
-						precioTotal += p.getPrecio();
+					
+					DBManager con = new DBManager();
+					try {
+						con.connect();
+						ArrayList<Producto> al = con.obtenerCarrito();
+						con.disconnect();
+						for (Producto p : al) {
+							String texto = String.format("%s   %.2f €", p.getNombre(), p.getPrecio());
+							pw.println(texto);
+							precioTotal += p.getPrecio();
+						}
+						pw.println();
+						pw.println(String.format(" PRECIO TOTAL: %.2f €", precioTotal + 2.50));
+						pw.flush();
+						pw.close();
+					} catch (DBException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-					pw.println();
-					pw.println(String.format(" PRECIO TOTAL: %.2f €", precioTotal + 2.50));
-					pw.flush();
-					pw.close();
+					
 				} catch (FileNotFoundException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-					Thread hilo = new Thread(new Runnable() {
 					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						labelProcesandoCompra.setVisible(true);
-						progressBar.setVisible(true);
-						
-						for (int i = 0; i <= 100 ; i++) {
-							progressBar.setValue(i);
-							try {
-								Thread.sleep(50);
-								
-							}catch(InterruptedException e1) {
-								e1.printStackTrace();
-							}
-						}
 						
 						try {
+							DBManager con = new DBManager();
 							con.connect();
 							con.vaciarCarrito();
 							con.disconnect();
@@ -267,8 +194,6 @@ public class VentanaCarrito extends JFrame {
 							e.printStackTrace();
 						}
 						
-						labelProcesandoCompra.setVisible(false);
-						progressBar.setVisible(false);
 						JOptionPane.showMessageDialog(null, "Compra realizada con exito rotundo","Carrito",1);
 						VentanaMenu m = new VentanaMenu();
 						dispose();
@@ -276,13 +201,68 @@ public class VentanaCarrito extends JFrame {
 								
 						
 					}
-				});
-					hilo.start();
+				
+		});	
 					
+		
+		
+		DBManager con = new DBManager();
+		try {
+			con.connect();
+			ArrayList<Producto> pro = con.obtenerCarrito();
+			con.disconnect();
+			HashSet<Producto> hashSet = new HashSet<Producto>(pro);
+			pro.clear();
+			pro.addAll(hashSet);
+			for(Producto p: pro) {
+				con.connect();
+				
+				validarRegistroTabla(p);
+				String fila[] = {p.getNombre(),String.valueOf(con.cantidadEnCarrito(p)),String.valueOf(p.getPrecio()*con.cantidadEnCarrito(p))};
+				con.disconnect();
+				validarRegistroTabla(p);
+				modeloTabla.addRow(fila);
+				
+				
 				
 			}
-		});
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
 		
+		
+		pSur.add(botonAnadir);
+		pSur.add(botonComprar);
+		pCentral.add(pSur, BorderLayout.SOUTH);
+		pCentral.add(new JScrollPane(tabla), BorderLayout.CENTER);
+		pCentral.add(pDerecha, BorderLayout.EAST);
+		add(pCentral);
+		
+		setVisible(true);
 	}
+	
+	public void validarRegistroTabla(Producto p) {
+		for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+			if(modeloTabla.getValueAt(i, 0).equals(p.getNombre())) {
+				modeloTabla.removeRow(i);
+				}
+		}
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaCarrito frame = new VentanaCarrito();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
 }

@@ -1,7 +1,7 @@
- Donuts    1,00 €
- Napolitana    1,00 €
- Pan    1,00 €
- Chuleton de vaca    64,50 €
- Chorizo criollo    12,58 €
+ Chuleton de Ternera    22,00 €
+ Chuleton de Ternera    22,00 €
+ Chorizo Criollo    11,00 €
+ Chorizo Criollo    11,00 €
+ Cesta de Carnes    120,00 €
 
- PRECIO TOTAL: 82,58 €
+ PRECIO TOTAL: 188,50 €
